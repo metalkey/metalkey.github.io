@@ -8,6 +8,12 @@
     src: url(fonts/NotoSerif-Regular.ttf);
 }
 
+div.code {
+    background-color: #181818;
+    color: white;
+    padding: 20px;
+}
+
 body{font-family:Noto Serif;margin:0;padding:0;background-color:#F3F3F3;}
         #divbodyholder{padding:5px;background-color:#DDD;width:100%;max-width:874px;margin:24px auto;}
         #divbody{border:solid 1px #ccc;background-color:#fff;padding:0px 48px 24px 48px;top:0;}
