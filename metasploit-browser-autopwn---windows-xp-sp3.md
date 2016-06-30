@@ -1,4 +1,4 @@
-Metasploit Browser Autopwn – Windows XP SP3
+Metasploit Browser Autopwn – Windows XP SP2
 **Attacker:** Kali Linux<br>
 **Victim:** Windows XP SP3 (Java 6u25, IE6)<br>
 <br>
