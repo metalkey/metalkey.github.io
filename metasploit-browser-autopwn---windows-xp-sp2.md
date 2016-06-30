@@ -1,7 +1,6 @@
 Metasploit Browser Autopwn – Windows XP SP2
 **Attacker:** Kali Linux<br>
 **Victim:** Windows XP SP3 (Java 6u25, IE6)<br>
-<br>
 ##Step 1 – Starting the Browser Autopwn Server
 Run msfconsole, load the browser_autopwn module and set all required options.<br>
 <code>
