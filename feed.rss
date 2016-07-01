@@ -2,9 +2,65 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>m3t4lk3y</title><link>https://metalkey.net/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Fri, 01 Jul 2016 10:49:17 +1000</lastBuildDate>
-<pubDate>Fri, 01 Jul 2016 10:49:17 +1000</pubDate>
+<lastBuildDate>Fri, 01 Jul 2016 11:07:49 +1000</lastBuildDate>
+<pubDate>Fri, 01 Jul 2016 11:07:49 +1000</pubDate>
 <atom:link href="https://metalkey.net/feed.rss" rel="self" type="application/rss+xml" />
+<item><title>
+Increasing the Power Output of your Alfa AWUS036H
+</title><description><![CDATA[
+Warning: Check the laws in your region before adjusting the power output of your wifi adapter. Increasing the power above 20dBm can be a breach of regulations in some countries.</p>
+
+<p><strong>OS:</strong> Kali Linux</p>
+
+<h2>Checking the Current Power Output</h2>
+
+<p>In the example below Tx-Power is set to the default value of 20dBm for the current locale.<br>
+Information on how this value is determined is explained in-depth at Linux Wireless (<a href="http://linuxwireless.org/en/developers/Regulatory/">http://linuxwireless.org/en/developers/Regulatory/</a>)<br>
+<code></p>
+
+<div class="code">
+<font color="silver">root@kali:~$</font> <b>iwconfig</b><br>
+<font color="silver"><br>
+wlan0 IEEE 802.11bg ESSID:off/any<br>
+Mode:Managed Access Point: Not-Associated <b>Tx-Power=20 dBm</b><br>
+Retry short limit:7 RTS thr:off Fragment thr:off<br>
+Encryption key:off<br>
+Power Management:off<br>
+</font>
+</div>
+
+<p></code></p>
+
+<h2>Increasing the Output to 1-Watt (30dBm)</h2>
+
+<p>To increase the power output of the Alfa AWUS036H to 1-Watt (manufacturer specified maximum) you will need to change your locale to a region with different regulations (e.g. Belize – BZ) and set txpower manually.
+<code></p>
+
+<div class="code">
+<font color="silver">root@kali:~$</font> <b>ifconfig wlan0 down</b><br>
+<font color="silver">root@kali:~$</font> <b>iw reg set BZ</b><br>
+<font color="silver">root@kali:~$</font> <b>iwconfig wlan0 txpower 30</b><br>
+<font color="silver">root@kali:~$</font> <b>ifconfig wlan0 up</b><br>
+<font color="silver">root@kali:~$</font> <b>iwconfig</b><br>
+<font color="silver"><br>
+wlan0 IEEE 802.11bg ESSID:off/any<br>
+Mode:Managed Access Point: Not-Associated <b>Tx-Power=30 dBm</b><br>
+Retry short limit:7 RTS thr:off Fragment thr:off<br>
+Encryption key:off<br>
+Power Management:off<br>
+</font>
+</div>
+
+<p></code>
+We have successfully set txpower to 30dBM (1-Watt).<br>
+Higher values can also be set and detailed instructions are available at Null Byte (<a href="http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/">http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/</a>).</p>
+
+<p>Tags: <a href='tag_wifi.html'>wifi</a></p>
+<!-- text end -->
+]]></description><link>https://metalkey.net/increasing-the-power-output-of-your-alfa-awus036h.html</link>
+<guid>https://metalkey.net/./increasing-the-power-output-of-your-alfa-awus036h.html</guid>
+<dc:creator>metalkey</dc:creator>
+<pubDate>Fri, 01 Jul 2016 11:00:49 +1000</pubDate></item>
 <item><title>
 Password Profiling &amp; Wordlist Generation with CUPP (Common User Password Profiler)
 </title><description><![CDATA[
@@ -110,6 +166,7 @@ This wordlist may prove useful when cracking hashes, capture files, etc…<br>
 You can also download wordlists and improve wordlists using the -w, -l and -a options.<br></p>
 
 <p>Tags: <a href='tag_password.html'>password</a></p>
+
 <!-- text end -->
 ]]></description><link>https://metalkey.net/password-profiling-amp-wordlist-generation-with-cupp-common-user-password-profiler.html</link>
 <guid>https://metalkey.net/./password-profiling-amp-wordlist-generation-with-cupp-common-user-password-profiler.html</guid>
@@ -247,6 +304,7 @@ You now have shell access to the Windows XP SP3 Victim with the same access as t
 <p>Keep your software fully updated (e.g. Windows, Web Browsers, Java, etc…) and uninstall unused applications.</p>
 
 <p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
+
 
 <!-- text end -->
 ]]></description><link>https://metalkey.net/metasploit-browser-autopwn---windows-xp-sp2.html</link>

@@ -14,6 +14,63 @@
 <div id="description">Hacking tutorials + info</div>
 </div></div></div>
 <div id="divbody"><div class="content">
+<h3><a class="ablack" href="increasing-the-power-output-of-your-alfa-awus036h.html">
+Increasing the Power Output of your Alfa AWUS036H
+</a></h3>
+<!-- bashblog_timestamp: #201607011100.49# -->
+<div class="subtitle">July 01, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+Warning: Check the laws in your region before adjusting the power output of your wifi adapter. Increasing the power above 20dBm can be a breach of regulations in some countries.</p>
+
+<p><strong>OS:</strong> Kali Linux</p>
+
+<h2>Checking the Current Power Output</h2>
+
+<p>In the example below Tx-Power is set to the default value of 20dBm for the current locale.<br>
+Information on how this value is determined is explained in-depth at Linux Wireless (<a href="http://linuxwireless.org/en/developers/Regulatory/">http://linuxwireless.org/en/developers/Regulatory/</a>)<br>
+<code></p>
+
+<div class="code">
+<font color="silver">root@kali:~$</font> <b>iwconfig</b><br>
+<font color="silver"><br>
+wlan0 IEEE 802.11bg ESSID:off/any<br>
+Mode:Managed Access Point: Not-Associated <b>Tx-Power=20 dBm</b><br>
+Retry short limit:7 RTS thr:off Fragment thr:off<br>
+Encryption key:off<br>
+Power Management:off<br>
+</font>
+</div>
+
+<p></code></p>
+
+<h2>Increasing the Output to 1-Watt (30dBm)</h2>
+
+<p>To increase the power output of the Alfa AWUS036H to 1-Watt (manufacturer specified maximum) you will need to change your locale to a region with different regulations (e.g. Belize – BZ) and set txpower manually.
+<code></p>
+
+<div class="code">
+<font color="silver">root@kali:~$</font> <b>ifconfig wlan0 down</b><br>
+<font color="silver">root@kali:~$</font> <b>iw reg set BZ</b><br>
+<font color="silver">root@kali:~$</font> <b>iwconfig wlan0 txpower 30</b><br>
+<font color="silver">root@kali:~$</font> <b>ifconfig wlan0 up</b><br>
+<font color="silver">root@kali:~$</font> <b>iwconfig</b><br>
+<font color="silver"><br>
+wlan0 IEEE 802.11bg ESSID:off/any<br>
+Mode:Managed Access Point: Not-Associated <b>Tx-Power=30 dBm</b><br>
+Retry short limit:7 RTS thr:off Fragment thr:off<br>
+Encryption key:off<br>
+Power Management:off<br>
+</font>
+</div>
+
+<p></code>
+We have successfully set txpower to 30dBM (1-Watt).<br>
+Higher values can also be set and detailed instructions are available at Null Byte (<a href="http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/">http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/</a>).</p>
+
+<p>Tags: <a href='tag_wifi.html'>wifi</a></p>
+<!-- text end -->
 <h3><a class="ablack" href="password-profiling-amp-wordlist-generation-with-cupp-common-user-password-profiler.html">
 Password Profiling &amp; Wordlist Generation with CUPP (Common User Password Profiler)
 </a></h3>
@@ -124,6 +181,7 @@ This wordlist may prove useful when cracking hashes, capture files, etc…<br>
 You can also download wordlists and improve wordlists using the -w, -l and -a options.<br></p>
 
 <p>Tags: <a href='tag_password.html'>password</a></p>
+
 <!-- text end -->
 <h3><a class="ablack" href="netgear-wireless-router-default-passphrase-vulnerability.html">
 Netgear Wireless Router Default Passphrase Vulnerability
@@ -263,6 +321,7 @@ You now have shell access to the Windows XP SP3 Victim with the same access as t
 <p>Keep your software fully updated (e.g. Windows, Web Browsers, Java, etc…) and uninstall unused applications.</p>
 
 <p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
+
 
 <!-- text end -->
 <div id="all_posts"><a href="all_posts.html">View more posts</a> &mdash; <a href="all_tags.html">All tags</a> &mdash; <a href="feed.rss">Subscribe</a></div>
