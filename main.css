@@ -10,7 +10,7 @@
 
 div.code {
     background-color: #181818;
-    color: white;
+    color: silver;
     padding: 20px;
 }
 
@@ -31,3 +31,4 @@ body{font-family:Noto Serif;margin:0;padding:0;background-color:#F3F3F3;}
         blockquote img{margin:12px 0px;}
         blockquote iframe{margin:12px 0px;}
 	code, pre, .codelike {font-family:Noto Sans;}
+	com {font-family:Noto Sans;color: white;font-weight:bold}

