@@ -12,6 +12,7 @@ div.code {
     background-color: #181818;
     color: silver;
     padding: 20px;
+    word-wrap: break-word;
 }
 
 body{font-family:Noto Serif;margin:0;padding:0;background-color:#F3F3F3;}

