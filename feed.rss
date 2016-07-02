@@ -2,8 +2,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>m3t4lk3y</title><link>https://metalkey.github.io/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Sun, 03 Jul 2016 01:10:16 +1000</lastBuildDate>
-<pubDate>Sun, 03 Jul 2016 01:10:16 +1000</pubDate>
+<lastBuildDate>Sun, 03 Jul 2016 01:14:01 +1000</lastBuildDate>
+<pubDate>Sun, 03 Jul 2016 01:14:01 +1000</pubDate>
 <atom:link href="https://metalkey.github.io/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 Google Chrome Search Poison – Default Search Engine Exploit
@@ -14,7 +14,7 @@ Google Chrome Search Poison – Default Search Engine Exploit
 <p>In December 2015, I discovered a vulnerability in Google Chrome's default search engines feature whereby a lack of input sanitation allows an attacker to store XSS in the victim's browser. This stored XSS is then executed whenever the victim searches using the omnibox.<br>
 In this walkthrough we'll set up a Python SimpleHTTPServer and intercept the victim’s Cookies and search keywords.<br>
 <br>
-Note: The vulnerability has been reported to the Chromium team but they will not fix the issue.</p>
+Note: The vulnerability has been reported to (and ignored by) the Google/Chromium team.</p>
 
 <h2>Video Demo</h2>
 
@@ -141,6 +141,8 @@ root@metasploitable:/etc/unreal#
 <p></code></p>
 
 <p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
+
+
 
 
 
@@ -294,6 +296,8 @@ root
 
 
 
+
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</link>
 <guid>https://metalkey.github.io/./linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</guid>
@@ -424,6 +428,8 @@ If your system is vulnerable, ensure it is patched immediately by upgrading your
 
 
 
+
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/shellshock-explained--exploitation-tutorial.html</link>
 <guid>https://metalkey.github.io/./shellshock-explained--exploitation-tutorial.html</guid>
@@ -538,6 +544,8 @@ C:\7-ZipPortable>
 <p></code></p>
 
 <p>Tags: <a href='tag_av-evasion.html'>av-evasion</a></p>
+
+
 
 
 
@@ -750,6 +758,8 @@ Mode Size Type Last modified Name<br>
 
 
 
+
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/metasploit-adobe-flash-1800203-exploit---windows-7--windows-81.html</link>
 <guid>https://metalkey.github.io/./metasploit-adobe-flash-1800203-exploit---windows-7--windows-81.html</guid>
@@ -860,6 +870,8 @@ This wordlist may prove useful when cracking hashes, capture files, etc…<br>
 You can also download wordlists and improve wordlists using the -w, -l and -a options.<br></p>
 
 <p>Tags: <a href='tag_password.html'>password</a></p>
+
+
 
 
 
