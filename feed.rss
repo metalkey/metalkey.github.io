@@ -2,8 +2,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>m3t4lk3y</title><link>https://metalkey.net/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Sat, 02 Jul 2016 20:15:57 +1000</lastBuildDate>
-<pubDate>Sat, 02 Jul 2016 20:15:57 +1000</pubDate>
+<lastBuildDate>Sat, 02 Jul 2016 20:24:28 +1000</lastBuildDate>
+<pubDate>Sat, 02 Jul 2016 20:24:28 +1000</pubDate>
 <atom:link href="https://metalkey.net/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 Google Chrome Search Poison – Default Search Engine Exploit
@@ -19,7 +19,8 @@ Note: The vulnerability has been reported to the Chromium team but they will not
 <h2>Video Demo</h2>
 
 <div align="center">
-<iframe width="420" height="315" src="http://www.youtube.com/embed/WoF-LkA6fMk?autoplay=0"></iframe>
+<object style="width:100%;height:100%;width:420px;height:315px;float:none;" data="http://www.youtube.com/embed/WoF-LkA6fMk?autoplay=0">
+</object>
 </div>
 
 <p>The video demonstration involves manipulation of the chrome master-preferences file to infect the user with the malicious search engine. The user is then directed to the attackers apache server, which extracts the search query, cookies and other system information and seamlessly directs them back to their search.<br></p>
