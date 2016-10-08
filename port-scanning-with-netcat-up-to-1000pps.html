@@ -18,58 +18,59 @@
 <h3><a class="ablack" href="port-scanning-with-netcat-up-to-1000pps.html">
 Port Scanning With Netcat (Up to 1000pps)
 </a></h3>
-<!-- bashblog_timestamp: #201610081938.10# -->
+<!-- bashblog_timestamp: #201610081947.58# -->
 <div class="subtitle">October 08, 2016 &mdash; 
 metalkey
 </div>
 <!-- text begin -->
 
-<p><code></p>
-
-<div class="code">
-<com>nano catscan.sh</com>
-#!/bin/bash
-mkdir catscan-results
-cp targets.txt catscan-results
-cd catscan-results
-
-# Use ping to get IP addresses. Strip bash colours from output with sed
-echo "Generating IP list..."
-for host in $(cat targets.txt);do
-    hostip=`ping -c 1 -W 1 $host  | grep PING | cut -d"(" -f2 | cut -d")" -f1 | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"`
-    echo "$host resolves to $hostip" 
-    echo "$host resolves to $hostip" >> host-ip.txt 
-    echo $hostip >> temp-hosts.txt
-done
-wait
-
-# Sort ips and remove dupes
-sort -u temp-hosts.txt > hosts.txt
-rm temp-hosts.txt
-
-echo "Starting scan..."
-# Scan y ports at a time and ouput to results.txt
-# To change number of ports scanned at a time, change y, x incrementer, y incrementer
-for ip in $(cat hosts.txt);do
-    x=0
-    y=1000
-    while [ $y -le 66000 ];do
-        echo "Scanning $ip (Ports $x - $y)"
-        for num in $(seq $x $y);do
-            netcat -vzn -w 1 $ip $num >> results.txt 2>&1 &
-        done
-        wait
-        x=$(( $x + 1000 ))
-        y=$(( $x + 1000 ))
-        grep $ip results.txt | grep " open" results.txt | sort -u
-    done
-done
-grep $ip results.txt | grep " open" results.txt | sort -u > open-ports.txt
-</div>
-
-<p></code></p>
+<p>
+<code>
+    <div class="code">
+        <com>nano catscan.sh</com><br>
+        #!/bin/bash<br>
+        mkdir catscan-results<br>
+        cp targets.txt catscan-results<br>
+        cd catscan-results<br>
+        <br>
+        # Use ping to get IP addresses. Strip bash colours from output with sed<br>
+        echo "Generating IP list..."<br>
+        for host in $(cat targets.txt);do<br>
+            hostip=`ping -c 1 -W 1 $host  | grep PING | cut -d"(" -f2 | cut -d")" -f1 | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"`<br>
+                echo "$host resolves to $hostip" <br>
+                    echo "$host resolves to $hostip" >> host-ip.txt <br>
+                        echo $hostip >> temp-hosts.txt<br>
+                        done<br>
+                        wait<br>
+                        <br>
+                        # Sort ips and remove dupes<br>
+                        sort -u temp-hosts.txt > hosts.txt<br>
+                        rm temp-hosts.txt<br>
+                        <br>
+                        echo "Starting scan..."<br>
+                        # Scan y ports at a time and ouput to results.txt<br>
+                        # To change number of ports scanned at a time, change y, x incrementer, y incrementer<br>
+                        for ip in $(cat hosts.txt);do<br>
+                            x=0<br>
+                                y=1000<br>
+                                    while [ $y -le 66000 ];do<br>
+                                            echo "Scanning $ip (Ports $x - $y)"<br>
+                                                    for num in $(seq $x $y);do<br>
+                                                                netcat -vzn -w 1 $ip $num >> results.txt 2>&1 &<br>
+                                                                        done<br>
+                                                                                wait<br>
+                                                                                        x=$(( $x + 1000 ))<br>
+                                                                                                y=$(( $x + 1000 ))<br>
+                                                                                                        grep $ip results.txt | grep " open" results.txt | sort -u<br>
+                                                                                                            done<br>
+                                                                                                            done<br>
+                                                                                                            grep $ip results.txt | grep " open" results.txt | sort -u > open-ports.txt<br>
+    </div><br>
+</code>
+</p>
 
 <p>Tags: <a href='tag_port-scanning.html'>port-scanning</a></p>
+
 <!-- text end -->
 <!-- entry end -->
 </div>
