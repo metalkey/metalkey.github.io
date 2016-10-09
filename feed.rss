@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>m3t4lk3y</title><link>https://metalkey.github.io/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Sun, 09 Oct 2016 21:33:18 +1100</lastBuildDate>
-<pubDate>Sun, 09 Oct 2016 21:33:18 +1100</pubDate>
+<lastBuildDate>Sun, 09 Oct 2016 23:38:12 +1100</lastBuildDate>
+<pubDate>Sun, 09 Oct 2016 23:38:12 +1100</pubDate>
 <atom:link href="https://metalkey.github.io/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
-Port Scanning With Netcat (Up to 1000 packets/second)
+Port Scanning With Netcat (Up to 1000 ports/second)
 </title><description><![CDATA[
 
 <p>
@@ -205,6 +205,7 @@ root@metasploitable:/etc/unreal#
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/unrealircd-3281-backdoor-command-execution.html</link>
 <guid>https://metalkey.github.io/./unrealircd-3281-backdoor-command-execution.html</guid>
@@ -357,6 +358,7 @@ root
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</link>
 <guid>https://metalkey.github.io/./linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</guid>
@@ -490,6 +492,7 @@ If your system is vulnerable, ensure it is patched immediately by upgrading your
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/shellshock-explained--exploitation-tutorial.html</link>
 <guid>https://metalkey.github.io/./shellshock-explained--exploitation-tutorial.html</guid>
@@ -604,6 +607,7 @@ C:\7-ZipPortable>
 <p></code></p>
 
 <p>Tags: <a href='tag_av-evasion.html'>av-evasion</a></p>
+
 
 
 
@@ -815,6 +819,7 @@ Mode Size Type Last modified Name<br>
 <p>Uninstall flashplayer.</p>
 
 <p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
+
 
 
 
