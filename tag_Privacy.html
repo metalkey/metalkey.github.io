@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="main.css" type="text/css" />
+<link rel="stylesheet" href="blog.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to this page..." href="feed.rss" />
+<title>m3t4lk3y &mdash; Posts tagged "Privacy"</title>
+</head><body>
+<div id="divbodyholder">
+<div class="headerholder"><div class="header">
+<div id="title">
+<h1 class="nomargin"><a class="ablack" href="https://metalkey.github.io/index.html">m3t4lk3y</a></h1>
+<div id="description">Hacking tutorials + info</div>
+</div></div></div>
+<div id="divbody"><div class="content">
+<h3><a class="ablack" href="installing-wickr-on-ubuntu-1604.html">
+Installing Wickr on Ubuntu 16.04
+</a></h3>
+<!-- bashblog_timestamp: #201610221813.57# -->
+<div class="subtitle">October 22, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+
+<h2>Download Wickr and Dependencies</h2>
+<code>
+<div class="code">
+	user@ubuntu~$ <com>wget https://dls.wickr.com/Downloads/wickr-me_2.6.0_amd64.deb<br></com>
+	user@ubuntu~$ <com>wget http://security.ubuntu.com/ubuntu/pool/universe/liba/libav/libavutil52_9.18-0ubuntu0.14.04.1_amd64.deb<br></com>
+	user@ubuntu~$ <com>wget http://mirrors.kernel.org/ubuntu/pool/main/i/icu/libicu52_52.1-8ubuntu0.2_amd64.deb<br></com>
+	user@ubuntu~$ <com>wget http://mirrors.kernel.org/ubuntu/pool/universe/x/x264/libx264-142_0.142.2389+git956c8d8-2_amd64.deb<br></com>
+</div>
+</code>
+
+<h2>Install Dependencies and Wickr</h2>
+<code>
+<div class="code">
+	user@ubuntu~$ <com>sudo dpkg -i libavutil52_9.18-0ubuntu0.14.04.1_amd64.deb<br></com>
+	user@ubuntu~$ <com>sudo dpkg -i libicu52_52.1-8ubuntu0.2_amd64.deb<br></com>
+	user@ubuntu~$ <com>sudo dpkg -i libx264-142_0.142.2389+git956c8d8-2_amd64.deb<br></com>
+	user@ubuntu~$ <com>sudo dpkg -i wickr-me_2.6.0_amd64.deb<br></com>
+	user@ubuntu~$ <com>wickr-me<br></com>
+</div>
+</code>
+
+<p>Tags: <a href='tag_Privacy.html'>Privacy</a></p>
+
+<!-- text end -->
+</div>
+<div id="footer">CC by-nc-nd <a href="https://twitter.com/m3t4lk3y">metalkey</a> &mdash; <a href="mailto:"></a><br/>
+Generated with <a href="https://github.com/cfenollosa/bashblog">bashblog</a>, a single bash script to easily create blogs like this one</div>
+</div></div>
+</body></html>

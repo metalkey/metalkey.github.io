@@ -14,6 +14,39 @@
 <div id="description">Hacking tutorials + info</div>
 </div></div></div>
 <div id="divbody"><div class="content">
+<h3><a class="ablack" href="installing-wickr-on-ubuntu-1604.html">
+Installing Wickr on Ubuntu 16.04
+</a></h3>
+<!-- bashblog_timestamp: #201610221813.57# -->
+<div class="subtitle">October 22, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+
+<h2>Download Wickr and Dependencies</h2>
+<code>
+<div class="code">
+	user@ubuntu~$ <com>wget https://dls.wickr.com/Downloads/wickr-me_2.6.0_amd64.deb<br></com>
+	user@ubuntu~$ <com>wget http://security.ubuntu.com/ubuntu/pool/universe/liba/libav/libavutil52_9.18-0ubuntu0.14.04.1_amd64.deb<br></com>
+	user@ubuntu~$ <com>wget http://mirrors.kernel.org/ubuntu/pool/main/i/icu/libicu52_52.1-8ubuntu0.2_amd64.deb<br></com>
+	user@ubuntu~$ <com>wget http://mirrors.kernel.org/ubuntu/pool/universe/x/x264/libx264-142_0.142.2389+git956c8d8-2_amd64.deb<br></com>
+</div>
+</code>
+
+<h2>Install Dependencies and Wickr</h2>
+<code>
+<div class="code">
+	user@ubuntu~$ <com>sudo dpkg -i libavutil52_9.18-0ubuntu0.14.04.1_amd64.deb<br></com>
+	user@ubuntu~$ <com>sudo dpkg -i libicu52_52.1-8ubuntu0.2_amd64.deb<br></com>
+	user@ubuntu~$ <com>sudo dpkg -i libx264-142_0.142.2389+git956c8d8-2_amd64.deb<br></com>
+	user@ubuntu~$ <com>sudo dpkg -i wickr-me_2.6.0_amd64.deb<br></com>
+	user@ubuntu~$ <com>wickr-me<br></com>
+</div>
+</code>
+
+<p>Tags: <a href='tag_Privacy.html'>Privacy</a></p>
+
+<!-- text end -->
 <h3><a class="ablack" href="port-scanning-with-netcat-up-to-1000pps.html">
 Port Scanning With Netcat (Up to 1000 ports/second)
 </a></h3>
@@ -222,6 +255,8 @@ root@metasploitable:/etc/unreal#
 
 
 
+
+
 <!-- text end -->
 <h3><a class="ablack" href="vsftpd-v234-backdoor-command-execution.html">
 VSFTPD v2.3.4 Backdoor Command Execution
@@ -377,6 +412,8 @@ root
 
 
 
+
+
 <!-- text end -->
 <h3><a class="ablack" href="shellshock-explained--exploitation-tutorial.html">
 Shellshock Explained + Exploitation Tutorial
@@ -512,6 +549,8 @@ If your system is vulnerable, ensure it is patched immediately by upgrading your
 
 
 
+
+
 <!-- text end -->
 <h3><a class="ablack" href="shellter---the-ultimate-tool-for-av-evasion.html">
 Shellter – The ultimate tool for AV evasion
@@ -633,65 +672,6 @@ C:\7-ZipPortable>
 
 
 
-
-
-<!-- text end -->
-<h3><a class="ablack" href="increasing-the-power-output-of-your-alfa-awus036h.html">
-Increasing the Power Output of your Alfa AWUS036H
-</a></h3>
-<!-- bashblog_timestamp: #201607011511.09# -->
-<div class="subtitle">July 01, 2016 &mdash; 
-metalkey
-</div>
-<!-- text begin -->
-Warning: Check the laws in your region before adjusting the power output of your wifi adapter. Increasing the power above 20dBm can be a breach of regulations in some countries.</p>
-
-<p><strong>OS:</strong> Kali Linux</p>
-
-<h2>Checking the Current Power Output</h2>
-
-<p>In the example below Tx-Power is set to the default value of 20dBm for the current locale.<br>
-Information on how this value is determined is explained in-depth at Linux Wireless (<a href="http://linuxwireless.org/en/developers/Regulatory/">http://linuxwireless.org/en/developers/Regulatory/</a>)<br>
-<code></p>
-
-<div class="code">
-root@kali:~$ <com>iwconfig</com><br>
-<br>
-wlan0 IEEE 802.11bg ESSID:off/any<br>
-Mode:Managed Access Point: Not-Associated <com>Tx-Power=20 dBm</com><br>
-Retry short limit:7 RTS thr:off Fragment thr:off<br>
-Encryption key:off<br>
-Power Management:off<br>
-
-</div>
-
-<p></code></p>
-
-<h2>Increasing the Output to 1-Watt (30dBm)</h2>
-
-<p>To increase the power output of the Alfa AWUS036H to 1-Watt (manufacturer specified maximum) you will need to change your locale to a region with different regulations (e.g. Belize – BZ) and set txpower manually.
-<code></p>
-
-<div class="code">
-root@kali:~$ <com>ifconfig wlan0 down</com><br>
-root@kali:~$ <com>iw reg set BZ</com><br>
-root@kali:~$ <com>iwconfig wlan0 txpower 30</com><br>
-root@kali:~$ <com>ifconfig wlan0 up</com><br>
-root@kali:~$ <com>iwconfig</com><br>
-<br>
-wlan0 IEEE 802.11bg ESSID:off/any<br>
-Mode:Managed Access Point: Not-Associated <com>Tx-Power=30 dBm</com><br>
-Retry short limit:7 RTS thr:off Fragment thr:off<br>
-Encryption key:off<br>
-Power Management:off<br>
-
-</div>
-
-<p></code>
-We have successfully set txpower to 30dBM (1-Watt).<br>
-Higher values can also be set and detailed instructions are available at Null Byte (<a href="http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/">http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/</a>).</p>
-
-<p>Tags: <a href='tag_wifi.html'>wifi</a></p>
 
 
 
