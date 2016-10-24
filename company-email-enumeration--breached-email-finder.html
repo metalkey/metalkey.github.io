@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="main.css" type="text/css" />
+<link rel="stylesheet" href="blog.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to this page..." href="feed.rss" />
+<title>Company Email Enumeration + Breached Email Finder</title>
+</head><body>
+<div id="divbodyholder">
+<div class="headerholder"><div class="header">
+<div id="title">
+<h1 class="nomargin"><a class="ablack" href="https://metalkey.github.io/index.html">m3t4lk3y</a></h1>
+<div id="description">Hacking tutorials + info</div>
+</div></div></div>
+<div id="divbody"><div class="content">
+<!-- entry begin -->
+<h3><a class="ablack" href="company-email-enumeration--breached-email-finder.html">
+Company Email Enumeration + Breached Email Finder
+</a></h3>
+<!-- bashblog_timestamp: #201610242334.08# -->
+<div class="subtitle">October 24, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+
+Enumerating email addresses for a target domain and checking if these emails appear in known breaches can be extremely useful when performing recon.<br>
+This script will use <b><a href="https://hunter.io">hunter.io</a></b> to enumerate domain emails and feed them into <b><a href="https://hacked-emails.com">hacked-emails.com</a></b> to check if they appear in known breaches.<br>
+<br>
+<b>Note:</b> Substitute <b>YOURAPIKEY</b> with your hunter.io API key. This can be obtained by creating a hunter.io account.<br>
+<br>
+<code>
+	<div class="code">
+root@kali:~#	<com>cat emails.sh</com><br>
+		#!/bin/bash<br>
+		rm found-emails.txt<br>
+		rm hacked-emails.txt<br>
+		clear<br>
+		echo -e "\e[92mEnter Target Domain:"<br>
+		echo -e "\e[39m"<br>
+		read hname<br>
+		clear<br>
+		echo -e "[+] Email Recon Started"<br>
+		echo -e "\e[39m"<br>
+		<br>
+		# Email Checks<br>
+		echo "- Enumerating Domain Emails"<br>
+		curl -k -s "https://api.emailhunter.co/v1/search?domain=$hname&api_key=<b>YOURAPIKEY</b>" | grep -Po '"value" :.*?[^\\]",' | cut -d'"' -f4 > found-emails.txt<br>
+		echo "Found the following emails:"<br>
+		cat found-emails.txt<br>
+		echo ""<br>
+		echo "[+] Checking if Emails have been breached"<br>
+		for email in $(cat found-emails.txt);do<br>
+		curl -k -s "https://hacked-emails.com/api?q=$email" | grep '"status":"found"' | cut -d'"' -f8 >> hacked-emails.txt &<br>
+		done<br>
+		wait<br>
+		echo "The following email addresses appear in known breaches:"<br>
+		cat hacked-emails.txt<br>
+		<br>
+		echo -e "\e[39m"<br>
+		echo -e "[*] Please wait..."<br>
+		wait<br>
+		echo -e "[END] Email Recon Complete!"<br>
+		echo -e ""<br>
+
+	</div>
+</code>
+
+<p>Tags: <a href='tag_recon.html'>recon</a></p>
+<!-- text end -->
+<!-- entry end -->
+</div>
+<div id="footer">CC by-nc-nd <a href="https://twitter.com/m3t4lk3y">metalkey</a> &mdash; <a href="mailto:"></a><br/>
+Generated with <a href="https://github.com/cfenollosa/bashblog">bashblog</a>, a single bash script to easily create blogs like this one</div>
+</div></div>
+</body></html>

