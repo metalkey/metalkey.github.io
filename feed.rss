@@ -2,8 +2,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>m3t4lk3y</title><link>https://metalkey.github.io/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Mon, 24 Oct 2016 23:50:44 +1100</lastBuildDate>
-<pubDate>Mon, 24 Oct 2016 23:50:44 +1100</pubDate>
+<lastBuildDate>Mon, 24 Oct 2016 23:54:39 +1100</lastBuildDate>
+<pubDate>Mon, 24 Oct 2016 23:54:39 +1100</pubDate>
 <atom:link href="https://metalkey.github.io/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 Company Email Enumeration + Breached Email Finder
@@ -87,7 +87,7 @@ Installing Wickr on Ubuntu 16.04
 </div>
 </code>
 
-<p>Tags: <a href='tag_Privacy.html'>privacy</a></p>
+<p>Tags: <a href='tag_privacy.html'>privacy</a></p>
 
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/installing-wickr-on-ubuntu-1604.html</link>
@@ -299,6 +299,7 @@ root@metasploitable:/etc/unreal#
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/unrealircd-3281-backdoor-command-execution.html</link>
 <guid>https://metalkey.github.io/./unrealircd-3281-backdoor-command-execution.html</guid>
@@ -456,6 +457,7 @@ root
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</link>
 <guid>https://metalkey.github.io/./linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</guid>
@@ -594,6 +596,7 @@ If your system is vulnerable, ensure it is patched immediately by upgrading your
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/shellshock-explained--exploitation-tutorial.html</link>
 <guid>https://metalkey.github.io/./shellshock-explained--exploitation-tutorial.html</guid>
@@ -708,6 +711,7 @@ C:\7-ZipPortable>
 <p></code></p>
 
 <p>Tags: <a href='tag_av-evasion.html'>av-evasion</a></p>
+
 
 
 
