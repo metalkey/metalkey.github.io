@@ -14,6 +14,35 @@
 <div id="description">Hacking tutorials + info</div>
 </div></div></div>
 <div id="divbody"><div class="content">
+<h3><a class="ablack" href="mousejack-on-the-wifi-pineapple.html">
+Mousejack on the WiFi Pineapple
+</a></h3>
+<!-- bashblog_timestamp: #201806151146.25# -->
+<div class="subtitle">June 15, 2018</div>
+<!-- text begin -->
+
+<p>The Mousejack attack is extremely useful for dropping payloads on machines where vulnerable RF wireless devices are used and after a bit of trial and error, it was possible to get the Jackit exploit tool running on a WiFi Pineapple.<br>
+Commands to get things up and running below.<br>
+<br>
+<b>Note:</b> It is also possible to run Jackit on the Nano but it requires moving Python to an external SD card first.</p>
+
+<div class="code">
+root@pineapple:~$ <com>opkg update</com><br>
+root@pineapple:~$ <com>opkg install python-pip libusb-1.0 libusb-compat</com><br>
+root@pineapple:~$ <com>pip install pyusb click six tabulate</com><br>
+...<br>
+Download jackit from https://github.com/Sliim/jackit/tree/openwrt-libusb<br>
+Modify jackit as per master...Sliim:openwrt-libusb (e.g. wget https://raw.githubusercontent.com/Sliim/jackit/4de42c5d9cdae2ed1009b8cd161101e88ab1c76a/jackit/lib/nrf24.py)<br>
+...<br>
+root@pineapple:~$ <com>./setup.py build</com><br>
+root@pineapple:~$ <com>./setup.py install</com><br>
+</div>
+
+<p><b>Jackit Github Page:</b><br>
+<a href="https://github.com/insecurityofthings/jackit">https://github.com/insecurityofthings/jackit</a></p>
+
+<p>Tags: <a href='tag_wifi.html'>wifi</a></p>
+<!-- text end -->
 <h3><a class="ablack" href="increasing-the-power-output-of-your-alfa-awus036h.html">
 Increasing the Power Output of your Alfa AWUS036H
 </a></h3>
